@@ -27,19 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const redirectProgressBar = document.getElementById('redirectProgressBar');
   const cancelRedirectBtn = document.getElementById('cancelRedirectBtn');
 
-  const adminBtn = document.getElementById('adminBtn');
-  const adminModal = document.getElementById('adminModal');
-  const adminCloseBtn = document.getElementById('adminCloseBtn');
-  const claimUrlInput = document.getElementById('claimUrlInput');
-  const saveAdminBtn = document.getElementById('saveAdminBtn');
-  const resetSpinLockBtn = document.getElementById('resetSpinLockBtn');
-
   // Update claim link href
   if (claimRedirectLink) {
     claimRedirectLink.href = claimRedirectUrl;
-  }
-  if (claimUrlInput) {
-    claimUrlInput.value = claimRedirectUrl;
   }
 
   // 4. Modal Close Functionality
@@ -71,23 +61,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. Redirect Countdown Management
+  // 5. Dynamic Reward Spotlight updater
+  function updateWonPrizeDisplay(prize) {
+    if (!prize) return;
+    const prizeSpotlightText = document.querySelector('.prize-spotlight-text');
+    if (prizeSpotlightText) {
+      prizeSpotlightText.textContent = `YOU WON: ${prize.label.toUpperCase()}!`;
+    }
+    const trophyBadge = document.querySelector('.trophy-badge');
+    if (trophyBadge) {
+      trophyBadge.textContent = `${prize.icon || '🎟️'} 🎬 🪔`;
+    }
+  }
+
+  // 6. Redirect Countdown Management
   function startRedirectCountdown(seconds = 4) {
     stopRedirectCountdown();
     redirectRemainingSeconds = seconds;
-    redirectCountdown.textContent = redirectRemainingSeconds;
-    redirectProgressBar.style.transition = 'none';
-    redirectProgressBar.style.width = '100%';
+    if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
+    if (redirectProgressBar) {
+      redirectProgressBar.style.transition = 'none';
+      redirectProgressBar.style.width = '100%';
 
-    requestAnimationFrame(() => {
-      redirectProgressBar.style.transition = `width ${seconds}s linear`;
-      redirectProgressBar.style.width = '0%';
-    });
+      requestAnimationFrame(() => {
+        redirectProgressBar.style.transition = `width ${seconds}s linear`;
+        redirectProgressBar.style.width = '0%';
+      });
+    }
 
     redirectTimer = setInterval(() => {
       redirectRemainingSeconds--;
       if (redirectRemainingSeconds > 0) {
-        redirectCountdown.textContent = redirectRemainingSeconds;
+        if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
       } else {
         stopRedirectCountdown();
         window.location.href = claimRedirectUrl;
@@ -120,12 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. UI Lock for Single-Spin User
-  function applyAlreadySpunUI() {
+  // 7. UI Lock for Single-Spin User
+  function applyAlreadySpunUI(wonPrize) {
+    const label = (wonPrize && wonPrize.label) ? wonPrize.label : 'Ticket for Movie';
+    const icon = (wonPrize && wonPrize.icon) ? wonPrize.icon : '🎟️';
+
     spinBtn.disabled = true;
     spinBtn.classList.add('already-spun');
     spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.3rem;">✔</span>`;
-    spinStatus.innerHTML = `🎉 You already spun and won a <strong>Ticket for Movie</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
+    spinStatus.innerHTML = `🎉 You already spun and won: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
 
     const viewRewardLink = document.getElementById('viewRewardLink');
     if (viewRewardLink) {
@@ -148,9 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 7. Initialize Wheel
+  // 8. Initialize Wheel with dynamically loaded prizes & target winner
+  const prizes = DiwaliWheel.loadPrizes();
+  const targetPrizeId = DiwaliWheel.loadTargetPrizeId();
+
   const wheel = new DiwaliWheel('wheelCanvas', {
-    targetPrizeId: 'movie_ticket', // RIGGED: ALWAYS MOVIE TICKET!
+    prizes: prizes,
+    targetPrizeId: targetPrizeId,
     onSpinStart: () => {
       spinBtn.disabled = true;
       spinBtn.innerHTML = `<span>SPINNING...</span> <span style="font-size: 1.4rem;">✨</span>`;
@@ -165,7 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. Permanently lock spin for this user
       hasUserSpun = true;
       localStorage.setItem('nitt_diwali_user_spun', 'true');
-      applyAlreadySpunUI();
+      localStorage.setItem('nitt_diwali_won_prize', JSON.stringify({
+        id: prize.id,
+        label: prize.label,
+        icon: prize.icon
+      }));
+
+      updateWonPrizeDisplay(prize);
+      applyAlreadySpunUI(prize);
 
       // 2. Audio & Fireworks Celebration
       window.soundEngine.playWinFanfare();
@@ -180,11 +199,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check if user has already spun previously
   if (hasUserSpun) {
-    wheel.setLandedOnPrize('movie_ticket');
-    applyAlreadySpunUI();
+    let savedPrize = null;
+    try {
+      savedPrize = JSON.parse(localStorage.getItem('nitt_diwali_won_prize'));
+    } catch (e) {}
+
+    if (!savedPrize) {
+      savedPrize = wheel.prizes.find(p => p.id === wheel.targetPrizeId) || wheel.prizes[0];
+    }
+
+    wheel.setLandedOnPrize(savedPrize.id);
+    updateWonPrizeDisplay(savedPrize);
+    applyAlreadySpunUI(savedPrize);
   }
 
-  // 8. Spin Button Trigger
+  // 9. Spin Button Trigger
   spinBtn.addEventListener('click', () => {
     if (hasUserSpun) {
       openRewardModal(false);
@@ -194,66 +223,22 @@ document.addEventListener('DOMContentLoaded', () => {
     wheel.spin();
   });
 
-  // 9. Sound Toggle
+  // 10. Sound Toggle
   soundToggleBtn.addEventListener('click', () => {
     window.soundEngine.resume();
     const isMuted = window.soundEngine.toggleMute();
     soundIcon.textContent = isMuted ? '🔇' : '🔊';
   });
 
-  // 10. Organizer / Admin Controls
-  adminBtn.addEventListener('click', () => {
-    claimUrlInput.value = claimRedirectUrl;
-    adminModal.classList.add('active');
-  });
-
-  adminCloseBtn.addEventListener('click', () => {
-    adminModal.classList.remove('active');
-  });
-
-  adminModal.addEventListener('click', (e) => {
-    if (e.target === adminModal) {
-      adminModal.classList.remove('active');
-    }
-  });
-
-  saveAdminBtn.addEventListener('click', () => {
-    const newUrl = claimUrlInput.value.trim();
-    if (newUrl) {
-      claimRedirectUrl = newUrl;
-      localStorage.setItem('nitt_movie_ticket_url', newUrl);
-      if (claimRedirectLink) {
-        claimRedirectLink.href = claimRedirectUrl;
-      }
-    }
-    adminModal.classList.remove('active');
-    alert('✔ Settings saved! Google Forms URL updated.');
-  });
-
-  // Reset Spin Lock (For Testing)
-  if (resetSpinLockBtn) {
-    resetSpinLockBtn.addEventListener('click', () => {
-      localStorage.removeItem('nitt_diwali_user_spun');
-      hasUserSpun = false;
-      spinBtn.disabled = false;
-      spinBtn.classList.remove('already-spun');
-      spinBtn.innerHTML = `<span>SPIN TO WIN</span> <span style="font-size: 1.4rem;">🪔</span>`;
-      spinStatus.textContent = 'Tap above to test your Diwali luck! (1 spin per user)';
-      adminModal.classList.remove('active');
-      alert('🔄 Spin Lock Reset! You can now spin the wheel again for testing.');
-    });
-  }
-
-  // Secret Shortcut: Ctrl + Shift + D
+  // 11. Secret Shortcut for Organizers: Ctrl + Shift + D -> Navigate to Admin Subpage
   window.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
       e.preventDefault();
-      claimUrlInput.value = claimRedirectUrl;
-      adminModal.classList.toggle('active');
+      window.location.href = 'admin.html';
     }
   });
 
-  // Info Button
+  // 12. Info Button
   const infoBtn = document.getElementById('infoBtn');
   if (infoBtn) {
     infoBtn.addEventListener('click', () => {

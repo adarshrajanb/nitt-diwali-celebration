@@ -391,18 +391,6 @@ footer {
   z-index: 5;
 }
 
-.admin-lock-btn {
-  background: none;
-  border: none;
-  color: #546E7A;
-  font-size: 0.8rem;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: color 0.2s ease;
-}
-
-.admin-lock-btn:hover { color: var(--gold-primary); }
-
 /* ==========================================================
    WINNER MODAL & DIRECT GOOGLE FORMS REGISTRATION
    ========================================================== */
@@ -644,38 +632,4 @@ footer {
   color: #B0BEC5;
   text-align: center;
   padding-top: 4px;
-}
-
-/* Organizer Settings */
-.admin-card { max-width: 460px; padding: 24px; }
-.admin-card h3 { color: var(--gold-light); margin-bottom: 12px; font-size: 1.2rem; }
-.admin-card p { font-size: 0.85rem; color: #B0BEC5; margin-bottom: 14px; line-height: 1.4; }
-.admin-card label { display: block; font-size: 0.8rem; color: #FFE082; margin-bottom: 4px; }
-.admin-card input {
-  width: 100%;
-  background: #110317;
-  color: #FFFFFF;
-  border: 1px solid var(--gold-primary);
-  padding: 9px 12px;
-  border-radius: 8px;
-  margin-bottom: 14px;
-  font-size: 0.88rem;
-}
-
-.reset-spin-btn {
-  background: rgba(255, 23, 68, 0.2);
-  border: 1px solid #FF1744;
-  color: #FF8A80;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.2s ease;
-}
-
-.reset-spin-btn:hover {
-  background: rgba(255, 23, 68, 0.4);
-  color: #FFFFFF;
 }

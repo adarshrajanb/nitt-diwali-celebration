@@ -104,19 +104,56 @@ const DEFAULT_PRIZES = [
 ];
 
 class DiwaliWheel {
+  static getDefaultPrizes() {
+    return JSON.parse(JSON.stringify(DEFAULT_PRIZES));
+  }
+
+  static loadPrizes() {
+    try {
+      const raw = localStorage.getItem('nitt_wheel_prizes');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length >= 2) {
+          return parsed;
+        }
+      }
+    } catch (err) {
+      console.warn('Could not parse stored wheel prizes:', err);
+    }
+    return DiwaliWheel.getDefaultPrizes();
+  }
+
+  static savePrizes(prizes) {
+    try {
+      localStorage.setItem('nitt_wheel_prizes', JSON.stringify(prizes));
+    } catch (err) {
+      console.error('Failed to save prizes to localStorage:', err);
+    }
+  }
+
+  static loadTargetPrizeId() {
+    return localStorage.getItem('nitt_target_prize_id') || 'movie_ticket';
+  }
+
+  static saveTargetPrizeId(targetId) {
+    localStorage.setItem('nitt_target_prize_id', targetId);
+  }
+
   constructor(canvasId, options = {}) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext('2d');
 
-    this.prizes = options.prizes || DEFAULT_PRIZES;
+    this.targetPrizeId = options.targetPrizeId !== undefined ? options.targetPrizeId : DiwaliWheel.loadTargetPrizeId();
+    this.prizes = options.prizes ? options.prizes : DiwaliWheel.loadPrizes();
+    this.updateTargetFlags();
+
     this.numSlices = this.prizes.length;
     this.sliceAngle = (2 * Math.PI) / this.numSlices;
 
     // Angle state (in radians)
     this.currentAngle = 0;
     this.isSpinning = false;
-    this.targetPrizeId = options.targetPrizeId || 'movie_ticket'; // Always Ticket for Movie!
 
     // Pointer flapper animation state
     this.flapperAngle = 0;
@@ -185,8 +222,13 @@ class DiwaliWheel {
     this.onSpinStart();
 
     // 1. Determine target slice index
-    let targetIndex = this.prizes.findIndex(p => p.id === this.targetPrizeId);
-    if (targetIndex === -1) targetIndex = 0;
+    let targetIndex;
+    if (this.targetPrizeId === 'random' || !this.targetPrizeId) {
+      targetIndex = Math.floor(Math.random() * this.prizes.length);
+    } else {
+      targetIndex = this.prizes.findIndex(p => p.id === this.targetPrizeId);
+      if (targetIndex === -1) targetIndex = 0;
+    }
 
     const twoPi = Math.PI * 2;
     const pointerAngle = 1.5 * Math.PI;
@@ -574,7 +616,23 @@ class DiwaliWheel {
     ctx.restore();
   }
 
+  updateTargetFlags() {
+    this.prizes.forEach(p => {
+      p.isTarget = (p.id === this.targetPrizeId);
+    });
+  }
+
   setTargetPrize(prizeId) {
     this.targetPrizeId = prizeId;
+    this.updateTargetFlags();
+    this.draw();
+  }
+
+  setPrizes(prizes) {
+    this.prizes = prizes;
+    this.updateTargetFlags();
+    this.numSlices = this.prizes.length;
+    this.sliceAngle = (2 * Math.PI) / this.numSlices;
+    this.draw();
   }
 }

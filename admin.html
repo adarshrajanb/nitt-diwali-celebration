@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Council Admin Portal | Diwali Celebration - NIT Trichy</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold-primary: #FFD700;
+      --gold-light: #FFF59D;
+      --gold-dark: #B78103;
+      --maroon: #800020;
+      --crimson: #B71C1C;
+      --bg-deep: #090212;
+      --bg-card: rgba(26, 8, 38, 0.92);
+      --bg-card-inner: rgba(18, 4, 28, 0.85);
+      --border-gold: rgba(255, 215, 0, 0.35);
+      --text-main: #FFFFFF;
+      --text-muted: #BDBDBD;
+      --text-gold: #FFE082;
+      --accent-saffron: #FF6F00;
+      --accent-green: #00E676;
+      --accent-red: #FF5252;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(ellipse at 50% 10%, rgba(136, 14, 79, 0.45) 0%, rgba(38, 3, 50, 0.7) 45%, #080110 100%),
+        radial-gradient(circle at 10% 80%, rgba(255, 111, 0, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Festive Banner */
+    .top-toran {
+      width: 100%;
+      height: 28px;
+      background: radial-gradient(circle at 50% 0%, #FF9800 0%, #E65100 65%, transparent 70%);
+      background-size: 36px 28px;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.35);
+    }
+
+    /* Header */
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: rgba(15, 3, 24, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      font-size: 1.8rem;
+    }
+
+    .brand-titles h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      color: var(--gold-primary);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    .brand-titles p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+      color: #3E1000;
+      border-color: #FFE082;
+      box-shadow: 0 3px 12px rgba(255, 179, 0, 0.35);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px rgba(255, 179, 0, 0.55);
+    }
+
+    .btn-outline {
+      background: rgba(255, 215, 0, 0.08);
+      color: var(--text-gold);
+      border-color: rgba(255, 215, 0, 0.4);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 215, 0, 0.18);
+      border-color: var(--gold-primary);
+    }
+
+    .btn-danger {
+      background: rgba(255, 82, 82, 0.15);
+      color: #FF8A80;
+      border-color: rgba(255, 82, 82, 0.4);
+    }
+
+    .btn-danger:hover {
+      background: rgba(255, 82, 82, 0.3);
+      border-color: #FF5252;
+    }
+
+    /* Container */
+    .admin-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 18px 60px;
+      flex: 1;
+    }
+
+    /* ========================================================
+       LOGIN GATE SCREEN
+       ======================================================== */
+    .login-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 65vh;
+      padding: 20px 0;
+    }
+
+    .login-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 36px 30px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 179, 0, 0.15);
+      backdrop-filter: blur(15px);
+    }
+
+    .login-diya {
+      font-size: 3.2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      filter: drop-shadow(0 0 16px rgba(255, 193, 7, 0.8));
+      animation: gentle-glow 2.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentle-glow {
+      0% { transform: scale(0.96); filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.6)); }
+      100% { transform: scale(1.04); filter: drop-shadow(0 0 22px rgba(255, 235, 59, 0.95)); }
+    }
+
+    .login-card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--gold-primary);
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-gold);
+      margin-bottom: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-card-inner);
+      border: 1.5px solid rgba(255, 215, 0, 0.3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.35);
+      background: rgba(30, 8, 44, 0.95);
+    }
+
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--gold-light);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px;
+    }
+
+    .login-error {
+      display: none;
+      background: rgba(255, 82, 82, 0.15);
+      border: 1px solid #FF5252;
+      color: #FF8A80;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      margin-bottom: 16px;
+      animation: shake 0.35s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* ========================================================
+       AUTHENTICATED DASHBOARD
+       ======================================================== */
+    #dashboardSection {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Status Bar */
+    .status-summary-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      background: rgba(255, 215, 0, 0.1);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.25);
+    }
+
+    .stat-text h4 {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .stat-text p {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 170px;
+    }
+
+    /* Admin Section Cards */
+    .admin-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+      position: relative;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-title-row h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-subtitle {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Target Winner Selector Grid */
+    .winner-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .winner-choice-card {
+      background: var(--bg-card-inner);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .winner-choice-card:hover {
+      border-color: rgba(255, 215, 0, 0.6);
+      transform: translateY(-2px);
+      background: rgba(36, 10, 52, 0.9);
+    }
+
+    .winner-choice-card.selected {
+      border-color: var(--gold-primary);
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.5) 0%, rgba(183, 28, 28, 0.3) 100%);
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
+    }
+
+    .winner-choice-radio {
+      accent-color: var(--gold-primary);
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .winner-choice-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .winner-choice-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .winner-choice-sub {
+      font-size: 0.74rem;
+      color: var(--text-gold);
+    }
+
+    /* Google Forms Link Box */
+    .forms-url-wrapper {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .forms-url-wrapper {
+        flex-direction: column;
+      }
+    }
+
+    .forms-url-wrapper input {
+      flex: 1;
+    }
+
+    .url-hint {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    /* Tiles Editor Grid */
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .tile-card {
+      background: var(--bg-card-inner);
+      border: 1.5px solid rgba(255, 215, 0, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s ease;
+    }
+
+    .tile-card:hover {
+      border-color: rgba(255, 215, 0, 0.5);
+    }
+
+    .tile-card.is-active-winner {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+    }
+
+    .tile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+
+    .tile-number {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-gold);
+      letter-spacing: 0.5px;
+    }
+
+    .winner-badge {
+      font-size: 0.7rem;
+      background: linear-gradient(135deg, #FFD700 0%, #FF8F00 100%);
+      color: #3E1000;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 999px;
+      display: none;
+    }
+
+    .tile-card.is-active-winner .winner-badge {
+      display: inline-block;
+    }
+
+    .tile-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tile-field label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .tile-field input, .tile-field select {
+      background: rgba(10, 2, 16, 0.85);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.86rem;
+      color: #FFFFFF;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .tile-field input:focus, .tile-field select:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .line-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .emoji-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .emoji-input {
+      width: 58px !important;
+      text-align: center;
+      font-size: 1.25rem !important;
+    }
+
+    .quick-emojis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .quick-emoji-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      font-size: 1rem;
+      padding: 2px 6px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .quick-emoji-btn:hover {
+      background: rgba(255, 215, 0, 0.25);
+    }
+
+    /* Live Preview Arena */
+    .preview-arena {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .canvas-preview-box {
+      width: 380px;
+      height: 380px;
+      max-width: 90vw;
+      max-height: 90vw;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    #previewCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .preview-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Utility Tools Box */
+    .utility-buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    /* Toast Notification */
+    .admin-toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+      color: #FFFFFF;
+      border: 1.5px solid #A5D6A7;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .admin-toast.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Modal for Password Change */
+    .mini-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .mini-modal-backdrop.active {
+      display: flex;
+    }
+
+    .mini-modal-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-gold);
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Festive Toran Garland -->
+  <div class="top-toran"></div>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="brand-group">
+      <span class="brand-icon">🏛️</span>
+      <div class="brand-titles">
+        <h1>NIT TRICHY • CULTURAL COUNCIL</h1>
+        <p>Diwali Celebration — Organizer Administration Portal</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="index.html" class="btn btn-outline" target="_blank" title="Open the public wheel in a new tab">
+        <span>🎡</span>
+        <span>View Live Wheel</span>
+        <span>➔</span>
+      </a>
+      <button id="logoutBtn" class="btn btn-danger" style="display: none;" title="Lock dashboard & log out">
+        <span>🚪</span>
+        <span>Log Out</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+
+    <!-- ========================================================
+         1. ORGANIZER LOGIN GATE
+         ======================================================== -->
+    <section id="loginSection" class="login-wrapper">
+      <div class="login-card">
+        <div class="login-diya">🪔</div>
+        <h2>Organizer Access</h2>
+        <p>Enter the Cultural Council admin passcode to configure wheel prizes, winning outcome, and registration links.</p>
+
+        <div id="loginError" class="login-error">
+          ⚠️ Incorrect admin passcode. Please try again.
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label class="form-label" for="adminPasswordInput">Admin Passcode</label>
+            <div class="input-wrapper">
+              <input type="password" id="adminPasswordInput" class="form-input" placeholder="Enter council password" required autocomplete="current-password">
+              <button type="button" id="togglePassBtn" class="toggle-pass-btn" title="Toggle password visibility">👁️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold login-btn">
+            <span>UNLOCK DASHBOARD</span>
+            <span>🔑</span>
+          </button>
+        </form>
+
+        <p style="margin-top: 18px; font-size: 0.78rem; opacity: 0.7;">
+          Confidential • Cultural Council, National Institute of Technology, Trichy
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         2. AUTHENTICATED DASHBOARD
+         ======================================================== -->
+    <section id="dashboardSection">
+
+      <!-- Status Summary Strip -->
+      <div class="status-summary-bar">
+        <div class="stat-box">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-text">
+            <h4>Target Winner</h4>
+            <p id="statWinner">Ticket for Movie</p>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon">🔗</div>
+          <div class="stat-text">
+            <h4>Google Form</h4>
+            <p id="statForm">Connected</p>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon">🎡</div>
+          <div class="stat-text">
+            <h4>Wheel Sectors</h4>
+            <p id="statSectors">8 Slices Active</p>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon">🔒</div>
+          <div class="stat-text">
+            <h4>Device Spin Lock</h4>
+            <p id="statSpinLock">Unlocked</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD A: WINNING OUTCOME CONTROLLER -->
+      <div class="admin-card">
+        <div class="card-title-row">
+          <div>
+            <h2><span>🎯</span> Change What Students Should Win</h2>
+            <p class="card-subtitle">Choose which sector the lottery wheel will land on for publicity when students spin.</p>
+          </div>
+          <button id="saveTargetBtn" class="btn btn-gold">
+            <span>💾 Save Winning Target</span>
+          </button>
+        </div>
+
+        <div id="winnerSelectGrid" class="winner-select-grid">
+          <!-- Dynamically generated sector radio cards -->
+        </div>
+
+        <div class="form-group" style="margin-top: 10px; max-width: 520px;">
+          <label class="form-label" for="customWinTitleInput">Winning Popup Announcement Text:</label>
+          <input type="text" id="customWinTitleInput" class="form-input" placeholder="e.g. YOU WON A TICKET FOR MOVIE!">
+          <span style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px; display: block;">
+            Leave blank to automatically use "YOU WON: [SECTOR NAME]!"
+          </span>
+        </div>
+      </div>
+
+      <!-- CARD B: GOOGLE FORMS LINK -->
+      <div class="admin-card">
+        <div class="card-title-row">
+          <div>
+            <h2><span>🔗</span> Change Google Forms Registration Link</h2>
+            <p class="card-subtitle">Students are redirected to this link right after winning to register and pay.</p>
+          </div>
+          <button id="saveFormsBtn" class="btn btn-gold">
+            <span>💾 Save Forms Link</span>
+          </button>
+        </div>
+
+        <div class="forms-url-wrapper">
+          <input type="url" id="formsUrlInput" class="form-input" placeholder="https://forms.gle/your-nitt-diwali-form" required>
+          <button type="button" id="testFormLinkBtn" class="btn btn-outline" title="Open this form in a new tab to test">
+            <span>Test URL ↗</span>
+          </button>
+        </div>
+        <p class="url-hint">
+          💡 <strong>Tip:</strong> You can paste any valid Google Forms, Unstop, or registration URL here. The winner popup button and automatic 4-second countdown will immediately redirect students to this destination.
+        </p>
+
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 8px;">
+          <label class="form-label" style="margin-bottom: 0;">Auto-Redirect Countdown:</label>
+          <select id="countdownSelect" class="form-input" style="width: auto; padding: 6px 12px;">
+            <option value="4">4 Seconds (Recommended)</option>
+            <option value="6">6 Seconds</option>
+            <option value="8">8 Seconds</option>
+            <option value="0">Manual Click Only (No auto-redirect)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CARD C: WHEEL TILES CUSTOMIZER -->
+      <div class="admin-card">
+        <div class="card-title-row">
+          <div>
+            <h2><span>🎡</span> Customize Wheel Tiles & Sectors (8 Slices)</h2>
+            <p class="card-subtitle">Edit the labels, 2-line wheel text, emojis, and colors of each sector on the wheel.</p>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button id="resetTilesDefaultBtn" class="btn btn-outline">
+              <span>↺ Reset Tiles to Defaults</span>
+            </button>
+            <button id="saveAllTilesBtn" class="btn btn-gold">
+              <span>💾 Save All Tiles</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="tilesContainer" class="tiles-grid">
+          <!-- 8 Editable Sector Cards rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- CARD D: LIVE WHEEL PREVIEW & TEST SPIN -->
+      <div class="admin-card">
+        <div class="card-title-row">
+          <div>
+            <h2><span>👁️</span> Live Wheel Preview & Verification</h2>
+            <p class="card-subtitle">Real-time simulation showing exactly what students will see on the main page.</p>
+          </div>
+          <div class="preview-controls">
+            <button id="previewSpinBtn" class="btn btn-gold">
+              <span>🎡 Test Spin Wheel</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="preview-arena">
+          <div class="canvas-preview-box">
+            <canvas id="previewCanvas"></canvas>
+          </div>
+          <p id="previewStatus" style="font-size: 0.9rem; color: var(--text-gold); font-weight: 700;">
+            Ready to test. Click "Test Spin Wheel" to test landing on the selected winning sector!
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD E: TESTING & UTILITIES -->
+      <div class="admin-card">
+        <div class="card-title-row">
+          <div>
+            <h2><span>🛠️</span> Council Testing & Administrative Utilities</h2>
+            <p class="card-subtitle">Device testing tools, passcode security, and configuration backups.</p>
+          </div>
+        </div>
+
+        <div class="utility-buttons-row">
+          <button id="resetMySpinLockBtn" class="btn btn-outline">
+            <span>🔄 Reset My Device Spin Lock</span>
+          </button>
+          <button id="openChangePassBtn" class="btn btn-outline">
+            <span>🔑 Change Admin Passcode</span>
+          </button>
+          <button id="exportConfigBtn" class="btn btn-outline">
+            <span>📋 Copy Config JSON</span>
+          </button>
+          <button id="factoryResetBtn" class="btn btn-danger">
+            <span>⚠️ Factory Reset Everything</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Popup -->
+  <div id="adminToast" class="admin-toast">
+    <span>✔</span>
+    <span id="toastMessage">Settings saved successfully!</span>
+  </div>
+
+  <!-- Change Password Mini-Modal -->
+  <div id="changePassModal" class="mini-modal-backdrop">
+    <div class="mini-modal-card">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 12px;">🔑 Change Admin Passcode</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+        Set a new secret password for the Cultural Council admin dashboard.
+      </p>
+
+      <div class="form-group">
+        <label class="form-label" for="currentPassInput">Current Passcode</label>
+        <input type="password" id="currentPassInput" class="form-input" placeholder="Current passcode">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="newPassInput">New Passcode</label>
+        <input type="password" id="newPassInput" class="form-input" placeholder="New passcode (min 6 characters)">
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button type="button" id="cancelPassModalBtn" class="btn btn-outline">Cancel</button>
+        <button type="button" id="confirmChangePassBtn" class="btn btn-gold">Update Passcode</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="audio.js"></script>
+  <script src="wheel.js"></script>
+
+  <script>
+    /**
+     * NITT Cultural Council - Admin Subpage Controller
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Keys & Defaults
+      const PASS_KEY = 'nitt_admin_password';
+      const AUTH_KEY = 'nitt_admin_auth';
+      const FORMS_KEY = 'nitt_movie_ticket_url';
+      const TARGET_KEY = 'nitt_target_prize_id';
+      const PRIZES_KEY = 'nitt_wheel_prizes';
+      const SPUN_KEY = 'nitt_diwali_user_spun';
+      const COUNTDOWN_KEY = 'nitt_redirect_seconds';
+      const WIN_TITLE_KEY = 'nitt_custom_win_title';
+
+      const DEFAULT_PASSWORD = 'nittcultural';
+      const DEFAULT_FORM_URL = 'https://forms.gle/diwali-nitt-movie-ticket';
+
+      // 2. DOM Elements
+      const loginSection = document.getElementById('loginSection');
+      const dashboardSection = document.getElementById('dashboardSection');
+      const loginForm = document.getElementById('loginForm');
+      const adminPasswordInput = document.getElementById('adminPasswordInput');
+      const togglePassBtn = document.getElementById('togglePassBtn');
+      const loginError = document.getElementById('loginError');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      const statWinner = document.getElementById('statWinner');
+      const statForm = document.getElementById('statForm');
+      const statSectors = document.getElementById('statSectors');
+      const statSpinLock = document.getElementById('statSpinLock');
+
+      const winnerSelectGrid = document.getElementById('winnerSelectGrid');
+      const saveTargetBtn = document.getElementById('saveTargetBtn');
+      const customWinTitleInput = document.getElementById('customWinTitleInput');
+
+      const formsUrlInput = document.getElementById('formsUrlInput');
+      const testFormLinkBtn = document.getElementById('testFormLinkBtn');
+      const countdownSelect = document.getElementById('countdownSelect');
+      const saveFormsBtn = document.getElementById('saveFormsBtn');
+
+      const tilesContainer = document.getElementById('tilesContainer');
+      const saveAllTilesBtn = document.getElementById('saveAllTilesBtn');
+      const resetTilesDefaultBtn = document.getElementById('resetTilesDefaultBtn');
+
+      const previewSpinBtn = document.getElementById('previewSpinBtn');
+      const previewStatus = document.getElementById('previewStatus');
+
+      const resetMySpinLockBtn = document.getElementById('resetMySpinLockBtn');
+      const openChangePassBtn = document.getElementById('openChangePassBtn');
+      const exportConfigBtn = document.getElementById('exportConfigBtn');
+      const factoryResetBtn = document.getElementById('factoryResetBtn');
+
+      const adminToast = document.getElementById('adminToast');
+      const toastMessage = document.getElementById('toastMessage');
+
+      const changePassModal = document.getElementById('changePassModal');
+      const currentPassInput = document.getElementById('currentPassInput');
+      const newPassInput = document.getElementById('newPassInput');
+      const cancelPassModalBtn = document.getElementById('cancelPassModalBtn');
+      const confirmChangePassBtn = document.getElementById('confirmChangePassBtn');
+
+      // 3. Audio & Preview Wheel Engine
+      const soundEngine = window.soundEngine || new SoundEngine();
+      let previewWheel = null;
+
+      // 4. Toast Notification Helper
+      let toastTimer = null;
+      function showToast(msg, isSuccess = true) {
+        toastMessage.textContent = msg;
+        adminToast.style.background = isSuccess 
+          ? 'linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%)' 
+          : 'linear-gradient(135deg, #B71C1C 0%, #C62828 100%)';
+        adminToast.style.borderColor = isSuccess ? '#A5D6A7' : '#FF8A80';
+        adminToast.classList.add('active');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          adminToast.classList.remove('active');
+        }, 2800);
+      }
+
+      // 5. Authentication Management
+      function checkAuth() {
+        const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
+        if (isAuth) {
+          loginSection.style.display = 'none';
+          dashboardSection.style.display = 'block';
+          logoutBtn.style.display = 'inline-flex';
+          initDashboard();
+        } else {
+          loginSection.style.display = 'flex';
+          dashboardSection.style.display = 'none';
+          logoutBtn.style.display = 'none';
+        }
+      }
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const entered = adminPasswordInput.value.trim();
+        const actual = localStorage.getItem(PASS_KEY) || DEFAULT_PASSWORD;
+
+        if (entered === actual) {
+          sessionStorage.setItem(AUTH_KEY, 'true');
+          loginError.style.display = 'none';
+          adminPasswordInput.value = '';
+          checkAuth();
+          showToast('Welcome, Cultural Council Organizer!');
+        } else {
+          loginError.style.display = 'block';
+          adminPasswordInput.select();
+        }
+      });
+
+      togglePassBtn.addEventListener('click', () => {
+        const type = adminPasswordInput.type === 'password' ? 'text' : 'password';
+        adminPasswordInput.type = type;
+        togglePassBtn.textContent = type === 'password' ? '👁️' : '🔒';
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem(AUTH_KEY);
+        checkAuth();
+        showToast('Logged out of Council Admin.');
+      });
+
+      // 6. Color Presets for Wheel Sectors
+      const COLOR_PRESETS = [
+        { name: 'Royal Crimson', c1: '#8B0000', c2: '#C62828', accent: '#FFD700', text: '#FFF9C4' },
+        { name: 'Deep Navy', c1: '#0D47A1', c2: '#1976D2', accent: '#FFF176', text: '#FFFFFF' },
+        { name: 'Emerald Green', c1: '#1B5E20', c2: '#2E7D32', accent: '#C8E6C9', text: '#FFFFFF' },
+        { name: 'Royal Purple', c1: '#4A148C', c2: '#7B1FA2', accent: '#E1BEE7', text: '#FFFFFF' },
+        { name: 'Saffron Amber', c1: '#E65100', c2: '#FB8C00', accent: '#FFE082', text: '#FFFFFF' },
+        { name: 'Festive Magenta', c1: '#880E4F', c2: '#C2185B', accent: '#F8BBD0', text: '#FFFFFF' },
+        { name: 'Deep Teal', c1: '#004D40', c2: '#00897B', accent: '#B2DFDB', text: '#FFFFFF' },
+        { name: 'Rust Amber', c1: '#BF360C', c2: '#E64A19', accent: '#FFCCBC', text: '#FFFFFF' },
+      ];
+
+      // 7. Initialize Dashboard Content
+      function initDashboard() {
+        const prizes = DiwaliWheel.loadPrizes();
+        const currentTarget = DiwaliWheel.loadTargetPrizeId();
+        const currentFormUrl = localStorage.getItem(FORMS_KEY) || DEFAULT_FORM_URL;
+        const currentCountdown = localStorage.getItem(COUNTDOWN_KEY) || '4';
+        const currentCustomTitle = localStorage.getItem(WIN_TITLE_KEY) || '';
+
+        // Status bar
+        const activeWinnerObj = prizes.find(p => p.id === currentTarget);
+        statWinner.textContent = activeWinnerObj ? `${activeWinnerObj.icon} ${activeWinnerObj.label}` : 'Fair Random';
+        statForm.textContent = currentFormUrl.includes('forms.gle') ? 'Google Forms' : 'Configured';
+        statSectors.textContent = `${prizes.length} Slices Active`;
+        statSpinLock.textContent = localStorage.getItem(SPUN_KEY) === 'true' ? 'Locked (Already Spun)' : 'Unlocked';
+
+        // Forms values
+        formsUrlInput.value = currentFormUrl;
+        countdownSelect.value = currentCountdown;
+        customWinTitleInput.value = currentCustomTitle;
+
+        // Render sections
+        renderWinnerSelector(prizes, currentTarget);
+        renderTilesEditor(prizes, currentTarget);
+
+        // Render preview wheel
+        initPreviewWheel(prizes, currentTarget);
+      }
+
+      // 8. Render Winner Selection Radio Cards
+      function renderWinnerSelector(prizes, selectedTarget) {
+        winnerSelectGrid.innerHTML = '';
+
+        prizes.forEach((prize, index) => {
+          const card = document.createElement('div');
+          const isSelected = (prize.id === selectedTarget);
+          card.className = `winner-choice-card ${isSelected ? 'selected' : ''}`;
+          card.dataset.prizeId = prize.id;
+
+          card.innerHTML = `
+            <input type="radio" name="targetWinnerRadio" class="winner-choice-radio" value="${prize.id}" ${isSelected ? 'checked' : ''}>
+            <div style="font-size: 1.6rem;">${prize.icon}</div>
+            <div class="winner-choice-info">
+              <div class="winner-choice-title">#${index + 1}: ${prize.label}</div>
+              <div class="winner-choice-sub">${prize.line1} ${prize.line2}</div>
+            </div>
+          `;
+
+          card.addEventListener('click', (e) => {
+            if (e.target.type !== 'radio') {
+              card.querySelector('input[type="radio"]').checked = true;
+            }
+            document.querySelectorAll('.winner-choice-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            updateActiveWinnerUI(prize.id);
+          });
+
+          winnerSelectGrid.appendChild(card);
+        });
+
+        // Add Fair Random option
+        const randomCard = document.createElement('div');
+        const isRandomSelected = (selectedTarget === 'random');
+        randomCard.className = `winner-choice-card ${isRandomSelected ? 'selected' : ''}`;
+        randomCard.dataset.prizeId = 'random';
+        randomCard.innerHTML = `
+          <input type="radio" name="targetWinnerRadio" class="winner-choice-radio" value="random" ${isRandomSelected ? 'checked' : ''}>
+          <div style="font-size: 1.6rem;">🎲</div>
+          <div class="winner-choice-info">
+            <div class="winner-choice-title">Fair Random Spin</div>
+            <div class="winner-choice-sub">Equal probability across all slices</div>
+          </div>
+        `;
+        randomCard.addEventListener('click', () => {
+          randomCard.querySelector('input[type="radio"]').checked = true;
+          document.querySelectorAll('.winner-choice-card').forEach(c => c.classList.remove('selected'));
+          randomCard.classList.add('selected');
+          updateActiveWinnerUI('random');
+        });
+        winnerSelectGrid.appendChild(randomCard);
+      }
+
+      function updateActiveWinnerUI(targetId) {
+        if (previewWheel) {
+          previewWheel.setTargetPrize(targetId);
+        }
+        // Update tiles editor badges
+        document.querySelectorAll('.tile-card').forEach(tc => {
+          if (tc.dataset.prizeId === targetId) {
+            tc.classList.add('is-active-winner');
+          } else {
+            tc.classList.remove('is-active-winner');
+          }
+        });
+      }
+
+      // Save Target Winner
+      saveTargetBtn.addEventListener('click', () => {
+        const checked = document.querySelector('input[name="targetWinnerRadio"]:checked');
+        const targetId = checked ? checked.value : 'movie_ticket';
+        DiwaliWheel.saveTargetPrizeId(targetId);
+
+        const customTitle = customWinTitleInput.value.trim();
+        if (customTitle) {
+          localStorage.setItem(WIN_TITLE_KEY, customTitle);
+        } else {
+          localStorage.removeItem(WIN_TITLE_KEY);
+        }
+
+        const prizes = DiwaliWheel.loadPrizes();
+        const obj = prizes.find(p => p.id === targetId);
+        statWinner.textContent = obj ? `${obj.icon} ${obj.label}` : 'Fair Random';
+        showToast(`Winning target saved: ${obj ? obj.label : 'Fair Random'}!`);
+      });
+
+      // 9. Google Forms URL & Countdown
+      saveFormsBtn.addEventListener('click', () => {
+        const url = formsUrlInput.value.trim();
+        if (!url) {
+          showToast('Please enter a valid URL', false);
+          return;
+        }
+        localStorage.setItem(FORMS_KEY, url);
+        localStorage.setItem(COUNTDOWN_KEY, countdownSelect.value);
+        statForm.textContent = url.includes('forms.gle') ? 'Google Forms' : 'Configured';
+        showToast('Google Forms registration link updated!');
+      });
+
+      testFormLinkBtn.addEventListener('click', () => {
+        const url = formsUrlInput.value.trim();
+        if (url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          showToast('Enter a URL to test first', false);
+        }
+      });
+
+      // 10. Render Editable Sector Tiles
+      function renderTilesEditor(prizes, targetId) {
+        tilesContainer.innerHTML = '';
+        const quickEmojis = ['🎟️', '🍿', '🏛️', '🏷️', '🪔', '🎆', '👕', '🥤', '🎁', '🍫', '💰', '🏆', '🍕', '🎬'];
+
+        prizes.forEach((prize, idx) => {
+          const card = document.createElement('div');
+          card.className = `tile-card ${prize.id === targetId ? 'is-active-winner' : ''}`;
+          card.dataset.prizeId = prize.id;
+          card.dataset.index = idx;
+
+          card.innerHTML = `
+            <div class="tile-header">
+              <span class="tile-number">SECTOR #${idx + 1}</span>
+              <span class="winner-badge">🎯 TARGET WINNER</span>
+            </div>
+
+            <div class="tile-field">
+              <label>Full Reward Name:</label>
+              <input type="text" class="tile-label-input" value="${escapeHtml(prize.label)}">
+            </div>
+
+            <div class="line-inputs-row">
+              <div class="tile-field">
+                <label>Wheel Line 1:</label>
+                <input type="text" class="tile-line1-input" maxlength="14" value="${escapeHtml(prize.line1)}">
+              </div>
+              <div class="tile-field">
+                <label>Wheel Line 2:</label>
+                <input type="text" class="tile-line2-input" maxlength="14" value="${escapeHtml(prize.line2)}">
+              </div>
+            </div>
+
+            <div class="tile-field">
+              <label>Emoji / Icon:</label>
+              <div class="emoji-row">
+                <input type="text" class="tile-icon-input emoji-input" maxlength="4" value="${prize.icon}">
+                <div class="quick-emojis">
+                  ${quickEmojis.slice(0, 7).map(e => `<button type="button" class="quick-emoji-btn">${e}</button>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="tile-field">
+              <label>Color Theme:</label>
+              <select class="tile-color-select">
+                ${COLOR_PRESETS.map((p, pIdx) => `
+                  <option value="${pIdx}" ${prize.color1.toUpperCase() === p.c1.toUpperCase() ? 'selected' : ''}>
+                    ${p.name}
+                  </option>
+                `).join('')}
+              </select>
+            </div>
+          `;
+
+          // Quick emoji click handler
+          card.querySelectorAll('.quick-emoji-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              card.querySelector('.tile-icon-input').value = btn.textContent;
+            });
+          });
+
+          tilesContainer.appendChild(card);
+        });
+      }
+
+      function escapeHtml(str) {
+        return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      // Save All Tiles
+      saveAllTilesBtn.addEventListener('click', () => {
+        const currentPrizes = DiwaliWheel.loadPrizes();
+        const targetId = DiwaliWheel.loadTargetPrizeId();
+        const cards = tilesContainer.querySelectorAll('.tile-card');
+
+        cards.forEach((card) => {
+          const idx = parseInt(card.dataset.index, 10);
+          if (currentPrizes[idx]) {
+            const label = card.querySelector('.tile-label-input').value.trim() || `Reward ${idx + 1}`;
+            const line1 = card.querySelector('.tile-line1-input').value.trim().toUpperCase() || 'REWARD';
+            const line2 = card.querySelector('.tile-line2-input').value.trim().toUpperCase() || `${idx + 1}`;
+            const icon = card.querySelector('.tile-icon-input').value.trim() || '🎁';
+            const colorIdx = parseInt(card.querySelector('.tile-color-select').value, 10);
+            const preset = COLOR_PRESETS[colorIdx] || COLOR_PRESETS[0];
+
+            currentPrizes[idx].label = label;
+            currentPrizes[idx].line1 = line1;
+            currentPrizes[idx].line2 = line2;
+            currentPrizes[idx].icon = icon;
+            currentPrizes[idx].color1 = preset.c1;
+            currentPrizes[idx].color2 = preset.c2;
+            currentPrizes[idx].accent = preset.accent;
+            currentPrizes[idx].textColor = preset.text;
+          }
+        });
+
+        DiwaliWheel.savePrizes(currentPrizes);
+        if (previewWheel) {
+          previewWheel.setPrizes(currentPrizes);
+        }
+
+        // Re-render winner selection radio labels
+        renderWinnerSelector(currentPrizes, targetId);
+        showToast('All 8 wheel tiles successfully updated!');
+      });
+
+      // Reset Tiles to Defaults
+      resetTilesDefaultBtn.addEventListener('click', () => {
+        if (confirm('Reset all 8 wheel tiles to original Cultural Council defaults?')) {
+          localStorage.removeItem(PRIZES_KEY);
+          initDashboard();
+          showToast('Tiles reset to initial defaults.');
+        }
+      });
+
+      // 11. Live Preview Wheel
+      function initPreviewWheel(prizes, targetId) {
+        if (previewWheel) return;
+
+        previewWheel = new DiwaliWheel('previewCanvas', {
+          prizes: prizes,
+          targetPrizeId: targetId,
+          onSpinStart: () => {
+            previewSpinBtn.disabled = true;
+            previewSpinBtn.innerHTML = '<span>Spinning Preview...</span>';
+            previewStatus.textContent = '🌟 Spinning... Observe where it decelerates and lands!';
+            previewStatus.style.color = '#FFE082';
+            soundEngine.resume();
+            soundEngine.playSpinStart();
+          },
+          onTick: (intensity) => {
+            soundEngine.playTick(intensity);
+          },
+          onSpinEnd: (wonPrize) => {
+            previewSpinBtn.disabled = false;
+            previewSpinBtn.innerHTML = '<span>🎡 Test Spin Wheel</span>';
+            previewStatus.textContent = `🎉 Landed on: ${wonPrize.icon} ${wonPrize.label}!`;
+            previewStatus.style.color = '#00E676';
+            soundEngine.playWinFanfare();
+          }
+        });
+      }
+
+      previewSpinBtn.addEventListener('click', () => {
+        if (previewWheel) {
+          soundEngine.resume();
+          previewWheel.spin();
+        }
+      });
+
+      // 12. Utilities & Testing Controls
+      resetMySpinLockBtn.addEventListener('click', () => {
+        localStorage.removeItem(SPUN_KEY);
+        localStorage.removeItem('nitt_diwali_won_prize');
+        statSpinLock.textContent = 'Unlocked';
+        showToast('Spin lock removed on this browser! You can now spin on index.html.');
+      });
+
+      // Change Password Dialog
+      openChangePassBtn.addEventListener('click', () => {
+        currentPassInput.value = '';
+        newPassInput.value = '';
+        changePassModal.classList.add('active');
+        currentPassInput.focus();
+      });
+
+      cancelPassModalBtn.addEventListener('click', () => {
+        changePassModal.classList.remove('active');
+      });
+
+      confirmChangePassBtn.addEventListener('click', () => {
+        const cur = currentPassInput.value.trim();
+        const next = newPassInput.value.trim();
+        const actual = localStorage.getItem(PASS_KEY) || DEFAULT_PASSWORD;
+
+        if (cur !== actual) {
+          alert('Current passcode is incorrect.');
+          return;
+        }
+        if (next.length < 4) {
+          alert('New passcode must be at least 4 characters.');
+          return;
+        }
+
+        localStorage.setItem(PASS_KEY, next);
+        changePassModal.classList.remove('active');
+        showToast('Admin passcode updated successfully!');
+      });
+
+      // Export Config
+      exportConfigBtn.addEventListener('click', () => {
+        const config = {
+          prizes: DiwaliWheel.loadPrizes(),
+          targetPrizeId: DiwaliWheel.loadTargetPrizeId(),
+          googleFormsUrl: localStorage.getItem(FORMS_KEY) || DEFAULT_FORM_URL,
+          countdownSeconds: localStorage.getItem(COUNTDOWN_KEY) || '4',
+          customWinTitle: localStorage.getItem(WIN_TITLE_KEY) || ''
+        };
+        const json = JSON.stringify(config, null, 2);
+        navigator.clipboard.writeText(json).then(() => {
+          showToast('Configuration copied to clipboard!');
+        }).catch(() => {
+          prompt('Copy configuration JSON:', json);
+        });
+      });
+
+      // Factory Reset
+      factoryResetBtn.addEventListener('click', () => {
+        if (confirm('⚠️ WARNING: This will reset all custom tiles, winning target, Google Forms URL, and passcodes back to factory defaults.\n\nContinue?')) {
+          localStorage.removeItem(PRIZES_KEY);
+          localStorage.removeItem(TARGET_KEY);
+          localStorage.removeItem(FORMS_KEY);
+          localStorage.removeItem(PASS_KEY);
+          localStorage.removeItem(SPUN_KEY);
+          localStorage.removeItem('nitt_diwali_won_prize');
+          localStorage.removeItem(COUNTDOWN_KEY);
+          localStorage.removeItem(WIN_TITLE_KEY);
+          initDashboard();
+          showToast('All settings reset to factory defaults.');
+        }
+      });
+
+      // Check auth state on initial page load
+      checkAuth();
+    });
+  </script>
+
+</body>
+</html>

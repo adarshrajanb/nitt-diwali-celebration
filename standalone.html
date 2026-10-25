@@ -391,18 +391,6 @@ footer {
   z-index: 5;
 }
 
-.admin-lock-btn {
-  background: none;
-  border: none;
-  color: #546E7A;
-  font-size: 0.8rem;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: color 0.2s ease;
-}
-
-.admin-lock-btn:hover { color: var(--gold-primary); }
-
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -782,7 +770,6 @@ footer {
   <footer>
     <p>Organized with ❤️ by <strong>Cultural Council • National Institute of Technology, Tiruchirappalli</strong></p>
     <p style="margin-top: 4px; opacity: 0.75;">Diwali Celebration Special Edition • Tanjore Road, Thuvakudi, Trichy - 620015</p>
-    <button id="adminBtn" class="admin-lock-btn" title="Council Settings">🔒 CC Organizer Access</button>
   </footer>
 
   <!-- =======================================================
@@ -833,31 +820,6 @@ footer {
         <span>Notice: Each student is permitted to spin only once. Your reward is locked!</span>
       </div>
 
-    </div>
-  </div>
-
-  <!-- =======================================================
-       ORGANIZER / ADMIN SETTINGS MODAL (DISCREET)
-       ======================================================= -->
-  <div id="adminModal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal-content admin-card">
-      <button type="button" id="adminCloseBtn" class="modal-close-btn">&times;</button>
-      <h3>⚙️ Cultural Council Controls</h3>
-      <p>Configure the Google Forms link and test options below:</p>
-
-      <label for="claimUrlInput">🔗 Google Forms Registration URL:</label>
-      <input type="url" id="claimUrlInput" placeholder="https://forms.gle/your-link-here" value="https://forms.gle/diwali-nitt-movie-ticket">
-
-      <button id="saveAdminBtn" class="claim-now-btn" style="width: 100%; padding: 11px; font-size: 0.92rem; margin-bottom: 14px;">
-        Save URL
-      </button>
-
-      <div style="border-top: 1px solid rgba(255,215,0,0.2); padding-top: 14px; margin-top: 4px;">
-        <label>🧪 Testing Tools:</label>
-        <button type="button" id="resetSpinLockBtn" class="reset-spin-btn">
-          🔄 Reset My Spin Lock (Allow Re-Spinning for Testing)
-        </button>
-      </div>
     </div>
   </div>
 
@@ -1319,16 +1281,55 @@ const DEFAULT_PRIZES = [
 ];
 
 class DiwaliWheel {
+  static getDefaultPrizes() {
+    return JSON.parse(JSON.stringify(DEFAULT_PRIZES));
+  }
+
+  static loadPrizes() {
+    try {
+      const raw = localStorage.getItem('nitt_wheel_prizes');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length >= 2) {
+          return parsed;
+        }
+      }
+    } catch (err) {
+      console.warn('Could not parse stored wheel prizes:', err);
+    }
+    return DiwaliWheel.getDefaultPrizes();
+  }
+
+  static savePrizes(prizes) {
+    try {
+      localStorage.setItem('nitt_wheel_prizes', JSON.stringify(prizes));
+    } catch (err) {
+      console.error('Failed to save prizes to localStorage:', err);
+    }
+  }
+
+  static loadTargetPrizeId() {
+    return localStorage.getItem('nitt_target_prize_id') || 'movie_ticket';
+  }
+
+  static saveTargetPrizeId(targetId) {
+    localStorage.setItem('nitt_target_prize_id', targetId);
+  }
+
   constructor(canvasId, options = {}) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext('2d');
-    this.prizes = options.prizes || DEFAULT_PRIZES;
+
+    this.targetPrizeId = options.targetPrizeId !== undefined ? options.targetPrizeId : DiwaliWheel.loadTargetPrizeId();
+    this.prizes = options.prizes ? options.prizes : DiwaliWheel.loadPrizes();
+    this.updateTargetFlags();
+
     this.numSlices = this.prizes.length;
     this.sliceAngle = (2 * Math.PI) / this.numSlices;
+
     this.currentAngle = 0;
     this.isSpinning = false;
-    this.targetPrizeId = options.targetPrizeId || 'movie_ticket';
     this.flapperAngle = 0;
     this.lastPegIndex = -1;
     this.numLeds = 24;
@@ -1385,8 +1386,13 @@ class DiwaliWheel {
     this.isSpinning = true;
     this.onSpinStart();
 
-    let targetIndex = this.prizes.findIndex(p => p.id === this.targetPrizeId);
-    if (targetIndex === -1) targetIndex = 0;
+    let targetIndex;
+    if (this.targetPrizeId === 'random' || !this.targetPrizeId) {
+      targetIndex = Math.floor(Math.random() * this.prizes.length);
+    } else {
+      targetIndex = this.prizes.findIndex(p => p.id === this.targetPrizeId);
+      if (targetIndex === -1) targetIndex = 0;
+    }
 
     const twoPi = Math.PI * 2;
     const pointerAngle = 1.5 * Math.PI;
@@ -1747,8 +1753,24 @@ class DiwaliWheel {
     ctx.restore();
   }
 
+  updateTargetFlags() {
+    this.prizes.forEach(p => {
+      p.isTarget = (p.id === this.targetPrizeId);
+    });
+  }
+
   setTargetPrize(prizeId) {
     this.targetPrizeId = prizeId;
+    this.updateTargetFlags();
+    this.draw();
+  }
+
+  setPrizes(prizes) {
+    this.prizes = prizes;
+    this.updateTargetFlags();
+    this.numSlices = this.prizes.length;
+    this.sliceAngle = (2 * Math.PI) / this.numSlices;
+    this.draw();
   }
 }
 
@@ -1774,18 +1796,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const redirectProgressBar = document.getElementById('redirectProgressBar');
   const cancelRedirectBtn = document.getElementById('cancelRedirectBtn');
 
-  const adminBtn = document.getElementById('adminBtn');
-  const adminModal = document.getElementById('adminModal');
-  const adminCloseBtn = document.getElementById('adminCloseBtn');
-  const claimUrlInput = document.getElementById('claimUrlInput');
-  const saveAdminBtn = document.getElementById('saveAdminBtn');
-  const resetSpinLockBtn = document.getElementById('resetSpinLockBtn');
-
   if (claimRedirectLink) {
     claimRedirectLink.href = claimRedirectUrl;
-  }
-  if (claimUrlInput) {
-    claimUrlInput.value = claimRedirectUrl;
   }
 
   function closeWinnerModal() {
@@ -1816,22 +1828,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  function updateWonPrizeDisplay(prize) {
+    if (!prize) return;
+    const prizeSpotlightText = document.querySelector('.prize-spotlight-text');
+    if (prizeSpotlightText) {
+      prizeSpotlightText.textContent = `YOU WON: ${prize.label.toUpperCase()}!`;
+    }
+    const trophyBadge = document.querySelector('.trophy-badge');
+    if (trophyBadge) {
+      trophyBadge.textContent = `${prize.icon || '🎟️'} 🎬 🪔`;
+    }
+  }
+
   function startRedirectCountdown(seconds = 4) {
     stopRedirectCountdown();
     redirectRemainingSeconds = seconds;
-    redirectCountdown.textContent = redirectRemainingSeconds;
-    redirectProgressBar.style.transition = 'none';
-    redirectProgressBar.style.width = '100%';
+    if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
+    if (redirectProgressBar) {
+      redirectProgressBar.style.transition = 'none';
+      redirectProgressBar.style.width = '100%';
 
-    requestAnimationFrame(() => {
-      redirectProgressBar.style.transition = `width ${seconds}s linear`;
-      redirectProgressBar.style.width = '0%';
-    });
+      requestAnimationFrame(() => {
+        redirectProgressBar.style.transition = `width ${seconds}s linear`;
+        redirectProgressBar.style.width = '0%';
+      });
+    }
 
     redirectTimer = setInterval(() => {
       redirectRemainingSeconds--;
       if (redirectRemainingSeconds > 0) {
-        redirectCountdown.textContent = redirectRemainingSeconds;
+        if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
       } else {
         stopRedirectCountdown();
         window.location.href = claimRedirectUrl;
@@ -1864,11 +1890,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function applyAlreadySpunUI() {
+  function applyAlreadySpunUI(wonPrize) {
+    const label = (wonPrize && wonPrize.label) ? wonPrize.label : 'Ticket for Movie';
+    const icon = (wonPrize && wonPrize.icon) ? wonPrize.icon : '🎟️';
+
     spinBtn.disabled = true;
     spinBtn.classList.add('already-spun');
     spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.3rem;">✔</span>`;
-    spinStatus.innerHTML = `🎉 You already spun and won a <strong>Ticket for Movie</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
+    spinStatus.innerHTML = `🎉 You already spun and won: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
 
     const viewRewardLink = document.getElementById('viewRewardLink');
     if (viewRewardLink) {
@@ -1891,8 +1920,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const prizes = DiwaliWheel.loadPrizes();
+  const targetPrizeId = DiwaliWheel.loadTargetPrizeId();
+
   const wheel = new DiwaliWheel('wheelCanvas', {
-    targetPrizeId: 'movie_ticket',
+    prizes: prizes,
+    targetPrizeId: targetPrizeId,
     onSpinStart: () => {
       spinBtn.disabled = true;
       spinBtn.innerHTML = `<span>SPINNING...</span> <span style="font-size: 1.4rem;">✨</span>`;
@@ -1906,7 +1939,14 @@ document.addEventListener('DOMContentLoaded', () => {
     onSpinEnd: (prize) => {
       hasUserSpun = true;
       localStorage.setItem('nitt_diwali_user_spun', 'true');
-      applyAlreadySpunUI();
+      localStorage.setItem('nitt_diwali_won_prize', JSON.stringify({
+        id: prize.id,
+        label: prize.label,
+        icon: prize.icon
+      }));
+
+      updateWonPrizeDisplay(prize);
+      applyAlreadySpunUI(prize);
 
       window.soundEngine.playWinFanfare();
       fireworks.startCelebration(7000);
@@ -1918,8 +1958,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (hasUserSpun) {
-    wheel.setLandedOnPrize('movie_ticket');
-    applyAlreadySpunUI();
+    let savedPrize = null;
+    try {
+      savedPrize = JSON.parse(localStorage.getItem('nitt_diwali_won_prize'));
+    } catch (e) {}
+
+    if (!savedPrize) {
+      savedPrize = wheel.prizes.find(p => p.id === wheel.targetPrizeId) || wheel.prizes[0];
+    }
+
+    wheel.setLandedOnPrize(savedPrize.id);
+    updateWonPrizeDisplay(savedPrize);
+    applyAlreadySpunUI(savedPrize);
   }
 
   spinBtn.addEventListener('click', () => {
@@ -1937,52 +1987,10 @@ document.addEventListener('DOMContentLoaded', () => {
     soundIcon.textContent = isMuted ? '🔇' : '🔊';
   });
 
-  adminBtn.addEventListener('click', () => {
-    claimUrlInput.value = claimRedirectUrl;
-    adminModal.classList.add('active');
-  });
-
-  adminCloseBtn.addEventListener('click', () => {
-    adminModal.classList.remove('active');
-  });
-
-  adminModal.addEventListener('click', (e) => {
-    if (e.target === adminModal) {
-      adminModal.classList.remove('active');
-    }
-  });
-
-  saveAdminBtn.addEventListener('click', () => {
-    const newUrl = claimUrlInput.value.trim();
-    if (newUrl) {
-      claimRedirectUrl = newUrl;
-      localStorage.setItem('nitt_movie_ticket_url', newUrl);
-      if (claimRedirectLink) {
-        claimRedirectLink.href = claimRedirectUrl;
-      }
-    }
-    adminModal.classList.remove('active');
-    alert('✔ Settings saved! Google Forms URL updated.');
-  });
-
-  if (resetSpinLockBtn) {
-    resetSpinLockBtn.addEventListener('click', () => {
-      localStorage.removeItem('nitt_diwali_user_spun');
-      hasUserSpun = false;
-      spinBtn.disabled = false;
-      spinBtn.classList.remove('already-spun');
-      spinBtn.innerHTML = `<span>SPIN TO WIN</span> <span style="font-size: 1.4rem;">🪔</span>`;
-      spinStatus.textContent = 'Tap above to test your Diwali luck! (1 spin per user)';
-      adminModal.classList.remove('active');
-      alert('🔄 Spin Lock Reset! You can now spin the wheel again for testing.');
-    });
-  }
-
   window.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
       e.preventDefault();
-      claimUrlInput.value = claimRedirectUrl;
-      adminModal.classList.toggle('active');
+      window.location.href = 'admin.html';
     }
   });
 

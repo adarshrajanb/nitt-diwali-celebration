@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Diwali Celebration | Cultural Council - NIT Trichy</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+/* ==========================================================
+   NIT TRICHY CULTURAL COUNCIL - DIWALI CELEBRATION SPIN WHEEL
+   ========================================================== */
+
+:root {
+  --gold-primary: #FFD700;
+  --gold-light: #FFF59D;
+  --gold-dark: #B78103;
+  --maroon: #800020;
+  --crimson: #B71C1C;
+  --bg-deep: #090212;
+  --bg-card: rgba(26, 6, 38, 0.85);
+  --text-main: #FFFFFF;
+  --text-gold: #FFE082;
+  --accent-saffron: #FF6F00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(ellipse at 50% 15%, rgba(136, 14, 79, 0.45) 0%, rgba(38, 3, 50, 0.7) 45%, #080110 100%),
+    radial-gradient(circle at 10% 80%, rgba(255, 111, 0, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.12) 0%, transparent 40%);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#fireworksCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.toran-garland {
+  width: 100%;
+  height: 38px;
+  background: radial-gradient(circle at 50% 0%, #FF9800 0%, #E65100 65%, transparent 70%);
+  background-size: 40px 38px;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.toran-garland::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #D4AF37, #FFF59D, #D4AF37, #FF8F00, #D4AF37);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.top-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 5;
+}
+
+.nitt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: var(--gold-light);
+  text-transform: uppercase;
+}
+
+.top-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.control-btn:hover {
+  background: rgba(255, 215, 0, 0.25);
+  border-color: var(--gold-primary);
+  transform: scale(1.08);
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 5;
+}
+
+.event-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.subtitle-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFA726;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-shadow: 0 0 10px rgba(255, 167, 38, 0.5);
+}
+
+.main-title {
+  font-size: clamp(2.1rem, 5.8vw, 3.4rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #FFF9C4 0%, #FFD700 40%, #FF9800 75%, #FFD54F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(255, 215, 0, 0.45));
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.event-desc {
+  font-size: 0.95rem;
+  color: #E0E0E0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+.event-desc strong {
+  color: var(--gold-light);
+}
+
+.activity-ticker {
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  border-radius: 30px;
+  padding: 6px 18px;
+  margin: 12px 0 20px;
+  font-size: 0.82rem;
+  color: #FFE082;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+  animation: pulseTicker 3s infinite ease-in-out;
+}
+
+@keyframes pulseTicker {
+  0%, 100% { border-color: rgba(255, 215, 0, 0.25); }
+  50% { border-color: rgba(255, 215, 0, 0.6); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+}
+
+.wheel-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 24px;
+}
+
+.diya-lamp {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.88;
+}
+
+.diya-left { left: -50px; }
+.diya-right { right: -50px; }
+
+@media (max-width: 650px) {
+  .diya-lamp { display: none; }
+}
+
+.diya-flame {
+  width: 14px;
+  height: 26px;
+  background: radial-gradient(ellipse at 50% 80%, #FFFFFF 0%, #FFEB3B 40%, #FF5722 80%, transparent 100%);
+  border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
+  filter: drop-shadow(0 0 10px #FF9800);
+  animation: flameFlicker 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+  50% { transform: scale(1.08, 0.94) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 14px #FFC107); }
+  100% { transform: scale(0.96, 1.04) rotate(-1deg); opacity: 0.85; }
+}
+
+.diya-bowl {
+  width: 44px;
+  height: 18px;
+  background: linear-gradient(180deg, #D4AF37 0%, #8D6E63 100%);
+  border-radius: 0 0 40px 40px;
+  border-top: 2px solid #FFE082;
+  margin-top: -3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.diya-stand {
+  width: 12px;
+  height: 30px;
+  background: linear-gradient(90deg, #8D6E63, #D4AF37, #5D4037);
+  border-radius: 2px;
+}
+
+.wheel-canvas-container {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  max-width: 92vw;
+  max-height: 92vw;
+}
+
+#wheelCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.spin-action-wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.spin-btn {
+  background: linear-gradient(135deg, #FF6F00 0%, #D84315 50%, #B71C1C 100%);
+  border: 3px solid #FFE082;
+  border-radius: 50px;
+  padding: 16px 44px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 
+    0 0 20px rgba(255, 111, 0, 0.6),
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.spin-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(25deg);
+  animation: shineSweep 3.5s infinite;
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  30%, 100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.spin-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 179, 0, 0.85), 0 8px 24px rgba(0, 0, 0, 0.6);
+  border-color: #FFFFFF;
+}
+
+.spin-btn:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+
+.spin-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+}
+
+.spin-btn.already-spun {
+  background: linear-gradient(135deg, #37474F 0%, #263238 100%);
+  border-color: #78909C;
+  color: #ECEFF1;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.spin-hint {
+  font-size: 0.84rem;
+  color: #B0BEC5;
+}
+
+.perks-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 36px;
+  padding: 0 10px;
+}
+
+.perk-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.perk-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 215, 0, 0.45);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.perk-icon { font-size: 1.8rem; }
+.perk-info h4 { font-size: 0.95rem; color: var(--gold-light); margin-bottom: 2px; }
+.perk-info p { font-size: 0.8rem; color: #B0BEC5; line-height: 1.3; }
+
+footer {
+  text-align: center;
+  padding: 24px 16px 20px;
+  font-size: 0.82rem;
+  color: #78909C;
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  margin-top: auto;
+  position: relative;
+  z-index: 5;
+}
+
+.admin-lock-btn {
+  background: none;
+  border: none;
+  color: #546E7A;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+.admin-lock-btn:hover { color: var(--gold-primary); }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 1, 10, 0.9);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.active { opacity: 1; visibility: visible; }
+
+.modal-content {
+  background: linear-gradient(165deg, #220329 0%, #0D0112 100%);
+  border: 2px solid var(--gold-primary);
+  box-shadow: 
+    0 0 40px rgba(255, 215, 0, 0.45),
+    0 20px 60px rgba(0, 0, 0, 0.9);
+  border-radius: 22px;
+  max-width: 520px;
+  width: 100%;
+  padding: 32px 26px 26px;
+  position: relative;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-backdrop.active .modal-content { transform: scale(1) translateY(0); }
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 215, 0, 0.5);
+  color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 9999;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 23, 68, 0.85);
+  border-color: #FF1744;
+  transform: scale(1.12);
+}
+
+.modal-header { text-align: center; margin-bottom: 20px; }
+
+.trophy-badge {
+  font-size: 3.2rem;
+  margin-bottom: 6px;
+  animation: bounceTrophy 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounceTrophy {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-8px) scale(1.08); }
+}
+
+.congrats-title {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 900;
+  color: #FFF9C4;
+  text-shadow: 0 0 14px rgba(255, 215, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.prize-spotlight-box {
+  background: rgba(183, 28, 28, 0.3);
+  border: 2px solid #FFD700;
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin: 10px 0 12px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+}
+
+.prize-tag-badge {
+  display: inline-block;
+  background: #FFD700;
+  color: #000000;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+
+.prize-spotlight-text {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.congrats-sub { font-size: 0.88rem; color: #CFD8DC; }
+
+.redirect-box {
+  background: linear-gradient(135deg, rgba(255, 111, 0, 0.2) 0%, rgba(183, 28, 28, 0.25) 100%);
+  border: 1.5px solid #FFA000;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 14px 0 16px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 160, 0, 0.25);
+}
+
+.redirect-instructions {
+  font-size: 0.88rem;
+  color: #FFE082;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.redirect-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: #FFF9C4;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.countdown-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FF6F00;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.redirect-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.redirect-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #FFB300, #FF3D00);
+  transition: width 1s linear;
+}
+
+.claim-now-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, #FFB300 0%, #FF6F00 50%, #D84315 100%);
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #FFF59D;
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 111, 0, 0.6), 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.claim-now-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 28px rgba(255, 179, 0, 0.85);
+  border-color: #FFFFFF;
+}
+
+.cancel-redirect-btn {
+  background: none;
+  border: none;
+  color: #B0BEC5;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.cancel-redirect-btn:hover { color: #FFFFFF; }
+
+.single-spin-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #B0BEC5;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.admin-card { max-width: 460px; padding: 24px; }
+.admin-card h3 { color: var(--gold-light); margin-bottom: 12px; font-size: 1.2rem; }
+.admin-card p { font-size: 0.85rem; color: #B0BEC5; margin-bottom: 14px; line-height: 1.4; }
+.admin-card label { display: block; font-size: 0.8rem; color: #FFE082; margin-bottom: 4px; }
+.admin-card input {
+  width: 100%;
+  background: #110317;
+  color: #FFFFFF;
+  border: 1px solid var(--gold-primary);
+  padding: 9px 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+}
+
+.reset-spin-btn {
+  background: rgba(255, 23, 68, 0.2);
+  border: 1px solid #FF1744;
+  color: #FF8A80;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.reset-spin-btn:hover {
+  background: rgba(255, 23, 68, 0.4);
+  color: #FFFFFF;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Fireworks & Confetti Canvas -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Top Diwali Toran / Marigold Garland -->
+  <div class="toran-garland"></div>
+
+  <!-- Top Action & Navigation Bar -->
+  <header class="top-action-bar">
+    <div class="nitt-tag">
+      <span>🏛️</span>
+      <span>NIT Trichy • Cultural Council</span>
+    </div>
+    <div class="top-controls">
+      <button id="soundToggleBtn" class="control-btn" title="Toggle Sound (Mute/Unmute)">
+        <span id="soundIcon">🔊</span>
+      </button>
+      <button id="infoBtn" class="control-btn" title="Event Info">
+        <span>ℹ️</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="main-wrapper">
+    
+    <!-- Festive Title Header -->
+    <section class="event-header">
+      <div class="subtitle-badge">🪔 NIT TRICHY FESTIVAL OF LIGHTS 🪔</div>
+      <h1 class="main-title">DIWALI CELEBRATION</h1>
+      <p class="event-desc">
+        Welcome to the official <strong>Cultural Council NITT</strong> Diwali Celebration Lucky Wheel! Spin your wheel to win exclusive movie screening perks & surprises!
+      </p>
+
+      <!-- Live Activity Ticker -->
+      <div class="activity-ticker">
+        <span>⚡ <strong>538 NITTians</strong> spun today</span>
+        <span>•</span>
+        <span>🎬 <strong>Diwali Movie Screening</strong></span>
+        <span>•</span>
+        <span>🎟️ <strong>1 Spin Per Student</strong></span>
+      </div>
+    </section>
+
+    <!-- Wheel Arena -->
+    <section class="wheel-stage">
+      
+      <!-- Left Traditional Brass Diya Lamp -->
+      <div class="diya-lamp diya-left" aria-hidden="true">
+        <div class="diya-flame"></div>
+        <div class="diya-bowl"></div>
+        <div class="diya-stand"></div>
+      </div>
+
+      <!-- Canvas Wheel -->
+      <div class="wheel-canvas-container">
+        <canvas id="wheelCanvas"></canvas>
+      </div>
+
+      <!-- Right Traditional Brass Diya Lamp -->
+      <div class="diya-lamp diya-right" aria-hidden="true">
+        <div class="diya-flame"></div>
+        <div class="diya-bowl"></div>
+        <div class="diya-stand"></div>
+      </div>
+
+    </section>
+
+    <!-- Spin Button Controls -->
+    <div class="spin-action-wrapper">
+      <button id="spinBtn" class="spin-btn">
+        <span>SPIN TO WIN</span>
+        <span style="font-size: 1.4rem;">🪔</span>
+      </button>
+      <p id="spinStatus" class="spin-hint">Tap above to test your Diwali luck! (1 spin per user)</p>
+    </div>
+
+    <!-- Festive Campus Perks Grid -->
+    <section class="perks-strip">
+      <div class="perk-card">
+        <div class="perk-icon">🎟️</div>
+        <div class="perk-info">
+          <h4>Movie Premiere Pass</h4>
+          <p>Campus special Diwali screening with sound & AC</p>
+        </div>
+      </div>
+
+      <div class="perk-card">
+        <div class="perk-icon">🍿</div>
+        <div class="perk-info">
+          <h4>Free Popcorn Tub</h4>
+          <p>Complimentary snack tub for screening attendees</p>
+        </div>
+      </div>
+
+      <div class="perk-card">
+        <div class="perk-icon">🏛️</div>
+        <div class="perk-info">
+          <h4>Bay 0 VIP Access</h4>
+          <p>Exclusive lounge & chillout pass for fest events</p>
+        </div>
+      </div>
+
+      <div class="perk-card">
+        <div class="perk-icon">🏷️</div>
+        <div class="perk-info">
+          <h4>₹200 Stall Voucher</h4>
+          <p>Redeemable across Diwali food & game stalls</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Organized with ❤️ by <strong>Cultural Council • National Institute of Technology, Tiruchirappalli</strong></p>
+    <p style="margin-top: 4px; opacity: 0.75;">Diwali Celebration Special Edition • Tanjore Road, Thuvakudi, Trichy - 620015</p>
+    <button id="adminBtn" class="admin-lock-btn" title="Council Settings">🔒 CC Organizer Access</button>
+  </footer>
+
+  <!-- =======================================================
+       WINNER CELEBRATION MODAL & GOOGLE FORMS REDIRECT
+       ======================================================= -->
+  <div id="winnerModal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
+      
+      <div class="modal-header">
+        <div class="trophy-badge">🎬 🎟️ 🪔</div>
+        <h2 class="congrats-title">🎉 CONGRATULATIONS! 🎉</h2>
+        <div class="prize-spotlight-box">
+          <span class="prize-tag-badge">OFFICIAL REWARD</span>
+          <h3 class="prize-spotlight-text">YOU WON A TICKET FOR MOVIE!</h3>
+        </div>
+        <p class="congrats-sub">Cultural Council • NIT Trichy Diwali Celebration</p>
+      </div>
+
+      <!-- REDIRECT CALL TO ACTION BOX -->
+      <div class="redirect-box">
+        <p class="redirect-instructions">
+          To claim your ticket and complete movie seat booking, please proceed to the official registration Google Form:
+        </p>
+
+        <div class="redirect-status-row">
+          <span>🚀 Redirecting to Google Forms in</span>
+          <span id="redirectCountdown" class="countdown-badge">4</span>
+          <span>seconds...</span>
+        </div>
+        <div class="redirect-progress-track">
+          <div id="redirectProgressBar" class="redirect-progress-bar"></div>
+        </div>
+        
+        <a id="claimRedirectLink" href="https://forms.gle/diwali-nitt-movie-ticket" target="_blank" rel="noopener noreferrer" class="claim-now-btn">
+          <span>🎟️</span>
+          <span>REGISTER NOW ON GOOGLE FORMS</span>
+          <span>➔</span>
+        </a>
+
+        <button type="button" id="cancelRedirectBtn" class="cancel-redirect-btn">
+          Stay on homepage
+        </button>
+      </div>
+
+      <div class="single-spin-notice">
+        <span>🔒</span>
+        <span>Notice: Each student is permitted to spin only once. Your reward is locked!</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =======================================================
+       ORGANIZER / ADMIN SETTINGS MODAL (DISCREET)
+       ======================================================= -->
+  <div id="adminModal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-content admin-card">
+      <button type="button" id="adminCloseBtn" class="modal-close-btn">&times;</button>
+      <h3>⚙️ Cultural Council Controls</h3>
+      <p>Configure the Google Forms link and test options below:</p>
+
+      <label for="claimUrlInput">🔗 Google Forms Registration URL:</label>
+      <input type="url" id="claimUrlInput" placeholder="https://forms.gle/your-link-here" value="https://forms.gle/diwali-nitt-movie-ticket">
+
+      <button id="saveAdminBtn" class="claim-now-btn" style="width: 100%; padding: 11px; font-size: 0.92rem; margin-bottom: 14px;">
+        Save URL
+      </button>
+
+      <div style="border-top: 1px solid rgba(255,215,0,0.2); padding-top: 14px; margin-top: 4px;">
+        <label>🧪 Testing Tools:</label>
+        <button type="button" id="resetSpinLockBtn" class="reset-spin-btn">
+          🔄 Reset My Spin Lock (Allow Re-Spinning for Testing)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+/**
+ * Embedded Scripts for Standalone Execution
+ */
+
+// 1. Audio Engine
+class SoundEngine {
+  constructor() {
+    this.ctx = null;
+    this.isMuted = false;
+    this.initialized = false;
+  }
+
+  init() {
+    if (this.initialized) return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        this.ctx = new AudioCtx();
+        this.initialized = true;
+      }
+    } catch (e) {}
+  }
+
+  resume() {
+    this.init();
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+    return this.isMuted;
+  }
+
+  playTick(velocity = 1) {
+    if (this.isMuted || !this.ctx) return;
+    this.resume();
+
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      const filter = this.ctx.createBiquadFilter();
+
+      const freq = 600 + Math.min(velocity * 80, 400);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(120, now + 0.035);
+
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1400, now);
+      filter.Q.setValueAtTime(3, now);
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(Math.min(0.25 * velocity, 0.4), now + 0.004);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.05);
+
+      this.playWoodNoise(now, 0.08 * velocity);
+    } catch (e) {}
+  }
+
+  playWoodNoise(time, volume) {
+    try {
+      const bufferSize = this.ctx.sampleRate * 0.015;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const output = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      const whiteNoise = this.ctx.createBufferSource();
+      whiteNoise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.setValueAtTime(1200, time);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(volume, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.015);
+
+      whiteNoise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      whiteNoise.start(time);
+    } catch (e) {}
+  }
+
+  playSpinStart() {
+    if (this.isMuted || !this.ctx) return;
+    this.resume();
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(540, now + 0.4);
+
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.2, now + 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.5);
+    } catch (e) {}
+  }
+
+  playWinFanfare() {
+    if (this.isMuted || !this.ctx) return;
+    this.resume();
+    try {
+      const notes = [
+        { f: 523.25, t: 0.00, d: 0.18 },
+        { f: 659.25, t: 0.16, d: 0.18 },
+        { f: 783.99, t: 0.32, d: 0.22 },
+        { f: 1046.50, t: 0.50, d: 0.65 },
+        { f: 1318.51, t: 0.70, d: 0.85 }
+      ];
+
+      const start = this.ctx.currentTime + 0.05;
+
+      notes.forEach(n => {
+        const osc = this.ctx.createOscillator();
+        const oscHarmonic = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(n.f, start + n.t);
+
+        oscHarmonic.type = 'sine';
+        oscHarmonic.frequency.setValueAtTime(n.f * 2, start + n.t);
+
+        gain.gain.setValueAtTime(0.001, start + n.t);
+        gain.gain.linearRampToValueAtTime(0.2, start + n.t + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + n.t + n.d);
+
+        osc.connect(gain);
+        oscHarmonic.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(start + n.t);
+        osc.stop(start + n.t + n.d);
+        oscHarmonic.start(start + n.t);
+        oscHarmonic.stop(start + n.t + n.d);
+      });
+
+      setTimeout(() => this.playCrackerBurst(), 400);
+      setTimeout(() => this.playCrackerBurst(), 850);
+    } catch (e) {}
+  }
+
+  playCrackerBurst() {
+    if (this.isMuted || !this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      const bufferSize = this.ctx.sampleRate * 0.4;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.08));
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(800, now);
+      filter.frequency.exponentialRampToValueAtTime(200, now + 0.3);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      noise.start(now);
+    } catch (e) {}
+  }
+}
+window.soundEngine = new SoundEngine();
+
+// 2. Fireworks Engine
+class FireworksEngine {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.particles = [];
+    this.confetti = [];
+    this.isRunning = false;
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+  }
+
+  resize() {
+    if (!this.canvas) return;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+  }
+
+  startCelebration(duration = 7000) {
+    this.isRunning = true;
+    this.resize();
+    this.launchBurstSalvo(8);
+
+    const interval = setInterval(() => {
+      if (!this.isRunning) {
+        clearInterval(interval);
+        return;
+      }
+      this.launchRandomRocket();
+      this.addConfettiBurst();
+    }, 400);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      setTimeout(() => {
+        this.isRunning = false;
+        this.clear();
+      }, 3000);
+    }, duration);
+
+    this.animate();
+  }
+
+  launchBurstSalvo(count = 6) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        const x = this.canvas.width * (0.15 + Math.random() * 0.7);
+        const y = this.canvas.height * (0.2 + Math.random() * 0.35);
+        this.explodeAt(x, y);
+      }, i * 220);
+    }
+  }
+
+  launchRandomRocket() {
+    const x = this.canvas.width * (0.2 + Math.random() * 0.6);
+    const targetY = this.canvas.height * (0.15 + Math.random() * 0.35);
+    this.explodeAt(x, targetY);
+  }
+
+  explodeAt(x, y) {
+    const festiveColors = ['#FFD700', '#FF9933', '#FF3366', '#00FFCC', '#9933FF', '#FFFFFF', '#FF6600', '#00E676'];
+    const color1 = festiveColors[Math.floor(Math.random() * festiveColors.length)];
+    const color2 = festiveColors[Math.floor(Math.random() * festiveColors.length)];
+    const particleCount = 70;
+
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (Math.PI * 2 / particleCount) * i + (Math.random() * 0.2);
+      const speed = 2.5 + Math.random() * 6;
+      this.particles.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        alpha: 1,
+        color: Math.random() > 0.5 ? color1 : color2,
+        decay: 0.012 + Math.random() * 0.018,
+        gravity: 0.1,
+        size: 2 + Math.random() * 3
+      });
+    }
+  }
+
+  addConfettiBurst() {
+    const colors = ['#FFD700', '#FF5722', '#E91E63', '#00BCD4', '#8BC34A', '#FFC107'];
+    for (let i = 0; i < 25; i++) {
+      this.confetti.push({
+        x: Math.random() * this.canvas.width,
+        y: -10,
+        vx: (Math.random() - 0.5) * 3,
+        vy: 2 + Math.random() * 4,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 10,
+        size: 7 + Math.random() * 8,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: 1
+      });
+    }
+  }
+
+  clear() {
+    if (!this.ctx) return;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.particles = [];
+    this.confetti = [];
+  }
+
+  animate() {
+    if (!this.isRunning && this.particles.length === 0 && this.confetti.length === 0) {
+      this.clear();
+      return;
+    }
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += p.gravity;
+      p.vx *= 0.98;
+      p.alpha -= p.decay;
+
+      if (p.alpha <= 0) {
+        this.particles.splice(i, 1);
+        continue;
+      }
+
+      this.ctx.save();
+      this.ctx.globalAlpha = p.alpha;
+      this.ctx.fillStyle = p.color;
+      this.ctx.shadowBlur = 8;
+      this.ctx.shadowColor = p.color;
+      this.ctx.beginPath();
+      this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      this.ctx.fill();
+      this.ctx.restore();
+    }
+
+    for (let i = this.confetti.length - 1; i >= 0; i--) {
+      const c = this.confetti[i];
+      c.x += c.vx;
+      c.y += c.vy;
+      c.rotation += c.rotationSpeed;
+
+      if (c.y > this.canvas.height) {
+        this.confetti.splice(i, 1);
+        continue;
+      }
+
+      this.ctx.save();
+      this.ctx.translate(c.x, c.y);
+      this.ctx.rotate((c.rotation * Math.PI) / 180);
+      this.ctx.fillStyle = c.color;
+      this.ctx.fillRect(-c.size / 2, -c.size / 4, c.size, c.size / 2);
+      this.ctx.restore();
+    }
+
+    requestAnimationFrame(() => this.animate());
+  }
+}
+
+// 3. Diwali Wheel Class
+const DEFAULT_PRIZES = [
+  {
+    id: 'movie_ticket',
+    label: 'Ticket for Movie',
+    line1: 'FREE MOVIE',
+    line2: 'TICKET',
+    icon: '🎟️',
+    color1: '#8B0000',
+    color2: '#C62828',
+    accent: '#FFD700',
+    textColor: '#FFF9C4',
+    isTarget: true
+  },
+  {
+    id: 'popcorn',
+    label: 'Free Popcorn',
+    line1: 'FREE',
+    line2: 'POPCORN',
+    icon: '🍿',
+    color1: '#0D47A1',
+    color2: '#1976D2',
+    accent: '#FFF176',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'bay_zero',
+    label: 'Bay 0 Access',
+    line1: 'BAY 0',
+    line2: 'ACCESS',
+    icon: '🏛️',
+    color1: '#1B5E20',
+    color2: '#2E7D32',
+    accent: '#C8E6C9',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'coupon_200',
+    label: '₹200 Stall Coupon',
+    line1: '₹200 STALL',
+    line2: 'COUPON',
+    icon: '🏷️',
+    color1: '#4A148C',
+    color2: '#7B1FA2',
+    accent: '#E1BEE7',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'sweets_box',
+    label: 'Diwali Sweets Box',
+    line1: 'DIWALI',
+    line2: 'SWEETS',
+    icon: '🪔',
+    color1: '#E65100',
+    color2: '#FB8C00',
+    accent: '#FFE082',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'sparklers',
+    label: 'Sparklers Pack',
+    line1: 'SPARKLERS',
+    line2: 'PACK',
+    icon: '🎆',
+    color1: '#880E4F',
+    color2: '#C2185B',
+    accent: '#F8BBD0',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'fest_merch',
+    label: 'Fest Exclusive T-Shirt',
+    line1: 'FEST MERCH',
+    line2: 'T-SHIRT',
+    icon: '👕',
+    color1: '#004D40',
+    color2: '#00897B',
+    accent: '#B2DFDB',
+    textColor: '#FFFFFF',
+    isTarget: false
+  },
+  {
+    id: 'chilled_beverage',
+    label: 'Chilled Beverage',
+    line1: 'CHILLED',
+    line2: 'BEVERAGE',
+    icon: '🥤',
+    color1: '#BF360C',
+    color2: '#E64A19',
+    accent: '#FFCCBC',
+    textColor: '#FFFFFF',
+    isTarget: false
+  }
+];
+
+class DiwaliWheel {
+  constructor(canvasId, options = {}) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.prizes = options.prizes || DEFAULT_PRIZES;
+    this.numSlices = this.prizes.length;
+    this.sliceAngle = (2 * Math.PI) / this.numSlices;
+    this.currentAngle = 0;
+    this.isSpinning = false;
+    this.targetPrizeId = options.targetPrizeId || 'movie_ticket';
+    this.flapperAngle = 0;
+    this.lastPegIndex = -1;
+    this.numLeds = 24;
+    this.ledState = 0;
+    this.lastLedTick = 0;
+    this.onSpinStart = options.onSpinStart || (() => {});
+    this.onSpinEnd = options.onSpinEnd || (() => {});
+    this.onTick = options.onTick || (() => {});
+
+    this.setupDPI();
+    window.addEventListener('resize', () => {
+      this.setupDPI();
+      this.draw();
+    });
+    this.ambientLoop();
+  }
+
+  setupDPI() {
+    const rect = this.canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const size = Math.min(rect.width, rect.height) || 520;
+    this.canvas.width = size * dpr;
+    this.canvas.height = size * dpr;
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.scale(dpr, dpr);
+    this.displaySize = size;
+    this.centerX = size / 2;
+    this.centerY = size / 2;
+    this.wheelRadius = size * 0.44;
+  }
+
+  ambientLoop(timestamp = 0) {
+    if (!this.isSpinning) {
+      if (timestamp - this.lastLedTick > 280) {
+        this.ledState = (this.ledState + 1) % 3;
+        this.lastLedTick = timestamp;
+        this.draw();
+      }
+    }
+    requestAnimationFrame((t) => this.ambientLoop(t));
+  }
+
+  setLandedOnPrize(prizeId = 'movie_ticket') {
+    let targetIndex = this.prizes.findIndex(p => p.id === prizeId);
+    if (targetIndex === -1) targetIndex = 0;
+    const pointerAngle = 1.5 * Math.PI;
+    const sectorCenter = (targetIndex + 0.5) * this.sliceAngle;
+    this.currentAngle = pointerAngle - sectorCenter;
+    this.draw();
+  }
+
+  spin() {
+    if (this.isSpinning) return;
+    this.isSpinning = true;
+    this.onSpinStart();
+
+    let targetIndex = this.prizes.findIndex(p => p.id === this.targetPrizeId);
+    if (targetIndex === -1) targetIndex = 0;
+
+    const twoPi = Math.PI * 2;
+    const pointerAngle = 1.5 * Math.PI;
+    const sectorCenter = (targetIndex + 0.5) * this.sliceAngle;
+    const jitter = (Math.random() - 0.5) * (this.sliceAngle * 0.45);
+
+    let desiredFinalMod = (pointerAngle - sectorCenter + jitter) % twoPi;
+    if (desiredFinalMod < 0) desiredFinalMod += twoPi;
+
+    let currentMod = this.currentAngle % twoPi;
+    if (currentMod < 0) currentMod += twoPi;
+
+    let delta = desiredFinalMod - currentMod;
+    if (delta <= 0) delta += twoPi;
+
+    const fullSpins = (7 + Math.floor(Math.random() * 2)) * twoPi;
+    const totalRotation = fullSpins + delta;
+
+    const startAngle = this.currentAngle;
+    const endAngle = startAngle + totalRotation;
+    const duration = 5600 + Math.random() * 500;
+    const startTime = performance.now();
+
+    const easeOutCustom = (t) => 1 - Math.pow(1 - t, 4.2);
+    let lastAngle = startAngle;
+
+    const animateSpin = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCustom(progress);
+
+      this.currentAngle = startAngle + totalRotation * easedProgress;
+      const angleDelta = this.currentAngle - lastAngle;
+      lastAngle = this.currentAngle;
+
+      this.checkPegTicks(angleDelta);
+      this.flapperAngle *= 0.82;
+      this.draw();
+
+      if (progress < 1) {
+        requestAnimationFrame(animateSpin);
+      } else {
+        this.currentAngle = endAngle;
+        this.isSpinning = false;
+        this.flapperAngle = 0;
+        this.draw();
+        const wonPrize = this.prizes[targetIndex];
+        this.onSpinEnd(wonPrize);
+      }
+    };
+
+    requestAnimationFrame(animateSpin);
+  }
+
+  checkPegTicks(velocity) {
+    const effectiveAngle = (1.5 * Math.PI - this.currentAngle) % (Math.PI * 2);
+    const normalized = (effectiveAngle < 0 ? effectiveAngle + Math.PI * 2 : effectiveAngle);
+    const pegPosition = normalized / this.sliceAngle;
+    const currentPeg = Math.floor(pegPosition);
+
+    if (currentPeg !== this.lastPegIndex) {
+      this.lastPegIndex = currentPeg;
+      const intensity = Math.min(velocity * 40, 1.2);
+      this.flapperAngle = -0.32 * Math.max(intensity, 0.4);
+      this.onTick(intensity);
+    }
+  }
+
+  draw() {
+    const ctx = this.ctx;
+    const cx = this.centerX;
+    const cy = this.centerY;
+    const R = this.wheelRadius;
+
+    ctx.clearRect(0, 0, this.displaySize, this.displaySize);
+
+    ctx.save();
+    const auraGradient = ctx.createRadialGradient(cx, cy, R * 0.9, cx, cy, R * 1.15);
+    auraGradient.addColorStop(0, 'rgba(255, 193, 7, 0.32)');
+    auraGradient.addColorStop(0.5, 'rgba(255, 111, 0, 0.18)');
+    auraGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = auraGradient;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * 1.15, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, R + 18, 0, Math.PI * 2);
+    const rimGrad = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
+    rimGrad.addColorStop(0, '#FFE082');
+    rimGrad.addColorStop(0.25, '#FFB300');
+    rimGrad.addColorStop(0.5, '#795548');
+    rimGrad.addColorStop(0.75, '#FFA000');
+    rimGrad.addColorStop(1, '#FFD54F');
+    ctx.fillStyle = rimGrad;
+    ctx.shadowBlur = 14;
+    ctx.shadowColor = 'rgba(255, 179, 0, 0.55)';
+    ctx.fill();
+    ctx.restore();
+
+    this.drawLeds(cx, cy, R + 9);
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(this.currentAngle);
+
+    for (let i = 0; i < this.numSlices; i++) {
+      const prize = this.prizes[i];
+      const startAngle = i * this.sliceAngle;
+      const endAngle = startAngle + this.sliceAngle;
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, R, startAngle, endAngle);
+      ctx.closePath();
+
+      const sliceGrad = ctx.createRadialGradient(0, 0, 15, 0, 0, R);
+      sliceGrad.addColorStop(0, prize.color2);
+      sliceGrad.addColorStop(0.85, prize.color1);
+      sliceGrad.addColorStop(1, '#1A0000');
+      ctx.fillStyle = sliceGrad;
+      ctx.fill();
+
+      ctx.strokeStyle = 'rgba(255, 215, 0, 0.75)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      if (prize.isTarget) {
+        ctx.save();
+        ctx.strokeStyle = '#FFE082';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(0, 0, R - 5, startAngle + 0.03, endAngle - 0.03);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      this.drawSliceContent(prize, startAngle + this.sliceAngle / 2, R);
+      this.drawPeg(startAngle, R - 2);
+    }
+
+    ctx.restore();
+    this.drawCenterHub(cx, cy);
+    this.drawPointer(cx, cy - R + 2);
+  }
+
+  drawLeds(cx, cy, radius) {
+    const ctx = this.ctx;
+    const bulbCount = this.numLeds;
+
+    for (let i = 0; i < bulbCount; i++) {
+      const angle = (i / bulbCount) * Math.PI * 2;
+      const bx = cx + Math.cos(angle) * radius;
+      const by = cy + Math.sin(angle) * radius;
+
+      const stateIndex = (i + this.ledState) % 3;
+      let bulbColor = '#FFECB3';
+      let glowColor = 'rgba(255, 235, 59, 0.8)';
+
+      if (stateIndex === 0) {
+        bulbColor = '#FFF59D';
+        glowColor = 'rgba(255, 215, 0, 0.9)';
+      } else if (stateIndex === 1) {
+        bulbColor = '#FF8A80';
+        glowColor = 'rgba(255, 23, 68, 0.8)';
+      } else {
+        bulbColor = '#FFFFFF';
+        glowColor = 'rgba(255, 255, 255, 0.9)';
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(bx, by, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = bulbColor;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = glowColor;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(bx - 1.2, by - 1.2, 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  drawSliceContent(prize, midAngle, R) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.rotate(midAngle);
+
+    const scale = Math.max(0.85, Math.min(R / 220, 1.3));
+
+    // 1. BIG EYE-CATCHING ICON
+    const iconX = R * 0.77;
+    const iconSize = Math.round(38 * scale);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(iconX, 0, 24 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    ctx.fill();
+    ctx.strokeStyle = prize.isTarget ? '#FFD700' : 'rgba(255, 255, 255, 0.25)';
+    ctx.lineWidth = prize.isTarget ? 2 : 1;
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.font = `${iconSize}px "Segoe UI Emoji", "Apple Color Emoji", sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(prize.icon, iconX, 0);
+
+    // 2. LARGE, PROMINENT, BOLD REWARD TEXT
+    const textX = R * 0.46;
+    const lineSpacing = 10 * scale;
+    const maxTextWidth = R * 0.38;
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const drawStrokedText = (text, x, y, font, fillColor, strokeColor = '#000000', lineWidth = 3.8) => {
+      ctx.font = font;
+      ctx.lineJoin = 'round';
+      ctx.miterLimit = 2;
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = lineWidth * scale;
+      ctx.strokeText(text, x, y);
+      ctx.fillStyle = fillColor;
+      ctx.fillText(text, x, y);
+    };
+
+    let font1Size = Math.round(15.5 * scale);
+    ctx.font = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    let w1 = ctx.measureText(prize.line1).width;
+    if (w1 > maxTextWidth) {
+      font1Size = Math.max(11, Math.round(font1Size * (maxTextWidth / w1)));
+    }
+    const font1 = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+
+    let font2Size = Math.round(14 * scale);
+    ctx.font = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    let w2 = ctx.measureText(prize.line2).width;
+    if (w2 > maxTextWidth) {
+      font2Size = Math.max(10, Math.round(font2Size * (maxTextWidth / w2)));
+    }
+    const font2 = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+
+    const color1 = prize.isTarget ? '#FFEB3B' : prize.textColor;
+    const color2 = prize.isTarget ? '#FFFFFF' : (prize.accent || '#FFE082');
+
+    drawStrokedText(prize.line1, textX, -lineSpacing, font1, color1);
+    drawStrokedText(prize.line2, textX, lineSpacing, font2, color2);
+
+    if (prize.isTarget) {
+      ctx.save();
+      ctx.font = `bold ${9.5 * scale}px sans-serif`;
+      ctx.fillStyle = '#FFD700';
+      ctx.shadowColor = '#000000';
+      ctx.shadowBlur = 4;
+      ctx.fillText('★ VIP PRIZE ★', R * 0.24, 0);
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  drawPeg(angle, radius) {
+    const ctx = this.ctx;
+    const px = Math.cos(angle) * radius;
+    const py = Math.sin(angle) * radius;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFD54F';
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = 'rgba(0,0,0,0.6)';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(px - 1, py - 1, 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFFDE7';
+    ctx.fill();
+    ctx.restore();
+  }
+
+  drawCenterHub(cx, cy) {
+    const ctx = this.ctx;
+    const hubRadius = this.wheelRadius * 0.165;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, hubRadius + 4.5, 0, Math.PI * 2);
+    const grad1 = ctx.createLinearGradient(cx - hubRadius, cy - hubRadius, cx + hubRadius, cy + hubRadius);
+    grad1.addColorStop(0, '#FFE082');
+    grad1.addColorStop(0.5, '#B78103');
+    grad1.addColorStop(1, '#FFD54F');
+    ctx.fillStyle = grad1;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, hubRadius, 0, Math.PI * 2);
+    const innerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, hubRadius);
+    innerGrad.addColorStop(0, '#5D101D');
+    innerGrad.addColorStop(0.85, '#2D050B');
+    innerGrad.addColorStop(1, '#1A0004');
+    ctx.fillStyle = innerGrad;
+    ctx.fill();
+
+    ctx.strokeStyle = '#FFD700';
+    ctx.lineWidth = 1.8;
+    ctx.stroke();
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '20px sans-serif';
+    ctx.fillText('🪔', cx, cy - 2);
+
+    ctx.font = 'bold 7.5px "Inter", sans-serif';
+    ctx.fillStyle = '#FFD54F';
+    ctx.fillText('NITT', cx, cy + 13);
+    ctx.restore();
+  }
+
+  drawPointer(tipX, tipY) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.translate(tipX, tipY);
+    ctx.rotate(this.flapperAngle);
+
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 4;
+
+    ctx.beginPath();
+    ctx.moveTo(0, 36);
+    ctx.lineTo(-14, 0);
+    ctx.lineTo(-10, -18);
+    ctx.lineTo(10, -18);
+    ctx.lineTo(14, 0);
+    ctx.closePath();
+
+    const pointerGrad = ctx.createLinearGradient(-14, -18, 14, 36);
+    pointerGrad.addColorStop(0, '#FFF9C4');
+    pointerGrad.addColorStop(0.3, '#FFD54F');
+    pointerGrad.addColorStop(0.7, '#FF8F00');
+    pointerGrad.addColorStop(1, '#FF6F00');
+    ctx.fillStyle = pointerGrad;
+    ctx.fill();
+
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(0, -5, 6, 0, Math.PI * 2);
+    const rubyGrad = ctx.createRadialGradient(-2, -7, 1, 0, -5, 6);
+    rubyGrad.addColorStop(0, '#FF8A80');
+    rubyGrad.addColorStop(0.5, '#D50000');
+    rubyGrad.addColorStop(1, '#5F0000');
+    ctx.fillStyle = rubyGrad;
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  setTargetPrize(prizeId) {
+    this.targetPrizeId = prizeId;
+  }
+}
+
+// 4. App Orchestrator
+document.addEventListener('DOMContentLoaded', () => {
+  const DEFAULT_REDIRECT_URL = 'https://forms.gle/diwali-nitt-movie-ticket';
+  let claimRedirectUrl = localStorage.getItem('nitt_movie_ticket_url') || DEFAULT_REDIRECT_URL;
+
+  const fireworks = new FireworksEngine('fireworksCanvas');
+  let redirectTimer = null;
+  let redirectRemainingSeconds = 4;
+  let hasUserSpun = localStorage.getItem('nitt_diwali_user_spun') === 'true';
+
+  const spinBtn = document.getElementById('spinBtn');
+  const spinStatus = document.getElementById('spinStatus');
+  const soundToggleBtn = document.getElementById('soundToggleBtn');
+  const soundIcon = document.getElementById('soundIcon');
+
+  const winnerModal = document.getElementById('winnerModal');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const claimRedirectLink = document.getElementById('claimRedirectLink');
+  const redirectCountdown = document.getElementById('redirectCountdown');
+  const redirectProgressBar = document.getElementById('redirectProgressBar');
+  const cancelRedirectBtn = document.getElementById('cancelRedirectBtn');
+
+  const adminBtn = document.getElementById('adminBtn');
+  const adminModal = document.getElementById('adminModal');
+  const adminCloseBtn = document.getElementById('adminCloseBtn');
+  const claimUrlInput = document.getElementById('claimUrlInput');
+  const saveAdminBtn = document.getElementById('saveAdminBtn');
+  const resetSpinLockBtn = document.getElementById('resetSpinLockBtn');
+
+  if (claimRedirectLink) {
+    claimRedirectLink.href = claimRedirectUrl;
+  }
+  if (claimUrlInput) {
+    claimUrlInput.value = claimRedirectUrl;
+  }
+
+  function closeWinnerModal() {
+    winnerModal.classList.remove('active');
+    stopRedirectCountdown();
+  }
+
+  modalCloseBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeWinnerModal();
+  });
+
+  modalCloseBtn.addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    closeWinnerModal();
+  });
+
+  winnerModal.addEventListener('click', (e) => {
+    if (e.target === winnerModal) {
+      closeWinnerModal();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && winnerModal.classList.contains('active')) {
+      closeWinnerModal();
+    }
+  });
+
+  function startRedirectCountdown(seconds = 4) {
+    stopRedirectCountdown();
+    redirectRemainingSeconds = seconds;
+    redirectCountdown.textContent = redirectRemainingSeconds;
+    redirectProgressBar.style.transition = 'none';
+    redirectProgressBar.style.width = '100%';
+
+    requestAnimationFrame(() => {
+      redirectProgressBar.style.transition = `width ${seconds}s linear`;
+      redirectProgressBar.style.width = '0%';
+    });
+
+    redirectTimer = setInterval(() => {
+      redirectRemainingSeconds--;
+      if (redirectRemainingSeconds > 0) {
+        redirectCountdown.textContent = redirectRemainingSeconds;
+      } else {
+        stopRedirectCountdown();
+        window.location.href = claimRedirectUrl;
+      }
+    }, 1000);
+  }
+
+  function stopRedirectCountdown() {
+    if (redirectTimer) {
+      clearInterval(redirectTimer);
+      redirectTimer = null;
+    }
+    if (redirectProgressBar) {
+      redirectProgressBar.style.transition = 'none';
+      redirectProgressBar.style.width = '0%';
+    }
+  }
+
+  if (cancelRedirectBtn) {
+    cancelRedirectBtn.addEventListener('click', () => {
+      stopRedirectCountdown();
+      cancelRedirectBtn.textContent = '✔ Auto-redirect paused. You can click the register button anytime.';
+      cancelRedirectBtn.style.color = '#81C784';
+    });
+  }
+
+  if (claimRedirectLink) {
+    claimRedirectLink.addEventListener('click', () => {
+      stopRedirectCountdown();
+    });
+  }
+
+  function applyAlreadySpunUI() {
+    spinBtn.disabled = true;
+    spinBtn.classList.add('already-spun');
+    spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.3rem;">✔</span>`;
+    spinStatus.innerHTML = `🎉 You already spun and won a <strong>Ticket for Movie</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
+
+    const viewRewardLink = document.getElementById('viewRewardLink');
+    if (viewRewardLink) {
+      viewRewardLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openRewardModal(false);
+      });
+    }
+  }
+
+  function openRewardModal(autoRedirect = true) {
+    winnerModal.classList.add('active');
+    if (autoRedirect) {
+      startRedirectCountdown(4);
+    } else {
+      stopRedirectCountdown();
+      if (cancelRedirectBtn) {
+        cancelRedirectBtn.textContent = 'Stay on homepage';
+      }
+    }
+  }
+
+  const wheel = new DiwaliWheel('wheelCanvas', {
+    targetPrizeId: 'movie_ticket',
+    onSpinStart: () => {
+      spinBtn.disabled = true;
+      spinBtn.innerHTML = `<span>SPINNING...</span> <span style="font-size: 1.4rem;">✨</span>`;
+      spinStatus.textContent = '🌟 Hold your breath! Finding your Diwali fortune...';
+      spinStatus.style.color = '#FFE082';
+      window.soundEngine.playSpinStart();
+    },
+    onTick: (intensity) => {
+      window.soundEngine.playTick(intensity);
+    },
+    onSpinEnd: (prize) => {
+      hasUserSpun = true;
+      localStorage.setItem('nitt_diwali_user_spun', 'true');
+      applyAlreadySpunUI();
+
+      window.soundEngine.playWinFanfare();
+      fireworks.startCelebration(7000);
+
+      setTimeout(() => {
+        openRewardModal(true);
+      }, 700);
+    }
+  });
+
+  if (hasUserSpun) {
+    wheel.setLandedOnPrize('movie_ticket');
+    applyAlreadySpunUI();
+  }
+
+  spinBtn.addEventListener('click', () => {
+    if (hasUserSpun) {
+      openRewardModal(false);
+      return;
+    }
+    window.soundEngine.resume();
+    wheel.spin();
+  });
+
+  soundToggleBtn.addEventListener('click', () => {
+    window.soundEngine.resume();
+    const isMuted = window.soundEngine.toggleMute();
+    soundIcon.textContent = isMuted ? '🔇' : '🔊';
+  });
+
+  adminBtn.addEventListener('click', () => {
+    claimUrlInput.value = claimRedirectUrl;
+    adminModal.classList.add('active');
+  });
+
+  adminCloseBtn.addEventListener('click', () => {
+    adminModal.classList.remove('active');
+  });
+
+  adminModal.addEventListener('click', (e) => {
+    if (e.target === adminModal) {
+      adminModal.classList.remove('active');
+    }
+  });
+
+  saveAdminBtn.addEventListener('click', () => {
+    const newUrl = claimUrlInput.value.trim();
+    if (newUrl) {
+      claimRedirectUrl = newUrl;
+      localStorage.setItem('nitt_movie_ticket_url', newUrl);
+      if (claimRedirectLink) {
+        claimRedirectLink.href = claimRedirectUrl;
+      }
+    }
+    adminModal.classList.remove('active');
+    alert('✔ Settings saved! Google Forms URL updated.');
+  });
+
+  if (resetSpinLockBtn) {
+    resetSpinLockBtn.addEventListener('click', () => {
+      localStorage.removeItem('nitt_diwali_user_spun');
+      hasUserSpun = false;
+      spinBtn.disabled = false;
+      spinBtn.classList.remove('already-spun');
+      spinBtn.innerHTML = `<span>SPIN TO WIN</span> <span style="font-size: 1.4rem;">🪔</span>`;
+      spinStatus.textContent = 'Tap above to test your Diwali luck! (1 spin per user)';
+      adminModal.classList.remove('active');
+      alert('🔄 Spin Lock Reset! You can now spin the wheel again for testing.');
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
+      e.preventDefault();
+      claimUrlInput.value = claimRedirectUrl;
+      adminModal.classList.toggle('active');
+    }
+  });
+
+  const infoBtn = document.getElementById('infoBtn');
+  if (infoBtn) {
+    infoBtn.addEventListener('click', () => {
+      alert('🪔 Diwali Celebration\nOrganized by Cultural Council, NIT Trichy.\n\nEvery student can spin the wheel once to participate in our campus Diwali movie screening festivities!');
+    });
+  }
+});
+  </script>
+</body>
+</html>

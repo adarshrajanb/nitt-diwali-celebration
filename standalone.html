@@ -1642,16 +1642,6 @@ class DiwaliWheel {
     drawStrokedText(prize.line1, textX, -lineSpacing, font1, color1);
     drawStrokedText(prize.line2, textX, lineSpacing, font2, color2);
 
-    if (prize.isTarget) {
-      ctx.save();
-      ctx.font = `bold ${9.5 * scale}px sans-serif`;
-      ctx.fillStyle = '#FFD700';
-      ctx.shadowColor = '#000000';
-      ctx.shadowBlur = 4;
-      ctx.fillText('★ VIP PRIZE ★', R * 0.24, 0);
-      ctx.restore();
-    }
-
     ctx.restore();
   }
 

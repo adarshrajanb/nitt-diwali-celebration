@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Diwali Celebration | Cultural Council - NIT Trichy</title>
   
-  <!-- Google Fonts for Festive Elegance -->
+  <!-- Google Fonts for Academic & Professional Prestige -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,14 +17,20 @@
   <!-- Fullscreen Fireworks & Confetti Canvas -->
   <canvas id="fireworksCanvas"></canvas>
 
-  <!-- Top Diwali Toran / Marigold Garland -->
-  <div class="toran-garland"></div>
+  <!-- Institutional Verification Top Strip -->
+  <div class="institutional-banner">
+    <span>🏛️ Cultural Council • National Institute of Technology, Tiruchirappalli</span>
+    <span class="verified-pill">✓ Verified Campus Event</span>
+  </div>
 
   <!-- Top Action & Navigation Bar -->
   <header class="top-action-bar">
     <div class="nitt-tag">
-      <span>🏛️</span>
-      <span>NIT Trichy • Cultural Council</span>
+      <div class="nitt-emblem" aria-hidden="true">🏛️</div>
+      <div class="nitt-tag-text">
+        <span class="nitt-inst-name">NIT Trichy</span>
+        <span class="nitt-dept-name">Cultural Council</span>
+      </div>
     </div>
     <div class="top-controls">
       <button id="soundToggleBtn" class="control-btn" title="Toggle Sound (Mute/Unmute)">
@@ -39,77 +45,69 @@
   <!-- Main Showcase Container -->
   <main class="main-wrapper">
     
-    <!-- Festive Title Header -->
+    <!-- Professional Event Header -->
     <section class="event-header">
-      <div class="subtitle-badge">🪔 NIT TRICHY FESTIVAL OF LIGHTS 🪔</div>
-      <h1 class="main-title">DIWALI CELEBRATION</h1>
+      <div class="subtitle-badge">🪔 DIWALI CELEBRATIONS 2026 🪔</div>
+      <h1 class="main-title">CAMPUS LUCKY DRAW</h1>
       <p class="event-desc">
-        Welcome to the official <strong>Cultural Council NITT</strong> Diwali Celebration Lucky Wheel! Spin your wheel to win exclusive movie screening perks & surprises!
+        Welcome to the official <strong>Cultural Council NITT</strong> Diwali Lucky Draw. Spin your lucky wheel to unlock an exclusive Movie Screening Pass and campus perks for the upcoming Barn Hall festival festivities.
       </p>
 
-      <!-- Live Activity Ticker -->
-      <div class="activity-ticker">
-        <span>⚡ <strong>538 NITTians</strong> spun today</span>
-        <span>•</span>
-        <span>🎬 <strong>Diwali Movie Screening</strong></span>
-        <span>•</span>
-        <span>🎟️ <strong>1 Spin Per Student</strong></span>
+      <!-- Clean Verified Event Metadata Strip -->
+      <div class="metadata-strip">
+        <div class="meta-item">
+          <span>📍</span>
+          <span>Barn Hall Screening</span>
+        </div>
+        <span class="meta-divider">•</span>
+        <div class="meta-item">
+          <span>🎬</span>
+          <span>Diwali Special Premiere</span>
+        </div>
+        <span class="meta-divider">•</span>
+        <div class="meta-item">
+          <span>🎟️</span>
+          <span>1 Verified Spin Per Student</span>
+        </div>
       </div>
     </section>
 
     <!-- Wheel Arena -->
     <section class="wheel-stage">
-      
-      <!-- Left Traditional Brass Diya Lamp -->
-      <div class="diya-lamp diya-left" aria-hidden="true">
-        <div class="diya-flame"></div>
-        <div class="diya-bowl"></div>
-        <div class="diya-stand"></div>
-      </div>
-
-      <!-- Canvas Wheel -->
       <div class="wheel-canvas-container">
         <canvas id="wheelCanvas"></canvas>
       </div>
-
-      <!-- Right Traditional Brass Diya Lamp -->
-      <div class="diya-lamp diya-right" aria-hidden="true">
-        <div class="diya-flame"></div>
-        <div class="diya-bowl"></div>
-        <div class="diya-stand"></div>
-      </div>
-
     </section>
 
     <!-- Spin Button Controls -->
     <div class="spin-action-wrapper">
       <button id="spinBtn" class="spin-btn">
-        <span>SPIN TO WIN</span>
-        <span style="font-size: 1.4rem;">🪔</span>
+        <span>SPIN LUCKY WHEEL</span>
+        <span style="font-size: 1.25rem;">🎡</span>
       </button>
-      <p id="spinStatus" class="spin-hint">Tap above to test your Diwali luck! (1 spin per user)</p>
+      <p id="spinStatus" class="spin-hint">Tap above to test your fortune • 1 verified spin per student</p>
     </div>
 
-    <!-- Festive Campus Perks Grid -->
+    <!-- Campus Perks Grid -->
     <section class="perks-strip">
       <div class="perk-card">
-        <div class="perk-icon">🎟️</div>
+        <div class="perk-icon-box">🎟️</div>
         <div class="perk-info">
           <h4>Movie Premiere Pass</h4>
-          <p>Campus special Diwali screening with sound & AC</p>
+          <p>Campus special screening with surround sound in Barn Hall</p>
         </div>
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🍿</div>
+        <div class="perk-icon-box">🍿</div>
         <div class="perk-info">
-          <h4>Free Popcorn Tub</h4>
-          <p>Complimentary snack tub for screening attendees</p>
+          <h4>Complimentary Snack Tub</h4>
+          <p>Fresh popcorn snack tub for screening attendees</p>
         </div>
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🏛️</div>
+        <div class="perk-icon-box">🏛️</div>
         <div class="perk-info">
           <h4>Bay 0 VIP Access</h4>
           <p>Exclusive lounge & chillout pass for fest events</p>
@@ -117,7 +115,7 @@
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🏷️</div>
+        <div class="perk-icon-box">🏷️</div>
         <div class="perk-info">
           <h4>₹200 Stall Voucher</h4>
           <p>Redeemable across Diwali food & game stalls</p>
@@ -127,60 +125,78 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- Institutional Footer -->
   <footer>
-    <p>Organized with ❤️ by <strong>Cultural Council • National Institute of Technology, Tiruchirappalli</strong></p>
-    <p style="margin-top: 4px; opacity: 0.75;">Diwali Celebration Special Edition • Tanjore Road, Thuvakudi, Trichy - 620015</p>
+    <p>Organized by the <strong>Cultural Council • National Institute of Technology, Tiruchirappalli</strong></p>
+    <p style="margin-top: 4px; font-size: 0.76rem; opacity: 0.75;">Tanjore Main Road, National Highway 67, Thuvakudi, Trichy - 620015</p>
   </footer>
 
   <!-- =======================================================
-       WINNER CELEBRATION MODAL & GOOGLE FORMS REDIRECT
+       OFFICIAL EVENT CONFIRMATION & REGISTRATION PASS MODAL
+       (Authentic Institutional Card - No Scam Urgency Popups)
        ======================================================= -->
   <div id="winnerModal" class="modal-backdrop" role="dialog" aria-modal="true">
     <div class="modal-content">
-      <!-- High Priority Close Button (X) -->
+      <!-- Close Button -->
       <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
       
       <div class="modal-header">
-        <div class="trophy-badge">🎬 🎟️ 🪔</div>
-        <h2 class="congrats-title">🎉 CONGRATULATIONS! 🎉</h2>
-        <div class="prize-spotlight-box">
-          <span class="prize-tag-badge">OFFICIAL REWARD</span>
-          <h3 class="prize-spotlight-text">YOU WON A TICKET FOR MOVIE!</h3>
+        <div class="modal-crest-badge">
+          <span>🏛️</span>
+          <span>NIT Trichy • Cultural Council</span>
         </div>
-        <p class="congrats-sub">Cultural Council • NIT Trichy Diwali Celebration</p>
+        <h2>Lucky Draw Reward Unlocked</h2>
+        <p>Diwali Celebrations 2026 • Campus Screening</p>
       </div>
 
-      <!-- GOOGLE FORMS REDIRECT CALL TO ACTION BOX -->
-      <div class="redirect-box">
-        <p class="redirect-instructions">
-          To claim your ticket and complete movie seat booking, please proceed to the official registration Google Form:
+      <!-- Admission Passcard Container -->
+      <div class="passcard-box">
+        <div class="passcard-top">
+          <span class="pass-type-badge">Official Event Reward</span>
+          <span class="pass-venue-badge">📍 Barn Hall Screening</span>
+        </div>
+
+        <div class="passcard-body">
+          <div class="pass-icon-disc">🎟️</div>
+          <div class="pass-details">
+            <h3 class="prize-spotlight-text">Ticket for Movie</h3>
+            <p>Diwali Special Screening Pass</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions & Official Form Link -->
+      <div class="registration-callout">
+        <div class="callout-heading">
+          <span>📋</span>
+          <span>Verification & Seat Allocation:</span>
+        </div>
+        <p class="callout-desc">
+          Your lucky spin qualifies you for this campus screening pass! Please proceed to the official Cultural Council Google Form to verify your student roll number and confirm your seat booking.
         </p>
+      </div>
 
-        <div class="redirect-status-row">
-          <span>🚀 Redirecting to Google Forms in</span>
-          <span id="redirectCountdown" class="countdown-badge">4</span>
-          <span>seconds...</span>
-        </div>
-        <div class="redirect-progress-track">
-          <div id="redirectProgressBar" class="redirect-progress-bar"></div>
-        </div>
-        
-        <a id="claimRedirectLink" href="https://forms.gle/diwali-nitt-movie-ticket" target="_blank" rel="noopener noreferrer" class="claim-now-btn">
-          <span>🎟️</span>
-          <span>REGISTER NOW ON GOOGLE FORMS</span>
-          <span>➔</span>
-        </a>
+      <!-- Action Button -->
+      <a id="claimRedirectLink" href="https://forms.gle/diwali-nitt-movie-ticket" target="_blank" rel="noopener noreferrer" class="official-form-btn">
+        <span>Proceed to Official Registration Form</span>
+        <span>➔</span>
+      </a>
 
-        <button type="button" id="cancelRedirectBtn" class="cancel-redirect-btn">
-          Stay on homepage
+      <!-- Dignified Redirect Notice (No aggressive alarmist bars) -->
+      <div class="modal-redirect-status">
+        <span class="redirect-text">
+          <span>⚡</span>
+          <span>Opening form in <strong id="redirectCountdown" style="color: var(--text-gold);">4</strong>s...</span>
+        </span>
+        <button type="button" id="cancelRedirectBtn" class="cancel-redirect-link">
+          Stay on page
         </button>
       </div>
 
-      <!-- One Spin Policy Note -->
-      <div class="single-spin-notice">
+      <!-- Single-spin Policy Note -->
+      <div class="single-spin-badge">
         <span>🔒</span>
-        <span>Notice: Each student is permitted to spin only once. Your reward is locked!</span>
+        <span>Verified 1-spin policy: Your reward has been confirmed on this device.</span>
       </div>
 
     </div>

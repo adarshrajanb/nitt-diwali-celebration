@@ -8,25 +8,32 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --gold-primary: #FFD700;
-      --gold-light: #FFF59D;
-      --gold-dark: #B78103;
-      --maroon: #800020;
-      --crimson: #B71C1C;
-      --bg-deep: #090212;
-      --bg-card: rgba(26, 8, 38, 0.92);
-      --bg-card-inner: rgba(18, 4, 28, 0.85);
-      --border-gold: rgba(255, 215, 0, 0.35);
-      --text-main: #FFFFFF;
-      --text-muted: #BDBDBD;
-      --text-gold: #FFE082;
-      --accent-saffron: #FF6F00;
-      --accent-green: #00E676;
-      --accent-red: #FF5252;
+      --navy-950: #060B18;
+      --navy-900: #0B132B;
+      --navy-850: #0F1A3A;
+      --navy-800: #14224A;
+      --blue-royal: #1D4ED8;
+      --blue-royal-hover: #2563EB;
+      
+      --gold-primary: #D97706;
+      --gold-hover: #F59E0B;
+      --gold-light: #FDE68A;
+      --gold-border: rgba(217, 119, 6, 0.38);
+
+      --bg-deep: var(--navy-950);
+      --bg-card: rgba(11, 19, 43, 0.9);
+      --bg-card-inner: rgba(15, 26, 58, 0.8);
+      --border-card: rgba(148, 163, 184, 0.14);
+
+      --text-main: #F8FAFC;
+      --text-muted: #8E9FB8;
+      --text-gold: #FCD34D;
+      --accent-green: #10B981;
+      --accent-red: #EF4444;
     }
 
     * {
@@ -40,22 +47,42 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-deep);
       background-image: 
-        radial-gradient(ellipse at 50% 10%, rgba(136, 14, 79, 0.45) 0%, rgba(38, 3, 50, 0.7) 45%, #080110 100%),
-        radial-gradient(circle at 10% 80%, rgba(255, 111, 0, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 0%, rgba(28, 48, 102, 0.45) 0%, rgba(11, 19, 43, 0.8) 50%, var(--bg-deep) 100%),
+        radial-gradient(circle at 10% 80%, rgba(217, 119, 6, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(29, 78, 216, 0.08) 0%, transparent 40%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* Top Festive Banner */
-    .top-toran {
-      width: 100%;
-      height: 28px;
-      background: radial-gradient(circle at 50% 0%, #FF9800 0%, #E65100 65%, transparent 70%);
-      background-size: 36px 28px;
-      border-bottom: 2px solid rgba(255, 215, 0, 0.35);
+    /* Institutional Top Status Strip */
+    .institutional-banner {
+      background: linear-gradient(90deg, #091024 0%, #0F1C3C 50%, #091024 100%);
+      border-bottom: 1px solid rgba(217, 119, 6, 0.25);
+      padding: 6px 16px;
+      font-size: 0.74rem;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
 
     /* Header */
@@ -64,9 +91,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 24px;
-      background: rgba(15, 3, 24, 0.85);
+      background: rgba(11, 19, 43, 0.85);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-card);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -79,20 +106,28 @@
     }
 
     .brand-icon {
-      font-size: 1.8rem;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #1E3A8A 0%, #0F1A3A 100%);
+      border: 1.5px solid var(--gold-border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
     }
 
     .brand-titles h1 {
       font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
-      letter-spacing: 1px;
-      color: var(--gold-primary);
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      font-size: 1.05rem;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
     }
 
     .brand-titles p {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.76rem;
+      color: var(--text-gold);
+      font-weight: 600;
     }
 
     .header-actions {
@@ -113,42 +148,46 @@
       text-decoration: none;
       cursor: pointer;
       border: 1px solid transparent;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       outline: none;
     }
 
     .btn-gold {
-      background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
-      color: #3E1000;
-      border-color: #FFE082;
-      box-shadow: 0 3px 12px rgba(255, 179, 0, 0.35);
+      background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+      color: #FFFFFF;
+      border-color: rgba(253, 230, 138, 0.45);
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.4);
     }
 
     .btn-gold:hover {
+      background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
       transform: translateY(-2px);
-      box-shadow: 0 5px 18px rgba(255, 179, 0, 0.55);
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.55);
+      border-color: #FDE68A;
     }
 
     .btn-outline {
-      background: rgba(255, 215, 0, 0.08);
-      color: var(--text-gold);
-      border-color: rgba(255, 215, 0, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border-color: var(--card-border);
     }
 
     .btn-outline:hover {
-      background: rgba(255, 215, 0, 0.18);
-      border-color: var(--gold-primary);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold-border);
+      color: #FFFFFF;
     }
 
     .btn-danger {
-      background: rgba(255, 82, 82, 0.15);
-      color: #FF8A80;
-      border-color: rgba(255, 82, 82, 0.4);
+      background: rgba(239, 68, 68, 0.12);
+      color: #FCA5A5;
+      border-color: rgba(239, 68, 68, 0.35);
     }
 
     .btn-danger:hover {
-      background: rgba(255, 82, 82, 0.3);
-      border-color: #FF5252;
+      background: rgba(239, 68, 68, 0.25);
+      border-color: #EF4444;
+      color: #FFFFFF;
     }
 
     /* Container */
@@ -173,40 +212,34 @@
 
     .login-card {
       background: var(--bg-card);
-      border: 2px solid var(--border-gold);
+      border: 1.5px solid var(--gold-border);
       border-radius: 20px;
-      padding: 36px 30px;
+      padding: 38px 32px;
       max-width: 440px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 179, 0, 0.15);
-      backdrop-filter: blur(15px);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(29, 78, 216, 0.2);
+      backdrop-filter: blur(16px);
     }
 
     .login-diya {
-      font-size: 3.2rem;
+      font-size: 3rem;
       margin-bottom: 12px;
       display: inline-block;
-      filter: drop-shadow(0 0 16px rgba(255, 193, 7, 0.8));
-      animation: gentle-glow 2.4s ease-in-out infinite alternate;
-    }
-
-    @keyframes gentle-glow {
-      0% { transform: scale(0.96); filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.6)); }
-      100% { transform: scale(1.04); filter: drop-shadow(0 0 22px rgba(255, 235, 59, 0.95)); }
+      filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.6));
     }
 
     .login-card h2 {
       font-family: 'Cinzel', serif;
-      font-size: 1.45rem;
-      color: var(--gold-primary);
-      margin-bottom: 8px;
+      font-size: 1.4rem;
+      color: #FFFFFF;
+      margin-bottom: 6px;
     }
 
     .login-card p {
       font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.5;
       margin-bottom: 24px;
     }
 
@@ -217,9 +250,9 @@
 
     .form-label {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--text-gold);
+      color: var(--text-secondary);
       margin-bottom: 7px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -234,7 +267,7 @@
     .form-input {
       width: 100%;
       background: var(--bg-card-inner);
-      border: 1.5px solid rgba(255, 215, 0, 0.3);
+      border: 1.5px solid var(--border-card);
       border-radius: 10px;
       padding: 12px 14px;
       font-size: 0.95rem;
@@ -246,8 +279,8 @@
 
     .form-input:focus {
       border-color: var(--gold-primary);
-      box-shadow: 0 0 14px rgba(255, 215, 0, 0.35);
-      background: rgba(30, 8, 44, 0.95);
+      box-shadow: 0 0 14px rgba(217, 119, 6, 0.25);
+      background: rgba(15, 26, 58, 0.95);
     }
 
     .toggle-pass-btn {
@@ -255,7 +288,7 @@
       right: 12px;
       background: none;
       border: none;
-      color: var(--gold-light);
+      color: var(--text-muted);
       cursor: pointer;
       font-size: 1.1rem;
       padding: 4px;
@@ -263,26 +296,19 @@
 
     .login-error {
       display: none;
-      background: rgba(255, 82, 82, 0.15);
-      border: 1px solid #FF5252;
-      color: #FF8A80;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #EF4444;
+      color: #FCA5A5;
       padding: 9px 12px;
       border-radius: 8px;
       font-size: 0.84rem;
       margin-bottom: 16px;
-      animation: shake 0.35s ease;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-6px); }
-      40%, 80% { transform: translateX(6px); }
     }
 
     .login-btn {
       width: 100%;
       padding: 13px;
-      font-size: 1rem;
+      font-size: 0.96rem;
       font-weight: 800;
       letter-spacing: 0.5px;
     }
@@ -310,39 +336,39 @@
 
     .stat-box {
       background: var(--bg-card);
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-card);
       border-radius: 14px;
       padding: 16px 18px;
       display: flex;
       align-items: center;
       gap: 14px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
 
     .stat-icon {
-      font-size: 2rem;
-      background: rgba(255, 215, 0, 0.1);
+      font-size: 1.8rem;
+      background: rgba(29, 78, 216, 0.15);
       width: 48px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 12px;
-      border: 1px solid rgba(255, 215, 0, 0.25);
+      border: 1px solid rgba(29, 78, 216, 0.3);
     }
 
     .stat-text h4 {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       color: var(--text-muted);
       margin-bottom: 3px;
     }
 
     .stat-text p {
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--gold-light);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #FFFFFF;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -352,11 +378,11 @@
     /* Admin Section Cards */
     .admin-card {
       background: var(--bg-card);
-      border: 1.5px solid var(--border-gold);
+      border: 1px solid var(--border-card);
       border-radius: 18px;
       padding: 24px;
       margin-bottom: 26px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
       position: relative;
     }
 
@@ -366,22 +392,22 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      border-bottom: 1px solid var(--border-card);
       padding-bottom: 14px;
       margin-bottom: 20px;
     }
 
     .card-title-row h2 {
       font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
-      color: var(--gold-primary);
+      font-size: 1.2rem;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
     .card-subtitle {
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       margin-top: 4px;
     }
@@ -396,7 +422,7 @@
 
     .winner-choice-card {
       background: var(--bg-card-inner);
-      border: 2px solid rgba(255, 215, 0, 0.2);
+      border: 1.5px solid var(--border-card);
       border-radius: 12px;
       padding: 14px 16px;
       cursor: pointer;
@@ -408,19 +434,19 @@
     }
 
     .winner-choice-card:hover {
-      border-color: rgba(255, 215, 0, 0.6);
+      border-color: var(--gold-border);
       transform: translateY(-2px);
-      background: rgba(36, 10, 52, 0.9);
+      background: rgba(20, 34, 74, 0.9);
     }
 
     .winner-choice-card.selected {
-      border-color: var(--gold-primary);
-      background: linear-gradient(135deg, rgba(139, 0, 0, 0.5) 0%, rgba(183, 28, 28, 0.3) 100%);
-      box-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
+      border-color: #FDE68A;
+      background: linear-gradient(135deg, rgba(29, 78, 216, 0.4) 0%, rgba(15, 26, 58, 0.6) 100%);
+      box-shadow: 0 0 16px rgba(29, 78, 216, 0.35);
     }
 
     .winner-choice-radio {
-      accent-color: var(--gold-primary);
+      accent-color: #F59E0B;
       transform: scale(1.2);
       cursor: pointer;
     }
@@ -431,7 +457,7 @@
     }
 
     .winner-choice-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #FFFFFF;
       white-space: nowrap;
@@ -464,7 +490,7 @@
     .url-hint {
       font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       margin-bottom: 16px;
     }
 
@@ -478,7 +504,7 @@
 
     .tile-card {
       background: var(--bg-card-inner);
-      border: 1.5px solid rgba(255, 215, 0, 0.25);
+      border: 1px solid var(--border-card);
       border-radius: 14px;
       padding: 16px;
       position: relative;
@@ -489,34 +515,35 @@
     }
 
     .tile-card:hover {
-      border-color: rgba(255, 215, 0, 0.5);
+      border-color: var(--gold-border);
     }
 
     .tile-card.is-active-winner {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+      border-color: #FDE68A;
+      box-shadow: 0 0 14px rgba(217, 119, 6, 0.25);
     }
 
     .tile-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding-bottom: 8px;
     }
 
     .tile-number {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: var(--text-gold);
       letter-spacing: 0.5px;
     }
 
     .winner-badge {
-      font-size: 0.7rem;
-      background: linear-gradient(135deg, #FFD700 0%, #FF8F00 100%);
-      color: #3E1000;
-      font-weight: 900;
+      font-size: 0.68rem;
+      background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(253, 230, 138, 0.4);
+      font-weight: 800;
       padding: 2px 7px;
       border-radius: 999px;
       display: none;
@@ -533,15 +560,15 @@
     }
 
     .tile-field label {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
     .tile-field input, .tile-field select {
-      background: rgba(10, 2, 16, 0.85);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      background: rgba(6, 11, 24, 0.85);
+      border: 1px solid var(--border-card);
       border-radius: 8px;
       padding: 7px 10px;
       font-size: 0.86rem;
@@ -589,7 +616,7 @@
     }
 
     .quick-emoji-btn:hover {
-      background: rgba(255, 215, 0, 0.25);
+      background: rgba(217, 119, 6, 0.25);
     }
 
     /* Live Preview Arena */
@@ -636,17 +663,17 @@
       position: fixed;
       bottom: 28px;
       right: 28px;
-      background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+      background: linear-gradient(135deg, #0F1A3A 0%, #1E3A8A 100%);
       color: #FFFFFF;
-      border: 1.5px solid #A5D6A7;
+      border: 1px solid var(--gold-border);
       padding: 12px 22px;
       border-radius: 12px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       transform: translateY(100px);
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 9999;
       pointer-events: none;
       display: flex;
@@ -667,7 +694,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(4, 8, 18, 0.85);
       backdrop-filter: blur(8px);
       z-index: 500;
       align-items: center;
@@ -681,7 +708,7 @@
 
     .mini-modal-card {
       background: var(--bg-card);
-      border: 2px solid var(--border-gold);
+      border: 1.5px solid var(--gold-border);
       border-radius: 18px;
       max-width: 420px;
       width: 100%;
@@ -692,13 +719,16 @@
 </head>
 <body>
 
-  <!-- Top Festive Toran Garland -->
-  <div class="top-toran"></div>
+  <!-- Institutional Verification Top Strip -->
+  <div class="institutional-banner">
+    <span>🏛️ Cultural Council • National Institute of Technology, Tiruchirappalli</span>
+    <span class="verified-pill">✓ Organizer Administration Portal</span>
+  </div>
 
   <!-- Header -->
   <header class="admin-header">
     <div class="brand-group">
-      <span class="brand-icon">🏛️</span>
+      <div class="brand-icon">🏛️</div>
       <div class="brand-titles">
         <h1>NIT TRICHY • CULTURAL COUNCIL</h1>
         <p>Diwali Celebration — Organizer Administration Portal</p>
@@ -811,9 +841,9 @@
 
         <div class="form-group" style="margin-top: 10px; max-width: 520px;">
           <label class="form-label" for="customWinTitleInput">Winning Popup Announcement Text:</label>
-          <input type="text" id="customWinTitleInput" class="form-input" placeholder="e.g. YOU WON A TICKET FOR MOVIE!">
+          <input type="text" id="customWinTitleInput" class="form-input" placeholder="e.g. Ticket for Movie">
           <span style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px; display: block;">
-            Leave blank to automatically use "YOU WON: [SECTOR NAME]!"
+            Leave blank to automatically use the sector's configured reward name.
           </span>
         </div>
       </div>
@@ -837,13 +867,13 @@
           </button>
         </div>
         <p class="url-hint">
-          💡 <strong>Tip:</strong> You can paste any valid Google Forms, Unstop, or registration URL here. The winner popup button and automatic 4-second countdown will immediately redirect students to this destination.
+          💡 <strong>Tip:</strong> Paste your official Google Forms link here. Students can click "Proceed to Official Registration Form" or be redirected according to your countdown choice.
         </p>
 
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 8px;">
           <label class="form-label" style="margin-bottom: 0;">Auto-Redirect Countdown:</label>
           <select id="countdownSelect" class="form-input" style="width: auto; padding: 6px 12px;">
-            <option value="4">4 Seconds (Recommended)</option>
+            <option value="4">4 Seconds</option>
             <option value="6">6 Seconds</option>
             <option value="8">8 Seconds</option>
             <option value="0">Manual Click Only (No auto-redirect)</option>
@@ -856,7 +886,7 @@
         <div class="card-title-row">
           <div>
             <h2><span>🎡</span> Customize Wheel Tiles & Sectors (8 Slices)</h2>
-            <p class="card-subtitle">Edit the labels, 2-line wheel text, emojis, and colors of each sector on the wheel.</p>
+            <p class="card-subtitle">Edit the labels, 2-line wheel text, emojis, and professional colors of each sector on the wheel.</p>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button id="resetTilesDefaultBtn" class="btn btn-outline">
@@ -891,7 +921,7 @@
           <div class="canvas-preview-box">
             <canvas id="previewCanvas"></canvas>
           </div>
-          <p id="previewStatus" style="font-size: 0.9rem; color: var(--text-gold); font-weight: 700;">
+          <p id="previewStatus" style="font-size: 0.88rem; color: var(--text-gold); font-weight: 700;">
             Ready to test. Click "Test Spin Wheel" to test landing on the selected winning sector!
           </p>
         </div>
@@ -935,7 +965,7 @@
   <!-- Change Password Mini-Modal -->
   <div id="changePassModal" class="mini-modal-backdrop">
     <div class="mini-modal-card">
-      <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 12px;">🔑 Change Admin Passcode</h3>
+      <h3 style="font-family: 'Cinzel', serif; color: #FFFFFF; margin-bottom: 12px;">🔑 Change Admin Passcode</h3>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
         Set a new secret password for the Cultural Council admin dashboard.
       </p>
@@ -947,7 +977,7 @@
 
       <div class="form-group">
         <label class="form-label" for="newPassInput">New Passcode</label>
-        <input type="password" id="newPassInput" class="form-input" placeholder="New passcode (min 6 characters)">
+        <input type="password" id="newPassInput" class="form-input" placeholder="New passcode (min 4 characters)">
       </div>
 
       <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
@@ -1031,10 +1061,7 @@
       let toastTimer = null;
       function showToast(msg, isSuccess = true) {
         toastMessage.textContent = msg;
-        adminToast.style.background = isSuccess 
-          ? 'linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%)' 
-          : 'linear-gradient(135deg, #B71C1C 0%, #C62828 100%)';
-        adminToast.style.borderColor = isSuccess ? '#A5D6A7' : '#FF8A80';
+        adminToast.style.borderColor = isSuccess ? 'rgba(217, 119, 6, 0.45)' : 'rgba(239, 68, 68, 0.5)';
         adminToast.classList.add('active');
 
         if (toastTimer) clearTimeout(toastTimer);
@@ -1087,16 +1114,16 @@
         showToast('Logged out of Council Admin.');
       });
 
-      // 6. Color Presets for Wheel Sectors
+      // 6. Harmonious Institutional Color Presets
       const COLOR_PRESETS = [
-        { name: 'Royal Crimson', c1: '#8B0000', c2: '#C62828', accent: '#FFD700', text: '#FFF9C4' },
-        { name: 'Deep Navy', c1: '#0D47A1', c2: '#1976D2', accent: '#FFF176', text: '#FFFFFF' },
-        { name: 'Emerald Green', c1: '#1B5E20', c2: '#2E7D32', accent: '#C8E6C9', text: '#FFFFFF' },
-        { name: 'Royal Purple', c1: '#4A148C', c2: '#7B1FA2', accent: '#E1BEE7', text: '#FFFFFF' },
-        { name: 'Saffron Amber', c1: '#E65100', c2: '#FB8C00', accent: '#FFE082', text: '#FFFFFF' },
-        { name: 'Festive Magenta', c1: '#880E4F', c2: '#C2185B', accent: '#F8BBD0', text: '#FFFFFF' },
-        { name: 'Deep Teal', c1: '#004D40', c2: '#00897B', accent: '#B2DFDB', text: '#FFFFFF' },
-        { name: 'Rust Amber', c1: '#BF360C', c2: '#E64A19', accent: '#FFCCBC', text: '#FFFFFF' },
+        { name: 'Royal Academic Navy', c1: '#1E3A8A', c2: '#2563EB', accent: '#FDE68A', text: '#FFFFFF' },
+        { name: 'Slate Midnight', c1: '#0F172A', c2: '#1E293B', accent: '#CBD5E1', text: '#FFFFFF' },
+        { name: 'Royal Indigo', c1: '#1E1B4B', c2: '#312E81', accent: '#E0E7FF', text: '#FFFFFF' },
+        { name: 'Twilight Slate', c1: '#0B192C', c2: '#1E3E62', accent: '#FDE68A', text: '#FFFFFF' },
+        { name: 'Rich Warm Amber', c1: '#78350F', c2: '#92400E', accent: '#FEF3C7', text: '#FFFFFF' },
+        { name: 'Ocean Navy', c1: '#172554', c2: '#1E40AF', accent: '#FDE68A', text: '#FFFFFF' },
+        { name: 'Imperial Crimson', c1: '#7F1D1D', c2: '#991B1B', accent: '#FDE68A', text: '#FFFFFF' },
+        { name: 'Deep Emerald', c1: '#064E3B', c2: '#047857', accent: '#A7F3D0', text: '#FFFFFF' },
       ];
 
       // 7. Initialize Dashboard Content
@@ -1139,7 +1166,7 @@
 
           card.innerHTML = `
             <input type="radio" name="targetWinnerRadio" class="winner-choice-radio" value="${prize.id}" ${isSelected ? 'checked' : ''}>
-            <div style="font-size: 1.6rem;">${prize.icon}</div>
+            <div style="font-size: 1.5rem;">${prize.icon}</div>
             <div class="winner-choice-info">
               <div class="winner-choice-title">#${index + 1}: ${prize.label}</div>
               <div class="winner-choice-sub">${prize.line1} ${prize.line2}</div>
@@ -1165,7 +1192,7 @@
         randomCard.dataset.prizeId = 'random';
         randomCard.innerHTML = `
           <input type="radio" name="targetWinnerRadio" class="winner-choice-radio" value="random" ${isRandomSelected ? 'checked' : ''}>
-          <div style="font-size: 1.6rem;">🎲</div>
+          <div style="font-size: 1.5rem;">🎲</div>
           <div class="winner-choice-info">
             <div class="winner-choice-title">Fair Random Spin</div>
             <div class="winner-choice-sub">Equal probability across all slices</div>
@@ -1337,7 +1364,6 @@
           previewWheel.setPrizes(currentPrizes);
         }
 
-        // Re-render winner selection radio labels
         renderWinnerSelector(currentPrizes, targetId);
         showToast('All 8 wheel tiles successfully updated!');
       });
@@ -1361,8 +1387,8 @@
           onSpinStart: () => {
             previewSpinBtn.disabled = true;
             previewSpinBtn.innerHTML = '<span>Spinning Preview...</span>';
-            previewStatus.textContent = '🌟 Spinning... Observe where it decelerates and lands!';
-            previewStatus.style.color = '#FFE082';
+            previewStatus.textContent = 'Spinning... Observing trajectory and deceleration.';
+            previewStatus.style.color = '#FDE68A';
             soundEngine.resume();
             soundEngine.playSpinStart();
           },
@@ -1373,7 +1399,7 @@
             previewSpinBtn.disabled = false;
             previewSpinBtn.innerHTML = '<span>🎡 Test Spin Wheel</span>';
             previewStatus.textContent = `🎉 Landed on: ${wonPrize.icon} ${wonPrize.label}!`;
-            previewStatus.style.color = '#00E676';
+            previewStatus.style.color = '#34D399';
             soundEngine.playWinFanfare();
           }
         });

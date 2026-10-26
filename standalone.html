@@ -1,30 +1,50 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Diwali Celebration | Cultural Council - NIT Trichy</title>
   
+  <!-- Google Fonts for Academic & Professional Prestige -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
 /* ==========================================================
-   NIT TRICHY CULTURAL COUNCIL - DIWALI CELEBRATION SPIN WHEEL
+   NIT TRICHY CULTURAL COUNCIL - DIWALI CELEBRATIONS 2026
+   Official Campus Event & Movie Screening Lucky Draw Portal
+   Professional, Trustworthy & Institutional Design System
    ========================================================== */
 
 :root {
-  --gold-primary: #FFD700;
-  --gold-light: #FFF59D;
-  --gold-dark: #B78103;
-  --maroon: #800020;
-  --crimson: #B71C1C;
-  --bg-deep: #090212;
-  --bg-card: rgba(26, 6, 38, 0.85);
-  --text-main: #FFFFFF;
-  --text-gold: #FFE082;
-  --accent-saffron: #FF6F00;
+  /* Institutional Palette: NIT Trichy Academic Navy & Festive Gold */
+  --navy-950: #060B18;
+  --navy-900: #0B132B;
+  --navy-850: #0F1A3A;
+  --navy-800: #14224A;
+  --navy-700: #1C3066;
+  --navy-600: #254085;
+  
+  --blue-royal: #1D4ED8;
+  --blue-royal-hover: #2563EB;
+  --blue-sky: #38BDF8;
+
+  --gold-primary: #D97706;
+  --gold-hover: #F59E0B;
+  --gold-light: #FDE68A;
+  --gold-pale: #FEF3C7;
+  --gold-border: rgba(217, 119, 6, 0.38);
+
+  --text-main: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #8E9FB8;
+  --text-gold: #FCD34D;
+
+  --card-bg: rgba(11, 19, 43, 0.88);
+  --card-inner: rgba(15, 26, 58, 0.75);
+  --card-border: rgba(148, 163, 184, 0.14);
+  --card-border-hover: rgba(217, 119, 6, 0.45);
 }
 
 * {
@@ -35,12 +55,12 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-deep);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--navy-950);
   background-image: 
-    radial-gradient(ellipse at 50% 15%, rgba(136, 14, 79, 0.45) 0%, rgba(38, 3, 50, 0.7) 45%, #080110 100%),
-    radial-gradient(circle at 10% 80%, rgba(255, 111, 0, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.12) 0%, transparent 40%);
+    radial-gradient(ellipse at 50% 0%, rgba(28, 48, 102, 0.5) 0%, rgba(11, 19, 43, 0.8) 50%, var(--navy-950) 100%),
+    radial-gradient(circle at 15% 45%, rgba(217, 119, 6, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 45%, rgba(29, 78, 216, 0.1) 0%, transparent 40%);
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
@@ -49,6 +69,7 @@ body {
   flex-direction: column;
 }
 
+/* Background Confetti & Fireworks Canvas */
 #fireworksCanvas {
   position: fixed;
   top: 0;
@@ -56,35 +77,44 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 10;
+  z-index: 20;
 }
 
-.toran-garland {
-  width: 100%;
-  height: 38px;
-  background: radial-gradient(circle at 50% 0%, #FF9800 0%, #E65100 65%, transparent 70%);
-  background-size: 40px 38px;
-  position: relative;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+/* Institutional Top Status Strip */
+.institutional-banner {
+  background: linear-gradient(90deg, #091024 0%, #0F1C3C 50%, #091024 100%);
+  border-bottom: 1px solid rgba(217, 119, 6, 0.25);
+  padding: 6px 16px;
+  font-size: 0.74rem;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
 }
 
-.toran-garland::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #D4AF37, #FFF59D, #D4AF37, #FF8F00, #D4AF37);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+.verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
 }
 
+/* Top Navigation / Action Bar */
 .top-action-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+  padding: 14px 24px;
   max-width: 1100px;
   margin: 0 auto;
   width: 100%;
@@ -94,178 +124,189 @@ body {
 .nitt-tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 215, 0, 0.12);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  padding: 5px 14px;
-  border-radius: 20px;
+  gap: 10px;
+}
+
+.nitt-emblem {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #1E3A8A 0%, #0F1A3A 100%);
+  border: 1.5px solid var(--gold-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nitt-tag-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nitt-inst-name {
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.8px;
-  color: var(--gold-light);
+  color: var(--text-main);
   text-transform: uppercase;
+}
+
+.nitt-dept-name {
+  font-size: 0.72rem;
+  color: var(--text-gold);
+  letter-spacing: 0.4px;
+  font-weight: 600;
 }
 
 .top-controls {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .control-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  color: #FFFFFF;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
 }
 
 .control-btn:hover {
-  background: rgba(255, 215, 0, 0.25);
-  border-color: var(--gold-primary);
-  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold-border);
+  color: var(--text-main);
+  transform: translateY(-1px);
 }
 
+/* Main Showcase Layout */
 .main-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 16px 40px;
-  max-width: 900px;
+  padding: 12px 16px 48px;
+  max-width: 960px;
   margin: 0 auto;
   width: 100%;
   z-index: 5;
 }
 
+/* Event Hero Header */
 .event-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .subtitle-badge {
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: #FFA726;
-  letter-spacing: 2.5px;
+  color: var(--gold-light);
+  background: rgba(217, 119, 6, 0.12);
+  border: 1px solid var(--gold-border);
+  padding: 4px 14px;
+  border-radius: 999px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-bottom: 6px;
-  text-shadow: 0 0 10px rgba(255, 167, 38, 0.5);
+  margin-bottom: 12px;
 }
 
 .main-title {
-  font-size: clamp(2.1rem, 5.8vw, 3.4rem);
-  font-weight: 900;
-  background: linear-gradient(135deg, #FFF9C4 0%, #FFD700 40%, #FF9800 75%, #FFD54F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 14px rgba(255, 215, 0, 0.45));
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  font-family: 'Cinzel', -apple-system, serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  line-height: 1.15;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .event-desc {
-  font-size: 0.95rem;
-  color: #E0E0E0;
-  max-width: 600px;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  max-width: 640px;
   margin: 0 auto;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .event-desc strong {
-  color: var(--gold-light);
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
-.activity-ticker {
-  background: rgba(255, 215, 0, 0.08);
-  border: 1px solid rgba(255, 215, 0, 0.22);
-  border-radius: 30px;
-  padding: 6px 18px;
-  margin: 12px 0 20px;
-  font-size: 0.82rem;
-  color: #FFE082;
+/* Verified Event Metadata Tags */
+.metadata-strip {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-  animation: pulseTicker 3s infinite ease-in-out;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 16px;
+  padding: 6px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes pulseTicker {
-  0%, 100% { border-color: rgba(255, 215, 0, 0.25); }
-  50% { border-color: rgba(255, 215, 0, 0.6); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+.meta-item {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
+.meta-item strong {
+  color: var(--text-main);
+}
+
+.meta-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .metadata-strip {
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+  .meta-divider {
+    display: none;
+  }
+}
+
+/* Wheel Arena */
 .wheel-stage {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 24px;
+  margin: 14px 0 24px;
 }
 
-.diya-lamp {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0.88;
-}
-
-.diya-left { left: -50px; }
-.diya-right { right: -50px; }
-
-@media (max-width: 650px) {
-  .diya-lamp { display: none; }
-}
-
-.diya-flame {
-  width: 14px;
-  height: 26px;
-  background: radial-gradient(ellipse at 50% 80%, #FFFFFF 0%, #FFEB3B 40%, #FF5722 80%, transparent 100%);
-  border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
-  filter: drop-shadow(0 0 10px #FF9800);
-  animation: flameFlicker 1.2s infinite alternate ease-in-out;
-}
-
-@keyframes flameFlicker {
-  0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
-  50% { transform: scale(1.08, 0.94) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 14px #FFC107); }
-  100% { transform: scale(0.96, 1.04) rotate(-1deg); opacity: 0.85; }
-}
-
-.diya-bowl {
-  width: 44px;
-  height: 18px;
-  background: linear-gradient(180deg, #D4AF37 0%, #8D6E63 100%);
-  border-radius: 0 0 40px 40px;
-  border-top: 2px solid #FFE082;
-  margin-top: -3px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-.diya-stand {
-  width: 12px;
-  height: 30px;
-  background: linear-gradient(90deg, #8D6E63, #D4AF37, #5D4037);
-  border-radius: 2px;
-}
-
+/* Canvas Container */
 .wheel-canvas-container {
   position: relative;
-  width: 520px;
-  height: 520px;
-  max-width: 92vw;
-  max-height: 92vw;
+  width: 500px;
+  height: 500px;
+  max-width: 90vw;
+  max-height: 90vw;
+  filter: drop-shadow(0 14px 35px rgba(0, 0, 0, 0.7));
 }
 
 #wheelCanvas {
@@ -274,122 +315,150 @@ body {
   display: block;
 }
 
+/* Spin Controls */
 .spin-action-wrapper {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  text-align: center;
 }
 
 .spin-btn {
-  background: linear-gradient(135deg, #FF6F00 0%, #D84315 50%, #B71C1C 100%);
-  border: 3px solid #FFE082;
-  border-radius: 50px;
-  padding: 16px 44px;
-  font-size: 1.25rem;
+  background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%);
+  border: 1.5px solid rgba(253, 230, 138, 0.5);
+  border-radius: 999px;
+  padding: 16px 48px;
+  font-size: 1.12rem;
   font-weight: 800;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.8px;
   color: #FFFFFF;
   cursor: pointer;
   box-shadow: 
-    0 0 20px rgba(255, 111, 0, 0.6),
-    0 6px 18px rgba(0, 0, 0, 0.5),
-    inset 0 2px 4px rgba(255, 255, 255, 0.4);
-  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    0 6px 20px rgba(29, 78, 216, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  position: relative;
-  overflow: hidden;
-}
-
-.spin-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: rotate(25deg);
-  animation: shineSweep 3.5s infinite;
-}
-
-@keyframes shineSweep {
-  0% { transform: translateX(-100%) rotate(25deg); }
-  30%, 100% { transform: translateX(100%) rotate(25deg); }
+  outline: none;
 }
 
 .spin-btn:hover:not(:disabled) {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 0 30px rgba(255, 179, 0, 0.85), 0 8px 24px rgba(0, 0, 0, 0.6);
-  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+  border-color: #FDE68A;
+  box-shadow: 
+    0 10px 28px rgba(29, 78, 216, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-.spin-btn:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+.spin-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
 
 .spin-btn:disabled {
-  opacity: 0.75;
   cursor: not-allowed;
-  filter: grayscale(0.2);
 }
 
 .spin-btn.already-spun {
-  background: linear-gradient(135deg, #37474F 0%, #263238 100%);
-  border-color: #78909C;
-  color: #ECEFF1;
+  background: #1E293B;
+  border-color: rgba(148, 163, 184, 0.3);
+  color: #94A3B8;
   box-shadow: none;
-  cursor: not-allowed;
 }
 
 .spin-hint {
   font-size: 0.84rem;
-  color: #B0BEC5;
+  color: var(--text-muted);
 }
 
+.spin-hint strong {
+  color: var(--text-secondary);
+}
+
+/* Campus Perks Strip (Professional Clean Grid) */
 .perks-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 16px;
   width: 100%;
-  margin-top: 36px;
-  padding: 0 10px;
+  margin-top: 40px;
 }
 
 .perk-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 215, 0, 0.18);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 14px;
-  padding: 16px;
+  padding: 18px 16px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
+  transition: all 0.2s ease;
   backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .perk-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 215, 0, 0.45);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--card-border-hover);
+  background: rgba(15, 26, 58, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-.perk-icon { font-size: 1.8rem; }
-.perk-info h4 { font-size: 0.95rem; color: var(--gold-light); margin-bottom: 2px; }
-.perk-info p { font-size: 0.8rem; color: #B0BEC5; line-height: 1.3; }
+.perk-icon-box {
+  width: 42px;
+  height: 42px;
+  background: rgba(29, 78, 216, 0.15);
+  border: 1px solid rgba(29, 78, 216, 0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
 
+.perk-info h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.perk-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Institutional Footer */
 footer {
   text-align: center;
-  padding: 24px 16px 20px;
+  padding: 30px 20px 24px;
   font-size: 0.82rem;
-  color: #78909C;
-  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  color: var(--text-muted);
+  border-top: 1px solid var(--card-border);
   margin-top: auto;
   position: relative;
   z-index: 5;
+  background: rgba(6, 11, 24, 0.85);
+  backdrop-filter: blur(8px);
 }
+
+footer p {
+  line-height: 1.6;
+}
+
+footer strong {
+  color: var(--text-secondary);
+}
+
+/* ==========================================================
+   OFFICIAL EVENT CONFIRMATION & REGISTRATION MODAL
+   (Authentic Academic Card - No Scam Urgency Popups)
+   ========================================================== */
 
 .modal-backdrop {
   position: fixed;
@@ -397,8 +466,8 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 1, 10, 0.9);
-  backdrop-filter: blur(12px);
+  background: rgba(4, 8, 18, 0.85);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -406,271 +475,287 @@ footer {
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.modal-backdrop.active { opacity: 1; visibility: visible; }
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
 
 .modal-content {
-  background: linear-gradient(165deg, #220329 0%, #0D0112 100%);
-  border: 2px solid var(--gold-primary);
+  background: #0B132B;
+  border: 1.5px solid rgba(217, 119, 6, 0.35);
   box-shadow: 
-    0 0 40px rgba(255, 215, 0, 0.45),
-    0 20px 60px rgba(0, 0, 0, 0.9);
-  border-radius: 22px;
+    0 16px 50px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(29, 78, 216, 0.25);
+  border-radius: 20px;
   max-width: 520px;
   width: 100%;
-  padding: 32px 26px 26px;
+  padding: 28px 24px;
   position: relative;
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0.95) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
-.modal-backdrop.active .modal-content { transform: scale(1) translateY(0); }
+.modal-backdrop.active .modal-content {
+  transform: scale(1) translateY(0);
+}
 
+/* Close Button (X) */
 .modal-close-btn {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1.5px solid rgba(255, 215, 0, 0.5);
-  color: #FFFFFF;
-  width: 40px;
-  height: 40px;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;
+  font-size: 20px;
   cursor: pointer;
   z-index: 9999;
-  pointer-events: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 23, 68, 0.85);
-  border-color: #FF1744;
-  transform: scale(1.12);
-}
-
-.modal-header { text-align: center; margin-bottom: 20px; }
-
-.trophy-badge {
-  font-size: 3.2rem;
-  margin-bottom: 6px;
-  animation: bounceTrophy 1.5s infinite alternate ease-in-out;
-}
-
-@keyframes bounceTrophy {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-8px) scale(1.08); }
-}
-
-.congrats-title {
-  font-size: clamp(1.6rem, 4vw, 2.1rem);
-  font-weight: 900;
-  color: #FFF9C4;
-  text-shadow: 0 0 14px rgba(255, 215, 0, 0.6);
-  margin-bottom: 10px;
-}
-
-.prize-spotlight-box {
-  background: rgba(183, 28, 28, 0.3);
-  border: 2px solid #FFD700;
-  border-radius: 14px;
-  padding: 12px 16px;
-  margin: 10px 0 12px;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
-}
-
-.prize-tag-badge {
-  display: inline-block;
-  background: #FFD700;
-  color: #000000;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  padding: 2px 8px;
-  border-radius: 20px;
-  margin-bottom: 4px;
-}
-
-.prize-spotlight-text {
-  font-size: 1.35rem;
-  font-weight: 900;
+  background: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.5px;
 }
 
-.congrats-sub { font-size: 0.88rem; color: #CFD8DC; }
-
-.redirect-box {
-  background: linear-gradient(135deg, rgba(255, 111, 0, 0.2) 0%, rgba(183, 28, 28, 0.25) 100%);
-  border: 1.5px solid #FFA000;
-  border-radius: 14px;
-  padding: 16px;
-  margin: 14px 0 16px;
+/* Modal Institutional Header */
+.modal-header {
   text-align: center;
-  box-shadow: 0 0 20px rgba(255, 160, 0, 0.25);
+  margin-bottom: 20px;
 }
 
-.redirect-instructions {
-  font-size: 0.88rem;
-  color: #FFE082;
-  line-height: 1.45;
+.modal-crest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(29, 78, 216, 0.14);
+  border: 1px solid rgba(29, 78, 216, 0.35);
+  color: #93C5FD;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
   margin-bottom: 12px;
 }
 
-.redirect-status-row {
+.modal-header h2 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+
+.modal-header p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* Admission Passcard Container */
+.passcard-box {
+  background: linear-gradient(145deg, #0F1A3A 0%, #0A1329 100%);
+  border: 1.5px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.passcard-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.92rem;
-  color: #FFF9C4;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.countdown-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #FF6F00;
-  color: #FFFFFF;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  font-size: 0.85rem;
-  font-weight: 800;
-}
-
-.redirect-progress-track {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  overflow: hidden;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(217, 119, 6, 0.3);
+  padding-bottom: 14px;
   margin-bottom: 14px;
 }
 
-.redirect-progress-bar {
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(90deg, #FFB300, #FF3D00);
-  transition: width 1s linear;
+.pass-type-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: rgba(217, 119, 6, 0.2);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  padding: 3px 8px;
+  border-radius: 6px;
 }
 
-.claim-now-btn {
-  display: inline-flex;
+.pass-venue-badge {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.passcard-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pass-icon-disc {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.25) 0%, rgba(217, 119, 6, 0.2) 100%);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pass-details h3 {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.pass-details p {
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+/* Registration Callout Box */
+.registration-callout {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.callout-heading {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.callout-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Official Action Button (Google Forms) */
+.official-form-btn {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   width: 100%;
-  background: linear-gradient(135deg, #FFB300 0%, #FF6F00 50%, #D84315 100%);
+  background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
   color: #FFFFFF;
   text-decoration: none;
-  border: 2px solid #FFF59D;
+  border: 1px solid rgba(253, 230, 138, 0.35);
   border-radius: 12px;
-  padding: 15px 20px;
-  font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: 0.8px;
+  padding: 15px 22px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(255, 111, 0, 0.6), 0 4px 15px rgba(0, 0, 0, 0.4);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 18px rgba(29, 78, 216, 0.45);
+  transition: all 0.2s ease;
 }
 
-.claim-now-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 28px rgba(255, 179, 0, 0.85);
-  border-color: #FFFFFF;
+.official-form-btn:hover {
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(29, 78, 216, 0.6);
+  border-color: #FDE68A;
 }
 
-.cancel-redirect-btn {
+/* Subtle Redirect Status (Dignified - Not Spammy) */
+.modal-redirect-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.redirect-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cancel-redirect-link {
   background: none;
   border: none;
-  color: #B0BEC5;
-  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
   text-decoration: underline;
   cursor: pointer;
-  margin-top: 10px;
-  display: inline-block;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
 }
 
-.cancel-redirect-btn:hover { color: #FFFFFF; }
+.cancel-redirect-link:hover {
+  color: var(--text-main);
+}
 
-.single-spin-notice {
+.single-spin-badge {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.78rem;
-  color: #B0BEC5;
-  text-align: center;
-  padding-top: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.admin-card { max-width: 460px; padding: 24px; }
-.admin-card h3 { color: var(--gold-light); margin-bottom: 12px; font-size: 1.2rem; }
-.admin-card p { font-size: 0.85rem; color: #B0BEC5; margin-bottom: 14px; line-height: 1.4; }
-.admin-card label { display: block; font-size: 0.8rem; color: #FFE082; margin-bottom: 4px; }
-.admin-card input {
-  width: 100%;
-  background: #110317;
-  color: #FFFFFF;
-  border: 1px solid var(--gold-primary);
-  padding: 9px 12px;
-  border-radius: 8px;
-  margin-bottom: 14px;
-  font-size: 0.88rem;
-}
-
-.reset-spin-btn {
-  background: rgba(255, 23, 68, 0.2);
-  border: 1px solid #FF1744;
-  color: #FF8A80;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.2s ease;
-}
-
-.reset-spin-btn:hover {
-  background: rgba(255, 23, 68, 0.4);
-  color: #FFFFFF;
-}
   </style>
 </head>
 <body>
 
-  <!-- Fullscreen Fireworks & Confetti Canvas -->
+<!-- Fullscreen Fireworks & Confetti Canvas -->
   <canvas id="fireworksCanvas"></canvas>
 
-  <!-- Top Diwali Toran / Marigold Garland -->
-  <div class="toran-garland"></div>
+  <!-- Institutional Verification Top Strip -->
+  <div class="institutional-banner">
+    <span>ðŸ›ï¸ Cultural Council â€¢ National Institute of Technology, Tiruchirappalli</span>
+    <span class="verified-pill">âœ“ Verified Campus Event</span>
+  </div>
 
   <!-- Top Action & Navigation Bar -->
   <header class="top-action-bar">
     <div class="nitt-tag">
-      <span>🏛️</span>
-      <span>NIT Trichy • Cultural Council</span>
+      <div class="nitt-emblem" aria-hidden="true">ðŸ›ï¸</div>
+      <div class="nitt-tag-text">
+        <span class="nitt-inst-name">NIT Trichy</span>
+        <span class="nitt-dept-name">Cultural Council</span>
+      </div>
     </div>
     <div class="top-controls">
       <button id="soundToggleBtn" class="control-btn" title="Toggle Sound (Mute/Unmute)">
-        <span id="soundIcon">🔊</span>
+        <span id="soundIcon">ðŸ”Š</span>
       </button>
       <button id="infoBtn" class="control-btn" title="Event Info">
-        <span>ℹ️</span>
+        <span>â„¹ï¸</span>
       </button>
     </div>
   </header>
@@ -678,77 +763,69 @@ footer {
   <!-- Main Showcase Container -->
   <main class="main-wrapper">
     
-    <!-- Festive Title Header -->
+    <!-- Professional Event Header -->
     <section class="event-header">
-      <div class="subtitle-badge">🪔 NIT TRICHY FESTIVAL OF LIGHTS 🪔</div>
-      <h1 class="main-title">DIWALI CELEBRATION</h1>
+      <div class="subtitle-badge">ðŸª” DIWALI CELEBRATIONS 2026 ðŸª”</div>
+      <h1 class="main-title">CAMPUS LUCKY DRAW</h1>
       <p class="event-desc">
-        Welcome to the official <strong>Cultural Council NITT</strong> Diwali Celebration Lucky Wheel! Spin your wheel to win exclusive movie screening perks & surprises!
+        Welcome to the official <strong>Cultural Council NITT</strong> Diwali Lucky Draw. Spin your lucky wheel to unlock an exclusive Movie Screening Pass and campus perks for the upcoming Barn Hall festival festivities.
       </p>
 
-      <!-- Live Activity Ticker -->
-      <div class="activity-ticker">
-        <span>⚡ <strong>538 NITTians</strong> spun today</span>
-        <span>•</span>
-        <span>🎬 <strong>Diwali Movie Screening</strong></span>
-        <span>•</span>
-        <span>🎟️ <strong>1 Spin Per Student</strong></span>
+      <!-- Clean Verified Event Metadata Strip -->
+      <div class="metadata-strip">
+        <div class="meta-item">
+          <span>ðŸ“</span>
+          <span>Barn Hall Screening</span>
+        </div>
+        <span class="meta-divider">â€¢</span>
+        <div class="meta-item">
+          <span>ðŸŽ¬</span>
+          <span>Diwali Special Premiere</span>
+        </div>
+        <span class="meta-divider">â€¢</span>
+        <div class="meta-item">
+          <span>ðŸŽŸï¸</span>
+          <span>1 Verified Spin Per Student</span>
+        </div>
       </div>
     </section>
 
     <!-- Wheel Arena -->
     <section class="wheel-stage">
-      
-      <!-- Left Traditional Brass Diya Lamp -->
-      <div class="diya-lamp diya-left" aria-hidden="true">
-        <div class="diya-flame"></div>
-        <div class="diya-bowl"></div>
-        <div class="diya-stand"></div>
-      </div>
-
-      <!-- Canvas Wheel -->
       <div class="wheel-canvas-container">
         <canvas id="wheelCanvas"></canvas>
       </div>
-
-      <!-- Right Traditional Brass Diya Lamp -->
-      <div class="diya-lamp diya-right" aria-hidden="true">
-        <div class="diya-flame"></div>
-        <div class="diya-bowl"></div>
-        <div class="diya-stand"></div>
-      </div>
-
     </section>
 
     <!-- Spin Button Controls -->
     <div class="spin-action-wrapper">
       <button id="spinBtn" class="spin-btn">
-        <span>SPIN TO WIN</span>
-        <span style="font-size: 1.4rem;">🪔</span>
+        <span>SPIN LUCKY WHEEL</span>
+        <span style="font-size: 1.25rem;">ðŸŽ¡</span>
       </button>
-      <p id="spinStatus" class="spin-hint">Tap above to test your Diwali luck! (1 spin per user)</p>
+      <p id="spinStatus" class="spin-hint">Tap above to test your fortune â€¢ 1 verified spin per student</p>
     </div>
 
-    <!-- Festive Campus Perks Grid -->
+    <!-- Campus Perks Grid -->
     <section class="perks-strip">
       <div class="perk-card">
-        <div class="perk-icon">🎟️</div>
+        <div class="perk-icon-box">ðŸŽŸï¸</div>
         <div class="perk-info">
           <h4>Movie Premiere Pass</h4>
-          <p>Campus special Diwali screening with sound & AC</p>
+          <p>Campus special screening with surround sound in Barn Hall</p>
         </div>
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🍿</div>
+        <div class="perk-icon-box">ðŸ¿</div>
         <div class="perk-info">
-          <h4>Free Popcorn Tub</h4>
-          <p>Complimentary snack tub for screening attendees</p>
+          <h4>Complimentary Snack Tub</h4>
+          <p>Fresh popcorn snack tub for screening attendees</p>
         </div>
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🏛️</div>
+        <div class="perk-icon-box">ðŸ›ï¸</div>
         <div class="perk-info">
           <h4>Bay 0 VIP Access</h4>
           <p>Exclusive lounge & chillout pass for fest events</p>
@@ -756,9 +833,9 @@ footer {
       </div>
 
       <div class="perk-card">
-        <div class="perk-icon">🏷️</div>
+        <div class="perk-icon-box">ðŸ·ï¸</div>
         <div class="perk-info">
-          <h4>₹200 Stall Voucher</h4>
+          <h4>â‚¹200 Stall Voucher</h4>
           <p>Redeemable across Diwali food & game stalls</p>
         </div>
       </div>
@@ -766,69 +843,89 @@ footer {
 
   </main>
 
-  <!-- Footer -->
+  <!-- Institutional Footer -->
   <footer>
-    <p>Organized with ❤️ by <strong>Cultural Council • National Institute of Technology, Tiruchirappalli</strong></p>
-    <p style="margin-top: 4px; opacity: 0.75;">Diwali Celebration Special Edition • Tanjore Road, Thuvakudi, Trichy - 620015</p>
+    <p>Organized by the <strong>Cultural Council â€¢ National Institute of Technology, Tiruchirappalli</strong></p>
+    <p style="margin-top: 4px; font-size: 0.76rem; opacity: 0.75;">Tanjore Main Road, National Highway 67, Thuvakudi, Trichy - 620015</p>
   </footer>
 
   <!-- =======================================================
-       WINNER CELEBRATION MODAL & GOOGLE FORMS REDIRECT
+       OFFICIAL EVENT CONFIRMATION & REGISTRATION PASS MODAL
+       (Authentic Institutional Card - No Scam Urgency Popups)
        ======================================================= -->
   <div id="winnerModal" class="modal-backdrop" role="dialog" aria-modal="true">
     <div class="modal-content">
+      <!-- Close Button -->
       <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
       
       <div class="modal-header">
-        <div class="trophy-badge">🎬 🎟️ 🪔</div>
-        <h2 class="congrats-title">🎉 CONGRATULATIONS! 🎉</h2>
-        <div class="prize-spotlight-box">
-          <span class="prize-tag-badge">OFFICIAL REWARD</span>
-          <h3 class="prize-spotlight-text">YOU WON A TICKET FOR MOVIE!</h3>
+        <div class="modal-crest-badge">
+          <span>ðŸ›ï¸</span>
+          <span>NIT Trichy â€¢ Cultural Council</span>
         </div>
-        <p class="congrats-sub">Cultural Council • NIT Trichy Diwali Celebration</p>
+        <h2>Lucky Draw Reward Unlocked</h2>
+        <p>Diwali Celebrations 2026 â€¢ Campus Screening</p>
       </div>
 
-      <!-- REDIRECT CALL TO ACTION BOX -->
-      <div class="redirect-box">
-        <p class="redirect-instructions">
-          To claim your ticket and complete movie seat booking, please proceed to the official registration Google Form:
+      <!-- Admission Passcard Container -->
+      <div class="passcard-box">
+        <div class="passcard-top">
+          <span class="pass-type-badge">Official Event Reward</span>
+          <span class="pass-venue-badge">ðŸ“ Barn Hall Screening</span>
+        </div>
+
+        <div class="passcard-body">
+          <div class="pass-icon-disc">ðŸŽŸï¸</div>
+          <div class="pass-details">
+            <h3 class="prize-spotlight-text">Ticket for Movie</h3>
+            <p>Diwali Special Screening Pass</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions & Official Form Link -->
+      <div class="registration-callout">
+        <div class="callout-heading">
+          <span>ðŸ“‹</span>
+          <span>Verification & Seat Allocation:</span>
+        </div>
+        <p class="callout-desc">
+          Your lucky spin qualifies you for this campus screening pass! Please proceed to the official Cultural Council Google Form to verify your student roll number and confirm your seat booking.
         </p>
+      </div>
 
-        <div class="redirect-status-row">
-          <span>🚀 Redirecting to Google Forms in</span>
-          <span id="redirectCountdown" class="countdown-badge">4</span>
-          <span>seconds...</span>
-        </div>
-        <div class="redirect-progress-track">
-          <div id="redirectProgressBar" class="redirect-progress-bar"></div>
-        </div>
-        
-        <a id="claimRedirectLink" href="https://forms.gle/diwali-nitt-movie-ticket" target="_blank" rel="noopener noreferrer" class="claim-now-btn">
-          <span>🎟️</span>
-          <span>REGISTER NOW ON GOOGLE FORMS</span>
-          <span>➔</span>
-        </a>
+      <!-- Action Button -->
+      <a id="claimRedirectLink" href="https://forms.gle/diwali-nitt-movie-ticket" target="_blank" rel="noopener noreferrer" class="official-form-btn">
+        <span>Proceed to Official Registration Form</span>
+        <span>âž”</span>
+      </a>
 
-        <button type="button" id="cancelRedirectBtn" class="cancel-redirect-btn">
-          Stay on homepage
+      <!-- Dignified Redirect Notice (No aggressive alarmist bars) -->
+      <div class="modal-redirect-status">
+        <span class="redirect-text">
+          <span>âš¡</span>
+          <span>Opening form in <strong id="redirectCountdown" style="color: var(--text-gold);">4</strong>s...</span>
+        </span>
+        <button type="button" id="cancelRedirectBtn" class="cancel-redirect-link">
+          Stay on page
         </button>
       </div>
 
-      <div class="single-spin-notice">
-        <span>🔒</span>
-        <span>Notice: Each student is permitted to spin only once. Your reward is locked!</span>
+      <!-- Single-spin Policy Note -->
+      <div class="single-spin-badge">
+        <span>ðŸ”’</span>
+        <span>Verified 1-spin policy: Your reward has been confirmed on this device.</span>
       </div>
 
     </div>
   </div>
 
   <script>
-/**
- * Embedded Scripts for Standalone Execution
- */
-
 // 1. Audio Engine
+/**
+ * Diwali Spin Wheel - Synthesized Web Audio Engine
+ * Zero external audio file dependencies. Works 100% offline and cross-origin safe.
+ */
 class SoundEngine {
   constructor() {
     this.ctx = null;
@@ -844,7 +941,9 @@ class SoundEngine {
         this.ctx = new AudioCtx();
         this.initialized = true;
       }
-    } catch (e) {}
+    } catch (e) {
+      console.warn('AudioContext not supported:', e);
+    }
   }
 
   resume() {
@@ -859,6 +958,7 @@ class SoundEngine {
     return this.isMuted;
   }
 
+  // Mechanical wheel peg click sound
   playTick(velocity = 1) {
     if (this.isMuted || !this.ctx) return;
     this.resume();
@@ -869,6 +969,7 @@ class SoundEngine {
       const gain = this.ctx.createGain();
       const filter = this.ctx.createBiquadFilter();
 
+      // Sharp click transient with body
       const freq = 600 + Math.min(velocity * 80, 400);
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, now);
@@ -889,8 +990,11 @@ class SoundEngine {
       osc.start(now);
       osc.stop(now + 0.05);
 
+      // Add a tiny wooden noise click
       this.playWoodNoise(now, 0.08 * velocity);
-    } catch (e) {}
+    } catch (e) {
+      // Audio fallback
+    }
   }
 
   playWoodNoise(time, volume) {
@@ -920,9 +1024,11 @@ class SoundEngine {
     } catch (e) {}
   }
 
+  // Spin launch sound
   playSpinStart() {
     if (this.isMuted || !this.ctx) return;
     this.resume();
+
     try {
       const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
@@ -944,16 +1050,18 @@ class SoundEngine {
     } catch (e) {}
   }
 
+  // Joyous Diwali Fanfare for the Win!
   playWinFanfare() {
     if (this.isMuted || !this.ctx) return;
     this.resume();
+
     try {
       const notes = [
-        { f: 523.25, t: 0.00, d: 0.18 },
-        { f: 659.25, t: 0.16, d: 0.18 },
-        { f: 783.99, t: 0.32, d: 0.22 },
-        { f: 1046.50, t: 0.50, d: 0.65 },
-        { f: 1318.51, t: 0.70, d: 0.85 }
+        { f: 523.25, t: 0.00, d: 0.18 }, // C5
+        { f: 659.25, t: 0.16, d: 0.18 }, // E5
+        { f: 783.99, t: 0.32, d: 0.22 }, // G5
+        { f: 1046.50, t: 0.50, d: 0.65 }, // C6
+        { f: 1318.51, t: 0.70, d: 0.85 }  // E6 (sparkle high)
       ];
 
       const start = this.ctx.currentTime + 0.05;
@@ -983,15 +1091,22 @@ class SoundEngine {
         oscHarmonic.stop(start + n.t + n.d);
       });
 
-      setTimeout(() => this.playCrackerBurst(), 400);
-      setTimeout(() => this.playCrackerBurst(), 850);
+      // Play cracker burst after brief pause
+      setTimeout(() => {
+        this.playCrackerBurst();
+      }, 400);
+      setTimeout(() => {
+        this.playCrackerBurst();
+      }, 850);
     } catch (e) {}
   }
 
+  // Diwali phataka / cracker burst sound
   playCrackerBurst() {
     if (this.isMuted || !this.ctx) return;
     try {
       const now = this.ctx.currentTime;
+      // White noise explosion
       const bufferSize = this.ctx.sampleRate * 0.4;
       const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
       const data = buffer.getChannelData(0);
@@ -1018,15 +1133,22 @@ class SoundEngine {
     } catch (e) {}
   }
 }
+
 window.soundEngine = new SoundEngine();
 
+
 // 2. Fireworks Engine
+/**
+ * Diwali Fireworks & Golden Confetti Engine
+ * Renders celebratory fireworks, sparklers, and confetti across the canvas.
+ */
 class FireworksEngine {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
+    this.rockets = [];
     this.confetti = [];
     this.isRunning = false;
     this.resize();
@@ -1042,8 +1164,11 @@ class FireworksEngine {
   startCelebration(duration = 7000) {
     this.isRunning = true;
     this.resize();
+
+    // Launch initial salvo of rockets
     this.launchBurstSalvo(8);
 
+    // Continuous celebration
     const interval = setInterval(() => {
       if (!this.isRunning) {
         clearInterval(interval);
@@ -1053,6 +1178,7 @@ class FireworksEngine {
       this.addConfettiBurst();
     }, 400);
 
+    // Stop launching new after duration
     setTimeout(() => {
       clearInterval(interval);
       setTimeout(() => {
@@ -1081,7 +1207,17 @@ class FireworksEngine {
   }
 
   explodeAt(x, y) {
-    const festiveColors = ['#FFD700', '#FF9933', '#FF3366', '#00FFCC', '#9933FF', '#FFFFFF', '#FF6600', '#00E676'];
+    const festiveColors = [
+      '#FFD700', // Gold
+      '#FF9933', // Deep Saffron
+      '#FF3366', // Festive Pink / Red
+      '#00FFCC', // Cyan Spark
+      '#9933FF', // Royal Purple
+      '#FFFFFF', // White Flash
+      '#FF6600', // Marigold Orange
+      '#00E676'  // Emerald Spark
+    ];
+
     const color1 = festiveColors[Math.floor(Math.random() * festiveColors.length)];
     const color2 = festiveColors[Math.floor(Math.random() * festiveColors.length)];
     const particleCount = 70;
@@ -1090,14 +1226,16 @@ class FireworksEngine {
       const angle = (Math.PI * 2 / particleCount) * i + (Math.random() * 0.2);
       const speed = 2.5 + Math.random() * 6;
       this.particles.push({
-        x: x, y: y,
+        x: x,
+        y: y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         alpha: 1,
         color: Math.random() > 0.5 ? color1 : color2,
         decay: 0.012 + Math.random() * 0.018,
         gravity: 0.1,
-        size: 2 + Math.random() * 3
+        size: 2 + Math.random() * 3,
+        sparkle: Math.random() > 0.4
       });
     }
   }
@@ -1131,8 +1269,10 @@ class FireworksEngine {
       this.clear();
       return;
     }
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+    // Draw & update firework particles
     for (let i = this.particles.length - 1; i >= 0; i--) {
       const p = this.particles[i];
       p.x += p.vx;
@@ -1157,6 +1297,7 @@ class FireworksEngine {
       this.ctx.restore();
     }
 
+    // Draw & update confetti
     for (let i = this.confetti.length - 1; i >= 0; i--) {
       const c = this.confetti[i];
       c.x += c.vx;
@@ -1180,18 +1321,26 @@ class FireworksEngine {
   }
 }
 
-// 3. Diwali Wheel Class
+
+// 3. Wheel Engine
+/**
+ * Diwali Celebration - Wheel Engine
+ * High-precision canvas renderer, smooth physics, authentic flapper deflection,
+ * prominent large reward display, and guaranteed promotional target landing.
+ * Institutional NIT Trichy Academic Navy & Festive Gold Design System.
+ */
+
 const DEFAULT_PRIZES = [
   {
     id: 'movie_ticket',
     label: 'Ticket for Movie',
-    line1: 'FREE MOVIE',
+    line1: 'CAMPUS MOVIE',
     line2: 'TICKET',
-    icon: '🎟️',
-    color1: '#8B0000',
-    color2: '#C62828',
-    accent: '#FFD700',
-    textColor: '#FFF9C4',
+    icon: 'ðŸŽŸï¸',
+    color1: '#1E3A8A', // Deep Royal Academic Navy
+    color2: '#2563EB',
+    accent: '#FDE68A',
+    textColor: '#FFFFFF',
     isTarget: true
   },
   {
@@ -1199,10 +1348,10 @@ const DEFAULT_PRIZES = [
     label: 'Free Popcorn',
     line1: 'FREE',
     line2: 'POPCORN',
-    icon: '🍿',
-    color1: '#0D47A1',
-    color2: '#1976D2',
-    accent: '#FFF176',
+    icon: 'ðŸ¿',
+    color1: '#0F172A', // Slate Midnight
+    color2: '#1E293B',
+    accent: '#CBD5E1',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -1211,22 +1360,22 @@ const DEFAULT_PRIZES = [
     label: 'Bay 0 Access',
     line1: 'BAY 0',
     line2: 'ACCESS',
-    icon: '🏛️',
-    color1: '#1B5E20',
-    color2: '#2E7D32',
-    accent: '#C8E6C9',
+    icon: 'ðŸ›ï¸',
+    color1: '#1E1B4B', // Deep Royal Indigo
+    color2: '#312E81',
+    accent: '#E0E7FF',
     textColor: '#FFFFFF',
     isTarget: false
   },
   {
     id: 'coupon_200',
-    label: '₹200 Stall Coupon',
-    line1: '₹200 STALL',
+    label: 'â‚¹200 Stall Coupon',
+    line1: 'â‚¹200 STALL',
     line2: 'COUPON',
-    icon: '🏷️',
-    color1: '#4A148C',
-    color2: '#7B1FA2',
-    accent: '#E1BEE7',
+    icon: 'ðŸ·ï¸',
+    color1: '#0B192C', // Deep Twilight Slate
+    color2: '#1E3E62',
+    accent: '#FDE68A',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -1235,10 +1384,10 @@ const DEFAULT_PRIZES = [
     label: 'Diwali Sweets Box',
     line1: 'DIWALI',
     line2: 'SWEETS',
-    icon: '🪔',
-    color1: '#E65100',
-    color2: '#FB8C00',
-    accent: '#FFE082',
+    icon: 'ðŸª”',
+    color1: '#78350F', // Rich Warm Amber
+    color2: '#92400E',
+    accent: '#FEF3C7',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -1247,10 +1396,10 @@ const DEFAULT_PRIZES = [
     label: 'Sparklers Pack',
     line1: 'SPARKLERS',
     line2: 'PACK',
-    icon: '🎆',
-    color1: '#880E4F',
-    color2: '#C2185B',
-    accent: '#F8BBD0',
+    icon: 'ðŸŽ†',
+    color1: '#0F172A', // Slate Midnight
+    color2: '#1E293B',
+    accent: '#CBD5E1',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -1259,10 +1408,10 @@ const DEFAULT_PRIZES = [
     label: 'Fest Exclusive T-Shirt',
     line1: 'FEST MERCH',
     line2: 'T-SHIRT',
-    icon: '👕',
-    color1: '#004D40',
-    color2: '#00897B',
-    accent: '#B2DFDB',
+    icon: 'ðŸ‘•',
+    color1: '#172554', // Deep Ocean Navy
+    color2: '#1E40AF',
+    accent: '#FDE68A',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -1271,10 +1420,10 @@ const DEFAULT_PRIZES = [
     label: 'Chilled Beverage',
     line1: 'CHILLED',
     line2: 'BEVERAGE',
-    icon: '🥤',
-    color1: '#BF360C',
-    color2: '#E64A19',
-    accent: '#FFCCBC',
+    icon: 'ðŸ¥¤',
+    color1: '#0B192C', // Deep Twilight Slate
+    color2: '#1E3E62',
+    accent: '#BAE6FD',
     textColor: '#FFFFFF',
     isTarget: false
   }
@@ -1328,48 +1477,44 @@ class DiwaliWheel {
     this.numSlices = this.prizes.length;
     this.sliceAngle = (2 * Math.PI) / this.numSlices;
 
+    // Angle state (in radians)
     this.currentAngle = 0;
     this.isSpinning = false;
+
+    // Pointer flapper animation state
     this.flapperAngle = 0;
     this.lastPegIndex = -1;
-    this.numLeds = 24;
-    this.ledState = 0;
-    this.lastLedTick = 0;
+
+    // Callbacks
     this.onSpinStart = options.onSpinStart || (() => {});
     this.onSpinEnd = options.onSpinEnd || (() => {});
     this.onTick = options.onTick || (() => {});
 
+    // High DPI scaling
     this.setupDPI();
     window.addEventListener('resize', () => {
       this.setupDPI();
       this.draw();
     });
-    this.ambientLoop();
+
+    // Initial render
+    this.draw();
   }
 
   setupDPI() {
     const rect = this.canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    const size = Math.min(rect.width, rect.height) || 520;
+    const size = Math.min(rect.width, rect.height) || 500;
+
     this.canvas.width = size * dpr;
     this.canvas.height = size * dpr;
-    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform
     this.ctx.scale(dpr, dpr);
+
     this.displaySize = size;
     this.centerX = size / 2;
     this.centerY = size / 2;
     this.wheelRadius = size * 0.44;
-  }
-
-  ambientLoop(timestamp = 0) {
-    if (!this.isSpinning) {
-      if (timestamp - this.lastLedTick > 280) {
-        this.ledState = (this.ledState + 1) % 3;
-        this.lastLedTick = timestamp;
-        this.draw();
-      }
-    }
-    requestAnimationFrame((t) => this.ambientLoop(t));
   }
 
   setLandedOnPrize(prizeId = 'movie_ticket') {
@@ -1386,6 +1531,7 @@ class DiwaliWheel {
     this.isSpinning = true;
     this.onSpinStart();
 
+    // 1. Determine target slice index
     let targetIndex;
     if (this.targetPrizeId === 'random' || !this.targetPrizeId) {
       targetIndex = Math.floor(Math.random() * this.prizes.length);
@@ -1397,6 +1543,8 @@ class DiwaliWheel {
     const twoPi = Math.PI * 2;
     const pointerAngle = 1.5 * Math.PI;
     const sectorCenter = (targetIndex + 0.5) * this.sliceAngle;
+
+    // Safe random jitter within sector bounds (-10 deg to +10 deg)
     const jitter = (Math.random() - 0.5) * (this.sliceAngle * 0.45);
 
     let desiredFinalMod = (pointerAngle - sectorCenter + jitter) % twoPi;
@@ -1408,6 +1556,7 @@ class DiwaliWheel {
     let delta = desiredFinalMod - currentMod;
     if (delta <= 0) delta += twoPi;
 
+    // Total rotations: 7 to 9 full spins
     const fullSpins = (7 + Math.floor(Math.random() * 2)) * twoPi;
     const totalRotation = fullSpins + delta;
 
@@ -1416,6 +1565,7 @@ class DiwaliWheel {
     const duration = 5600 + Math.random() * 500;
     const startTime = performance.now();
 
+    // Quintic Ease-Out curve for dramatic deceleration
     const easeOutCustom = (t) => 1 - Math.pow(1 - t, 4.2);
     let lastAngle = startAngle;
 
@@ -1425,6 +1575,7 @@ class DiwaliWheel {
       const easedProgress = easeOutCustom(progress);
 
       this.currentAngle = startAngle + totalRotation * easedProgress;
+
       const angleDelta = this.currentAngle - lastAngle;
       lastAngle = this.currentAngle;
 
@@ -1439,6 +1590,7 @@ class DiwaliWheel {
         this.isSpinning = false;
         this.flapperAngle = 0;
         this.draw();
+
         const wonPrize = this.prizes[targetIndex];
         this.onSpinEnd(wonPrize);
       }
@@ -1469,34 +1621,38 @@ class DiwaliWheel {
 
     ctx.clearRect(0, 0, this.displaySize, this.displaySize);
 
+    // 1. Outer Subtle Ambient Backlight (Executive Navy & Gold Aura)
     ctx.save();
-    const auraGradient = ctx.createRadialGradient(cx, cy, R * 0.9, cx, cy, R * 1.15);
-    auraGradient.addColorStop(0, 'rgba(255, 193, 7, 0.32)');
-    auraGradient.addColorStop(0.5, 'rgba(255, 111, 0, 0.18)');
+    const auraGradient = ctx.createRadialGradient(cx, cy, R * 0.95, cx, cy, R * 1.14);
+    auraGradient.addColorStop(0, 'rgba(29, 78, 216, 0.22)');
+    auraGradient.addColorStop(0.6, 'rgba(217, 119, 6, 0.12)');
     auraGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = auraGradient;
     ctx.beginPath();
-    ctx.arc(cx, cy, R * 1.15, 0, Math.PI * 2);
+    ctx.arc(cx, cy, R * 1.14, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
 
+    // 2. High-Precision Brushed Gold & Slate Outer Bezel
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, R + 18, 0, Math.PI * 2);
     const rimGrad = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
-    rimGrad.addColorStop(0, '#FFE082');
-    rimGrad.addColorStop(0.25, '#FFB300');
-    rimGrad.addColorStop(0.5, '#795548');
-    rimGrad.addColorStop(0.75, '#FFA000');
-    rimGrad.addColorStop(1, '#FFD54F');
+    rimGrad.addColorStop(0, '#FDE68A');
+    rimGrad.addColorStop(0.2, '#D97706');
+    rimGrad.addColorStop(0.5, '#1E293B'); // Slate Chamfer
+    rimGrad.addColorStop(0.8, '#D97706');
+    rimGrad.addColorStop(1, '#F59E0B');
     ctx.fillStyle = rimGrad;
-    ctx.shadowBlur = 14;
-    ctx.shadowColor = 'rgba(255, 179, 0, 0.55)';
+    ctx.shadowBlur = 16;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
     ctx.fill();
     ctx.restore();
 
-    this.drawLeds(cx, cy, R + 9);
+    // 3. Precision Machined Studs around the Bezel (Replacing tacky blinking LEDs)
+    this.drawBezelStuds(cx, cy, R + 9);
 
+    // 4. Draw Wheel Slices
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(this.currentAngle);
@@ -1506,6 +1662,7 @@ class DiwaliWheel {
       const startAngle = i * this.sliceAngle;
       const endAngle = startAngle + this.sliceAngle;
 
+      // Slice background
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.arc(0, 0, R, startAngle, endAngle);
@@ -1513,68 +1670,69 @@ class DiwaliWheel {
 
       const sliceGrad = ctx.createRadialGradient(0, 0, 15, 0, 0, R);
       sliceGrad.addColorStop(0, prize.color2);
-      sliceGrad.addColorStop(0.85, prize.color1);
-      sliceGrad.addColorStop(1, '#1A0000');
+      sliceGrad.addColorStop(0.82, prize.color1);
+      sliceGrad.addColorStop(1, '#060B18');
       ctx.fillStyle = sliceGrad;
       ctx.fill();
 
-      ctx.strokeStyle = 'rgba(255, 215, 0, 0.75)';
-      ctx.lineWidth = 3;
+      // Sleek subtle border between slices
+      ctx.strokeStyle = 'rgba(217, 119, 6, 0.45)';
+      ctx.lineWidth = 1.8;
       ctx.stroke();
 
+      // Highlight target prize with precision inner gold track
       if (prize.isTarget) {
         ctx.save();
-        ctx.strokeStyle = '#FFE082';
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#FDE68A';
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(0, 0, R - 5, startAngle + 0.03, endAngle - 0.03);
+        ctx.arc(0, 0, R - 4, startAngle + 0.03, endAngle - 0.03);
         ctx.stroke();
         ctx.restore();
       }
 
+      // Draw Slice Content (Clean, High-Contrast Typography)
       this.drawSliceContent(prize, startAngle + this.sliceAngle / 2, R);
+
+      // Draw metallic pegs at slice boundaries
       this.drawPeg(startAngle, R - 2);
     }
 
     ctx.restore();
+
+    // 5. Draw Center Institutional Seal Medallion
     this.drawCenterHub(cx, cy);
+
+    // 6. Draw Top Precision Flapper Pointer
     this.drawPointer(cx, cy - R + 2);
   }
 
-  drawLeds(cx, cy, radius) {
+  drawBezelStuds(cx, cy, radius) {
     const ctx = this.ctx;
-    const bulbCount = this.numLeds;
+    const studCount = 24;
 
-    for (let i = 0; i < bulbCount; i++) {
-      const angle = (i / bulbCount) * Math.PI * 2;
+    for (let i = 0; i < studCount; i++) {
+      const angle = (i / studCount) * Math.PI * 2;
       const bx = cx + Math.cos(angle) * radius;
       const by = cy + Math.sin(angle) * radius;
 
-      const stateIndex = (i + this.ledState) % 3;
-      let bulbColor = '#FFECB3';
-      let glowColor = 'rgba(255, 235, 59, 0.8)';
-
-      if (stateIndex === 0) {
-        bulbColor = '#FFF59D';
-        glowColor = 'rgba(255, 215, 0, 0.9)';
-      } else if (stateIndex === 1) {
-        bulbColor = '#FF8A80';
-        glowColor = 'rgba(255, 23, 68, 0.8)';
-      } else {
-        bulbColor = '#FFFFFF';
-        glowColor = 'rgba(255, 255, 255, 0.9)';
-      }
-
       ctx.save();
       ctx.beginPath();
-      ctx.arc(bx, by, 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = bulbColor;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = glowColor;
+      ctx.arc(bx, by, 3.8, 0, Math.PI * 2);
+      
+      const studGrad = ctx.createLinearGradient(bx - 3, by - 3, bx + 3, by + 3);
+      studGrad.addColorStop(0, '#FEF3C7');
+      studGrad.addColorStop(0.5, '#F59E0B');
+      studGrad.addColorStop(1, '#78350F');
+      
+      ctx.fillStyle = studGrad;
+      ctx.shadowBlur = 3;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
       ctx.fill();
 
+      // Micro specular highlight
       ctx.beginPath();
-      ctx.arc(bx - 1.2, by - 1.2, 1.4, 0, Math.PI * 2);
+      ctx.arc(bx - 1, by - 1, 1.2, 0, Math.PI * 2);
       ctx.fillStyle = '#FFFFFF';
       ctx.fill();
       ctx.restore();
@@ -1588,17 +1746,17 @@ class DiwaliWheel {
 
     const scale = Math.max(0.85, Math.min(R / 220, 1.3));
 
-    // 1. BIG EYE-CATCHING ICON
+    // 1. Refined Circular Icon Badge
     const iconX = R * 0.77;
-    const iconSize = Math.round(38 * scale);
+    const iconSize = Math.round(36 * scale);
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(iconX, 0, 24 * scale, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    ctx.arc(iconX, 0, 23 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(11, 19, 43, 0.65)';
     ctx.fill();
-    ctx.strokeStyle = prize.isTarget ? '#FFD700' : 'rgba(255, 255, 255, 0.25)';
-    ctx.lineWidth = prize.isTarget ? 2 : 1;
+    ctx.strokeStyle = prize.isTarget ? '#FDE68A' : 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = prize.isTarget ? 1.8 : 1;
     ctx.stroke();
     ctx.restore();
 
@@ -1607,7 +1765,7 @@ class DiwaliWheel {
     ctx.textBaseline = 'middle';
     ctx.fillText(prize.icon, iconX, 0);
 
-    // 2. LARGE, PROMINENT, BOLD REWARD TEXT
+    // 2. High-Contrast, Crisp Typography (No thick cartoon outline)
     const textX = R * 0.46;
     const lineSpacing = 10 * scale;
     const maxTextWidth = R * 0.38;
@@ -1615,38 +1773,39 @@ class DiwaliWheel {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    const drawStrokedText = (text, x, y, font, fillColor, strokeColor = '#000000', lineWidth = 3.8) => {
+    const drawCleanText = (text, x, y, font, fillColor) => {
       ctx.font = font;
-      ctx.lineJoin = 'round';
-      ctx.miterLimit = 2;
-      ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = lineWidth * scale;
-      ctx.strokeText(text, x, y);
+      // Soft drop shadow for legibility on dark slices
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+      ctx.shadowBlur = 4 * scale;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 1.5 * scale;
       ctx.fillStyle = fillColor;
       ctx.fillText(text, x, y);
     };
 
-    let font1Size = Math.round(15.5 * scale);
-    ctx.font = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    // Calculate font sizes
+    let font1Size = Math.round(15 * scale);
+    ctx.font = `800 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
     let w1 = ctx.measureText(prize.line1).width;
     if (w1 > maxTextWidth) {
       font1Size = Math.max(11, Math.round(font1Size * (maxTextWidth / w1)));
     }
-    const font1 = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    const font1 = `800 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
 
-    let font2Size = Math.round(14 * scale);
-    ctx.font = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    let font2Size = Math.round(13.5 * scale);
+    ctx.font = `800 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
     let w2 = ctx.measureText(prize.line2).width;
     if (w2 > maxTextWidth) {
       font2Size = Math.max(10, Math.round(font2Size * (maxTextWidth / w2)));
     }
-    const font2 = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    const font2 = `800 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
 
-    const color1 = prize.isTarget ? '#FFEB3B' : prize.textColor;
-    const color2 = prize.isTarget ? '#FFFFFF' : (prize.accent || '#FFE082');
+    const color1 = prize.isTarget ? '#FDE68A' : (prize.textColor || '#FFFFFF');
+    const color2 = prize.isTarget ? '#FFFFFF' : (prize.accent || '#E2E8F0');
 
-    drawStrokedText(prize.line1, textX, -lineSpacing, font1, color1);
-    drawStrokedText(prize.line2, textX, lineSpacing, font2, color2);
+    drawCleanText(prize.line1, textX, -lineSpacing, font1, color1);
+    drawCleanText(prize.line2, textX, lineSpacing, font2, color2);
 
     ctx.restore();
   }
@@ -1658,56 +1817,61 @@ class DiwaliWheel {
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(px, py, 4.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFD54F';
+    ctx.arc(px, py, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#FDE68A';
     ctx.shadowBlur = 4;
-    ctx.shadowColor = 'rgba(0,0,0,0.6)';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(px - 1, py - 1, 1.8, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFFDE7';
+    ctx.arc(px - 1, py - 1, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFFFFF';
     ctx.fill();
     ctx.restore();
   }
 
   drawCenterHub(cx, cy) {
     const ctx = this.ctx;
-    const hubRadius = this.wheelRadius * 0.165;
+    const hubRadius = this.wheelRadius * 0.17;
 
     ctx.save();
+    // Outer golden bezel ring
     ctx.beginPath();
-    ctx.arc(cx, cy, hubRadius + 4.5, 0, Math.PI * 2);
+    ctx.arc(cx, cy, hubRadius + 4, 0, Math.PI * 2);
     const grad1 = ctx.createLinearGradient(cx - hubRadius, cy - hubRadius, cx + hubRadius, cy + hubRadius);
-    grad1.addColorStop(0, '#FFE082');
-    grad1.addColorStop(0.5, '#B78103');
-    grad1.addColorStop(1, '#FFD54F');
+    grad1.addColorStop(0, '#FDE68A');
+    grad1.addColorStop(0.5, '#B45309');
+    grad1.addColorStop(1, '#D97706');
     ctx.fillStyle = grad1;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
     ctx.fill();
 
+    // Inner deep academic navy disc
     ctx.beginPath();
     ctx.arc(cx, cy, hubRadius, 0, Math.PI * 2);
     const innerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, hubRadius);
-    innerGrad.addColorStop(0, '#5D101D');
-    innerGrad.addColorStop(0.85, '#2D050B');
-    innerGrad.addColorStop(1, '#1A0004');
+    innerGrad.addColorStop(0, '#1E3A8A');
+    innerGrad.addColorStop(0.7, '#0F1A3A');
+    innerGrad.addColorStop(1, '#060B18');
     ctx.fillStyle = innerGrad;
     ctx.fill();
 
-    ctx.strokeStyle = '#FFD700';
-    ctx.lineWidth = 1.8;
+    ctx.strokeStyle = 'rgba(253, 230, 138, 0.6)';
+    ctx.lineWidth = 1.5;
     ctx.stroke();
 
+    // Stylized Diya / Star Emblem
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.font = '20px sans-serif';
-    ctx.fillText('🪔', cx, cy - 2);
+    ctx.fillText('ðŸª”', cx, cy - 2);
 
+    // Clean institutional caption
     ctx.font = 'bold 7.5px "Inter", sans-serif';
-    ctx.fillStyle = '#FFD54F';
-    ctx.fillText('NITT', cx, cy + 13);
+    ctx.fillStyle = '#FDE68A';
+    ctx.letterSpacing = '1px';
+    ctx.fillText('NITT CC', cx, cy + 13);
     ctx.restore();
   }
 
@@ -1717,36 +1881,38 @@ class DiwaliWheel {
     ctx.translate(tipX, tipY);
     ctx.rotate(this.flapperAngle);
 
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-    ctx.shadowBlur = 10;
-    ctx.shadowOffsetY = 4;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 3;
 
+    // Sleek precision titanium / gold needle
     ctx.beginPath();
-    ctx.moveTo(0, 36);
-    ctx.lineTo(-14, 0);
-    ctx.lineTo(-10, -18);
-    ctx.lineTo(10, -18);
-    ctx.lineTo(14, 0);
+    ctx.moveTo(0, 34);
+    ctx.lineTo(-13, 0);
+    ctx.lineTo(-9, -16);
+    ctx.lineTo(9, -16);
+    ctx.lineTo(13, 0);
     ctx.closePath();
 
-    const pointerGrad = ctx.createLinearGradient(-14, -18, 14, 36);
-    pointerGrad.addColorStop(0, '#FFF9C4');
-    pointerGrad.addColorStop(0.3, '#FFD54F');
-    pointerGrad.addColorStop(0.7, '#FF8F00');
-    pointerGrad.addColorStop(1, '#FF6F00');
+    const pointerGrad = ctx.createLinearGradient(-13, -16, 13, 34);
+    pointerGrad.addColorStop(0, '#FFFFFF');
+    pointerGrad.addColorStop(0.3, '#FDE68A');
+    pointerGrad.addColorStop(0.7, '#D97706');
+    pointerGrad.addColorStop(1, '#B45309');
     ctx.fillStyle = pointerGrad;
     ctx.fill();
 
     ctx.strokeStyle = '#FFFFFF';
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
+    // Pivot ruby jewel
     ctx.beginPath();
-    ctx.arc(0, -5, 6, 0, Math.PI * 2);
-    const rubyGrad = ctx.createRadialGradient(-2, -7, 1, 0, -5, 6);
-    rubyGrad.addColorStop(0, '#FF8A80');
-    rubyGrad.addColorStop(0.5, '#D50000');
-    rubyGrad.addColorStop(1, '#5F0000');
+    ctx.arc(0, -5, 5.5, 0, Math.PI * 2);
+    const rubyGrad = ctx.createRadialGradient(-2, -7, 1, 0, -5, 5.5);
+    rubyGrad.addColorStop(0, '#FCA5A5');
+    rubyGrad.addColorStop(0.5, '#DC2626');
+    rubyGrad.addColorStop(1, '#7F1D1D');
     ctx.fillStyle = rubyGrad;
     ctx.fill();
 
@@ -1774,16 +1940,25 @@ class DiwaliWheel {
   }
 }
 
+
 // 4. App Orchestrator
+/**
+ * Main Application Orchestrator
+ * Connects UI, SoundEngine, Fireworks, Canvas Wheel, One-Spin Enforcer, and Google Forms Redirect.
+ * Professional & Institutional NIT Trichy Cultural Council Edition.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Configurable Google Forms Link
   const DEFAULT_REDIRECT_URL = 'https://forms.gle/diwali-nitt-movie-ticket';
   let claimRedirectUrl = localStorage.getItem('nitt_movie_ticket_url') || DEFAULT_REDIRECT_URL;
 
+  // 2. State & Engines
   const fireworks = new FireworksEngine('fireworksCanvas');
   let redirectTimer = null;
-  let redirectRemainingSeconds = 4;
   let hasUserSpun = localStorage.getItem('nitt_diwali_user_spun') === 'true';
 
+  // 3. Elements
   const spinBtn = document.getElementById('spinBtn');
   const spinStatus = document.getElementById('spinStatus');
   const soundToggleBtn = document.getElementById('soundToggleBtn');
@@ -1793,13 +1968,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const claimRedirectLink = document.getElementById('claimRedirectLink');
   const redirectCountdown = document.getElementById('redirectCountdown');
-  const redirectProgressBar = document.getElementById('redirectProgressBar');
   const cancelRedirectBtn = document.getElementById('cancelRedirectBtn');
 
+  // Update claim link href
   if (claimRedirectLink) {
     claimRedirectLink.href = claimRedirectUrl;
   }
 
+  // 4. Modal Close Functionality
   function closeWinnerModal() {
     winnerModal.classList.remove('active');
     stopRedirectCountdown();
@@ -1828,36 +2004,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // 5. Dynamic Reward Spotlight updater
   function updateWonPrizeDisplay(prize) {
     if (!prize) return;
     const prizeSpotlightText = document.querySelector('.prize-spotlight-text');
     if (prizeSpotlightText) {
-      prizeSpotlightText.textContent = `YOU WON: ${prize.label.toUpperCase()}!`;
+      prizeSpotlightText.textContent = prize.label;
     }
-    const trophyBadge = document.querySelector('.trophy-badge');
-    if (trophyBadge) {
-      trophyBadge.textContent = `${prize.icon || '🎟️'} 🎬 🪔`;
+    const passIconDisc = document.querySelector('.pass-icon-disc');
+    if (passIconDisc) {
+      passIconDisc.textContent = prize.icon || 'ðŸŽŸï¸';
     }
   }
 
-  function startRedirectCountdown(seconds = 4) {
-    stopRedirectCountdown();
-    redirectRemainingSeconds = seconds;
-    if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
-    if (redirectProgressBar) {
-      redirectProgressBar.style.transition = 'none';
-      redirectProgressBar.style.width = '100%';
+  // 6. Redirect Countdown Management
+  function getRedirectSeconds() {
+    const raw = localStorage.getItem('nitt_redirect_seconds');
+    if (raw !== null && raw !== undefined) {
+      const parsed = parseInt(raw, 10);
+      return isNaN(parsed) ? 4 : parsed;
+    }
+    return 4;
+  }
 
-      requestAnimationFrame(() => {
-        redirectProgressBar.style.transition = `width ${seconds}s linear`;
-        redirectProgressBar.style.width = '0%';
-      });
+  function startRedirectCountdown() {
+    stopRedirectCountdown();
+    const seconds = getRedirectSeconds();
+    const redirectStatusRow = document.querySelector('.modal-redirect-status');
+
+    if (seconds <= 0) {
+      if (redirectStatusRow) redirectStatusRow.style.display = 'none';
+      return;
     }
 
+    if (redirectStatusRow) redirectStatusRow.style.display = 'flex';
+    let remaining = seconds;
+    if (redirectCountdown) redirectCountdown.textContent = remaining;
+
     redirectTimer = setInterval(() => {
-      redirectRemainingSeconds--;
-      if (redirectRemainingSeconds > 0) {
-        if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
+      remaining--;
+      if (remaining > 0) {
+        if (redirectCountdown) redirectCountdown.textContent = remaining;
       } else {
         stopRedirectCountdown();
         window.location.href = claimRedirectUrl;
@@ -1870,17 +2057,17 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(redirectTimer);
       redirectTimer = null;
     }
-    if (redirectProgressBar) {
-      redirectProgressBar.style.transition = 'none';
-      redirectProgressBar.style.width = '0%';
-    }
   }
 
   if (cancelRedirectBtn) {
     cancelRedirectBtn.addEventListener('click', () => {
       stopRedirectCountdown();
-      cancelRedirectBtn.textContent = '✔ Auto-redirect paused. You can click the register button anytime.';
-      cancelRedirectBtn.style.color = '#81C784';
+      const redirectText = document.querySelector('.redirect-text');
+      if (redirectText) {
+        redirectText.innerHTML = 'âœ” Auto-redirect paused. Proceed when ready:';
+        redirectText.style.color = '#34D399';
+      }
+      cancelRedirectBtn.style.display = 'none';
     });
   }
 
@@ -1890,14 +2077,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 7. UI Lock for Single-Spin User
   function applyAlreadySpunUI(wonPrize) {
     const label = (wonPrize && wonPrize.label) ? wonPrize.label : 'Ticket for Movie';
-    const icon = (wonPrize && wonPrize.icon) ? wonPrize.icon : '🎟️';
+    const icon = (wonPrize && wonPrize.icon) ? wonPrize.icon : 'ðŸŽŸï¸';
 
     spinBtn.disabled = true;
     spinBtn.classList.add('already-spun');
-    spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.3rem;">✔</span>`;
-    spinStatus.innerHTML = `🎉 You already spun and won: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
+    spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.15rem;">âœ”</span>`;
+    spinStatus.innerHTML = `ðŸŽ‰ You have spun and unlocked: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: var(--text-gold); text-decoration: underline; margin-left: 6px; font-weight: 700;">View Official Pass</a>`;
 
     const viewRewardLink = document.getElementById('viewRewardLink');
     if (viewRewardLink) {
@@ -1911,15 +2099,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function openRewardModal(autoRedirect = true) {
     winnerModal.classList.add('active');
     if (autoRedirect) {
-      startRedirectCountdown(4);
+      startRedirectCountdown();
     } else {
       stopRedirectCountdown();
-      if (cancelRedirectBtn) {
-        cancelRedirectBtn.textContent = 'Stay on homepage';
-      }
+      const redirectStatusRow = document.querySelector('.modal-redirect-status');
+      if (redirectStatusRow) redirectStatusRow.style.display = 'none';
     }
   }
 
+  // 8. Initialize Wheel with dynamically loaded prizes & target winner
   const prizes = DiwaliWheel.loadPrizes();
   const targetPrizeId = DiwaliWheel.loadTargetPrizeId();
 
@@ -1928,15 +2116,16 @@ document.addEventListener('DOMContentLoaded', () => {
     targetPrizeId: targetPrizeId,
     onSpinStart: () => {
       spinBtn.disabled = true;
-      spinBtn.innerHTML = `<span>SPINNING...</span> <span style="font-size: 1.4rem;">✨</span>`;
-      spinStatus.textContent = '🌟 Hold your breath! Finding your Diwali fortune...';
-      spinStatus.style.color = '#FFE082';
+      spinBtn.innerHTML = `<span>SPINNING WHEEL...</span> <span style="font-size: 1.25rem;">âœ¨</span>`;
+      spinStatus.textContent = 'Spinning the lucky wheel... Calculating your festival reward.';
+      spinStatus.style.color = 'var(--text-gold)';
       window.soundEngine.playSpinStart();
     },
     onTick: (intensity) => {
       window.soundEngine.playTick(intensity);
     },
     onSpinEnd: (prize) => {
+      // 1. Permanently lock spin for this user
       hasUserSpun = true;
       localStorage.setItem('nitt_diwali_user_spun', 'true');
       localStorage.setItem('nitt_diwali_won_prize', JSON.stringify({
@@ -1948,15 +2137,18 @@ document.addEventListener('DOMContentLoaded', () => {
       updateWonPrizeDisplay(prize);
       applyAlreadySpunUI(prize);
 
+      // 2. Audio & Fireworks Celebration
       window.soundEngine.playWinFanfare();
       fireworks.startCelebration(7000);
 
+      // 3. Open Official Confirmation Modal
       setTimeout(() => {
         openRewardModal(true);
       }, 700);
     }
   });
 
+  // Check if user has already spun previously
   if (hasUserSpun) {
     let savedPrize = null;
     try {
@@ -1972,6 +2164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyAlreadySpunUI(savedPrize);
   }
 
+  // 9. Spin Button Trigger
   spinBtn.addEventListener('click', () => {
     if (hasUserSpun) {
       openRewardModal(false);
@@ -1981,12 +2174,14 @@ document.addEventListener('DOMContentLoaded', () => {
     wheel.spin();
   });
 
+  // 10. Sound Toggle
   soundToggleBtn.addEventListener('click', () => {
     window.soundEngine.resume();
     const isMuted = window.soundEngine.toggleMute();
-    soundIcon.textContent = isMuted ? '🔇' : '🔊';
+    soundIcon.textContent = isMuted ? 'ðŸ”‡' : 'ðŸ”Š';
   });
 
+  // 11. Secret Shortcut for Organizers: Ctrl + Shift + D -> Navigate to Admin Subpage
   window.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
       e.preventDefault();
@@ -1994,13 +2189,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // 12. Info Button
   const infoBtn = document.getElementById('infoBtn');
   if (infoBtn) {
     infoBtn.addEventListener('click', () => {
-      alert('🪔 Diwali Celebration\nOrganized by Cultural Council, NIT Trichy.\n\nEvery student can spin the wheel once to participate in our campus Diwali movie screening festivities!');
+      alert('ðŸ›ï¸ National Institute of Technology, Tiruchirappalli\nCultural Council â€¢ Diwali Celebrations 2026\n\nOfficial campus lucky draw for NITT students. Each student is eligible for 1 verified spin to unlock exclusive Movie Screening Passes and festival rewards at Barn Hall.');
     });
   }
 });
+
   </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 /**
  * Main Application Orchestrator
  * Connects UI, SoundEngine, Fireworks, Canvas Wheel, One-Spin Enforcer, and Google Forms Redirect.
+ * Professional & Institutional NIT Trichy Cultural Council Edition.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. State & Engines
   const fireworks = new FireworksEngine('fireworksCanvas');
   let redirectTimer = null;
-  let redirectRemainingSeconds = 4;
   let hasUserSpun = localStorage.getItem('nitt_diwali_user_spun') === 'true';
 
   // 3. Elements
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const claimRedirectLink = document.getElementById('claimRedirectLink');
   const redirectCountdown = document.getElementById('redirectCountdown');
-  const redirectProgressBar = document.getElementById('redirectProgressBar');
   const cancelRedirectBtn = document.getElementById('cancelRedirectBtn');
 
   // Update claim link href
@@ -66,33 +65,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prize) return;
     const prizeSpotlightText = document.querySelector('.prize-spotlight-text');
     if (prizeSpotlightText) {
-      prizeSpotlightText.textContent = `YOU WON: ${prize.label.toUpperCase()}!`;
+      prizeSpotlightText.textContent = prize.label;
     }
-    const trophyBadge = document.querySelector('.trophy-badge');
-    if (trophyBadge) {
-      trophyBadge.textContent = `${prize.icon || '🎟️'} 🎬 🪔`;
+    const passIconDisc = document.querySelector('.pass-icon-disc');
+    if (passIconDisc) {
+      passIconDisc.textContent = prize.icon || '🎟️';
     }
   }
 
   // 6. Redirect Countdown Management
-  function startRedirectCountdown(seconds = 4) {
-    stopRedirectCountdown();
-    redirectRemainingSeconds = seconds;
-    if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
-    if (redirectProgressBar) {
-      redirectProgressBar.style.transition = 'none';
-      redirectProgressBar.style.width = '100%';
+  function getRedirectSeconds() {
+    const raw = localStorage.getItem('nitt_redirect_seconds');
+    if (raw !== null && raw !== undefined) {
+      const parsed = parseInt(raw, 10);
+      return isNaN(parsed) ? 4 : parsed;
+    }
+    return 4;
+  }
 
-      requestAnimationFrame(() => {
-        redirectProgressBar.style.transition = `width ${seconds}s linear`;
-        redirectProgressBar.style.width = '0%';
-      });
+  function startRedirectCountdown() {
+    stopRedirectCountdown();
+    const seconds = getRedirectSeconds();
+    const redirectStatusRow = document.querySelector('.modal-redirect-status');
+
+    if (seconds <= 0) {
+      if (redirectStatusRow) redirectStatusRow.style.display = 'none';
+      return;
     }
 
+    if (redirectStatusRow) redirectStatusRow.style.display = 'flex';
+    let remaining = seconds;
+    if (redirectCountdown) redirectCountdown.textContent = remaining;
+
     redirectTimer = setInterval(() => {
-      redirectRemainingSeconds--;
-      if (redirectRemainingSeconds > 0) {
-        if (redirectCountdown) redirectCountdown.textContent = redirectRemainingSeconds;
+      remaining--;
+      if (remaining > 0) {
+        if (redirectCountdown) redirectCountdown.textContent = remaining;
       } else {
         stopRedirectCountdown();
         window.location.href = claimRedirectUrl;
@@ -105,17 +113,17 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(redirectTimer);
       redirectTimer = null;
     }
-    if (redirectProgressBar) {
-      redirectProgressBar.style.transition = 'none';
-      redirectProgressBar.style.width = '0%';
-    }
   }
 
   if (cancelRedirectBtn) {
     cancelRedirectBtn.addEventListener('click', () => {
       stopRedirectCountdown();
-      cancelRedirectBtn.textContent = '✔ Auto-redirect paused. You can click the register button anytime.';
-      cancelRedirectBtn.style.color = '#81C784';
+      const redirectText = document.querySelector('.redirect-text');
+      if (redirectText) {
+        redirectText.innerHTML = '✔ Auto-redirect paused. Proceed when ready:';
+        redirectText.style.color = '#34D399';
+      }
+      cancelRedirectBtn.style.display = 'none';
     });
   }
 
@@ -132,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     spinBtn.disabled = true;
     spinBtn.classList.add('already-spun');
-    spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.3rem;">✔</span>`;
-    spinStatus.innerHTML = `🎉 You already spun and won: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: #FFD700; text-decoration: underline; margin-left: 6px; font-weight: bold;">View Registration Form</a>`;
+    spinBtn.innerHTML = `<span>ALREADY SPUN</span> <span style="font-size: 1.15rem;">✔</span>`;
+    spinStatus.innerHTML = `🎉 You have spun and unlocked: <strong>${icon} ${label}</strong>! <a href="#" id="viewRewardLink" style="color: var(--text-gold); text-decoration: underline; margin-left: 6px; font-weight: 700;">View Official Pass</a>`;
 
     const viewRewardLink = document.getElementById('viewRewardLink');
     if (viewRewardLink) {
@@ -147,12 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function openRewardModal(autoRedirect = true) {
     winnerModal.classList.add('active');
     if (autoRedirect) {
-      startRedirectCountdown(4);
+      startRedirectCountdown();
     } else {
       stopRedirectCountdown();
-      if (cancelRedirectBtn) {
-        cancelRedirectBtn.textContent = 'Stay on homepage';
-      }
+      const redirectStatusRow = document.querySelector('.modal-redirect-status');
+      if (redirectStatusRow) redirectStatusRow.style.display = 'none';
     }
   }
 
@@ -165,9 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     targetPrizeId: targetPrizeId,
     onSpinStart: () => {
       spinBtn.disabled = true;
-      spinBtn.innerHTML = `<span>SPINNING...</span> <span style="font-size: 1.4rem;">✨</span>`;
-      spinStatus.textContent = '🌟 Hold your breath! Finding your Diwali fortune...';
-      spinStatus.style.color = '#FFE082';
+      spinBtn.innerHTML = `<span>SPINNING WHEEL...</span> <span style="font-size: 1.25rem;">✨</span>`;
+      spinStatus.textContent = 'Spinning the lucky wheel... Calculating your festival reward.';
+      spinStatus.style.color = 'var(--text-gold)';
       window.soundEngine.playSpinStart();
     },
     onTick: (intensity) => {
@@ -190,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.soundEngine.playWinFanfare();
       fireworks.startCelebration(7000);
 
-      // 3. Open Winner Modal & start countdown
+      // 3. Open Official Confirmation Modal
       setTimeout(() => {
         openRewardModal(true);
       }, 700);
@@ -242,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const infoBtn = document.getElementById('infoBtn');
   if (infoBtn) {
     infoBtn.addEventListener('click', () => {
-      alert('🪔 Diwali Celebration\nOrganized by Cultural Council, NIT Trichy.\n\nEvery student can spin the wheel once to participate in our campus Diwali movie screening festivities!');
+      alert('🏛️ National Institute of Technology, Tiruchirappalli\nCultural Council • Diwali Celebrations 2026\n\nOfficial campus lucky draw for NITT students. Each student is eligible for 1 verified spin to unlock exclusive Movie Screening Passes and festival rewards at Barn Hall.');
     });
   }
 });

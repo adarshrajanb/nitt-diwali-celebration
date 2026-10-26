@@ -2,19 +2,20 @@
  * Diwali Celebration - Wheel Engine
  * High-precision canvas renderer, smooth physics, authentic flapper deflection,
  * prominent large reward display, and guaranteed promotional target landing.
+ * Institutional NIT Trichy Academic Navy & Festive Gold Design System.
  */
 
 const DEFAULT_PRIZES = [
   {
     id: 'movie_ticket',
     label: 'Ticket for Movie',
-    line1: 'FREE MOVIE',
+    line1: 'CAMPUS MOVIE',
     line2: 'TICKET',
     icon: '🎟️',
-    color1: '#8B0000', // Deep Royal Crimson
-    color2: '#C62828',
-    accent: '#FFD700',
-    textColor: '#FFF9C4',
+    color1: '#1E3A8A', // Deep Royal Academic Navy
+    color2: '#2563EB',
+    accent: '#FDE68A',
+    textColor: '#FFFFFF',
     isTarget: true
   },
   {
@@ -23,9 +24,9 @@ const DEFAULT_PRIZES = [
     line1: 'FREE',
     line2: 'POPCORN',
     icon: '🍿',
-    color1: '#0D47A1', // Deep Navy
-    color2: '#1976D2',
-    accent: '#FFF176',
+    color1: '#0F172A', // Slate Midnight
+    color2: '#1E293B',
+    accent: '#CBD5E1',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -35,9 +36,9 @@ const DEFAULT_PRIZES = [
     line1: 'BAY 0',
     line2: 'ACCESS',
     icon: '🏛️',
-    color1: '#1B5E20', // Emerald Green
-    color2: '#2E7D32',
-    accent: '#C8E6C9',
+    color1: '#1E1B4B', // Deep Royal Indigo
+    color2: '#312E81',
+    accent: '#E0E7FF',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -47,9 +48,9 @@ const DEFAULT_PRIZES = [
     line1: '₹200 STALL',
     line2: 'COUPON',
     icon: '🏷️',
-    color1: '#4A148C', // Deep Purple
-    color2: '#7B1FA2',
-    accent: '#E1BEE7',
+    color1: '#0B192C', // Deep Twilight Slate
+    color2: '#1E3E62',
+    accent: '#FDE68A',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -59,9 +60,9 @@ const DEFAULT_PRIZES = [
     line1: 'DIWALI',
     line2: 'SWEETS',
     icon: '🪔',
-    color1: '#E65100', // Deep Saffron / Amber
-    color2: '#FB8C00',
-    accent: '#FFE082',
+    color1: '#78350F', // Rich Warm Amber
+    color2: '#92400E',
+    accent: '#FEF3C7',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -71,9 +72,9 @@ const DEFAULT_PRIZES = [
     line1: 'SPARKLERS',
     line2: 'PACK',
     icon: '🎆',
-    color1: '#880E4F', // Rich Magenta
-    color2: '#C2185B',
-    accent: '#F8BBD0',
+    color1: '#0F172A', // Slate Midnight
+    color2: '#1E293B',
+    accent: '#CBD5E1',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -83,9 +84,9 @@ const DEFAULT_PRIZES = [
     line1: 'FEST MERCH',
     line2: 'T-SHIRT',
     icon: '👕',
-    color1: '#004D40', // Deep Teal
-    color2: '#00897B',
-    accent: '#B2DFDB',
+    color1: '#172554', // Deep Ocean Navy
+    color2: '#1E40AF',
+    accent: '#FDE68A',
     textColor: '#FFFFFF',
     isTarget: false
   },
@@ -95,9 +96,9 @@ const DEFAULT_PRIZES = [
     line1: 'CHILLED',
     line2: 'BEVERAGE',
     icon: '🥤',
-    color1: '#BF360C', // Rust Amber
-    color2: '#E64A19',
-    accent: '#FFCCBC',
+    color1: '#0B192C', // Deep Twilight Slate
+    color2: '#1E3E62',
+    accent: '#BAE6FD',
     textColor: '#FFFFFF',
     isTarget: false
   }
@@ -159,11 +160,6 @@ class DiwaliWheel {
     this.flapperAngle = 0;
     this.lastPegIndex = -1;
 
-    // LED marquee bulbs
-    this.numLeds = 24;
-    this.ledState = 0;
-    this.lastLedTick = 0;
-
     // Callbacks
     this.onSpinStart = options.onSpinStart || (() => {});
     this.onSpinEnd = options.onSpinEnd || (() => {});
@@ -176,14 +172,14 @@ class DiwaliWheel {
       this.draw();
     });
 
-    // Start ambient animation
-    this.ambientLoop();
+    // Initial render
+    this.draw();
   }
 
   setupDPI() {
     const rect = this.canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    const size = Math.min(rect.width, rect.height) || 520;
+    const size = Math.min(rect.width, rect.height) || 500;
 
     this.canvas.width = size * dpr;
     this.canvas.height = size * dpr;
@@ -194,17 +190,6 @@ class DiwaliWheel {
     this.centerX = size / 2;
     this.centerY = size / 2;
     this.wheelRadius = size * 0.44;
-  }
-
-  ambientLoop(timestamp = 0) {
-    if (!this.isSpinning) {
-      if (timestamp - this.lastLedTick > 280) {
-        this.ledState = (this.ledState + 1) % 3;
-        this.lastLedTick = timestamp;
-        this.draw();
-      }
-    }
-    requestAnimationFrame((t) => this.ambientLoop(t));
   }
 
   setLandedOnPrize(prizeId = 'movie_ticket') {
@@ -311,36 +296,36 @@ class DiwaliWheel {
 
     ctx.clearRect(0, 0, this.displaySize, this.displaySize);
 
-    // 1. Outer Glowing Aura
+    // 1. Outer Subtle Ambient Backlight (Executive Navy & Gold Aura)
     ctx.save();
-    const auraGradient = ctx.createRadialGradient(cx, cy, R * 0.9, cx, cy, R * 1.15);
-    auraGradient.addColorStop(0, 'rgba(255, 193, 7, 0.32)');
-    auraGradient.addColorStop(0.5, 'rgba(255, 111, 0, 0.18)');
+    const auraGradient = ctx.createRadialGradient(cx, cy, R * 0.95, cx, cy, R * 1.14);
+    auraGradient.addColorStop(0, 'rgba(29, 78, 216, 0.22)');
+    auraGradient.addColorStop(0.6, 'rgba(217, 119, 6, 0.12)');
     auraGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = auraGradient;
     ctx.beginPath();
-    ctx.arc(cx, cy, R * 1.15, 0, Math.PI * 2);
+    ctx.arc(cx, cy, R * 1.14, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
 
-    // 2. Outer Decorative Brass Rim
+    // 2. High-Precision Brushed Gold & Slate Outer Bezel
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, R + 18, 0, Math.PI * 2);
     const rimGrad = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
-    rimGrad.addColorStop(0, '#FFE082');
-    rimGrad.addColorStop(0.25, '#FFB300');
-    rimGrad.addColorStop(0.5, '#795548');
-    rimGrad.addColorStop(0.75, '#FFA000');
-    rimGrad.addColorStop(1, '#FFD54F');
+    rimGrad.addColorStop(0, '#FDE68A');
+    rimGrad.addColorStop(0.2, '#D97706');
+    rimGrad.addColorStop(0.5, '#1E293B'); // Slate Chamfer
+    rimGrad.addColorStop(0.8, '#D97706');
+    rimGrad.addColorStop(1, '#F59E0B');
     ctx.fillStyle = rimGrad;
-    ctx.shadowBlur = 14;
-    ctx.shadowColor = 'rgba(255, 179, 0, 0.55)';
+    ctx.shadowBlur = 16;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
     ctx.fill();
     ctx.restore();
 
-    // 3. Marquee LED Bulbs around rim
-    this.drawLeds(cx, cy, R + 9);
+    // 3. Precision Machined Studs around the Bezel (Replacing tacky blinking LEDs)
+    this.drawBezelStuds(cx, cy, R + 9);
 
     // 4. Draw Wheel Slices
     ctx.save();
@@ -360,28 +345,28 @@ class DiwaliWheel {
 
       const sliceGrad = ctx.createRadialGradient(0, 0, 15, 0, 0, R);
       sliceGrad.addColorStop(0, prize.color2);
-      sliceGrad.addColorStop(0.85, prize.color1);
-      sliceGrad.addColorStop(1, '#1A0000');
+      sliceGrad.addColorStop(0.82, prize.color1);
+      sliceGrad.addColorStop(1, '#060B18');
       ctx.fillStyle = sliceGrad;
       ctx.fill();
 
-      // Golden inner border between slices
-      ctx.strokeStyle = 'rgba(255, 215, 0, 0.75)';
-      ctx.lineWidth = 3;
+      // Sleek subtle border between slices
+      ctx.strokeStyle = 'rgba(217, 119, 6, 0.45)';
+      ctx.lineWidth = 1.8;
       ctx.stroke();
 
-      // Highlight target prize (Ticket for Movie) with gold outer shimmer
+      // Highlight target prize with precision inner gold track
       if (prize.isTarget) {
         ctx.save();
-        ctx.strokeStyle = '#FFE082';
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#FDE68A';
+        ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(0, 0, R - 5, startAngle + 0.03, endAngle - 0.03);
+        ctx.arc(0, 0, R - 4, startAngle + 0.03, endAngle - 0.03);
         ctx.stroke();
         ctx.restore();
       }
 
-      // Draw Big, Prominent Slice Content
+      // Draw Slice Content (Clean, High-Contrast Typography)
       this.drawSliceContent(prize, startAngle + this.sliceAngle / 2, R);
 
       // Draw metallic pegs at slice boundaries
@@ -390,48 +375,39 @@ class DiwaliWheel {
 
     ctx.restore();
 
-    // 5. Draw Center Golden Hub & Diya (Sleek & Compact)
+    // 5. Draw Center Institutional Seal Medallion
     this.drawCenterHub(cx, cy);
 
-    // 6. Draw Top Stopper / Flapper Pointer
+    // 6. Draw Top Precision Flapper Pointer
     this.drawPointer(cx, cy - R + 2);
   }
 
-  drawLeds(cx, cy, radius) {
+  drawBezelStuds(cx, cy, radius) {
     const ctx = this.ctx;
-    const bulbCount = this.numLeds;
+    const studCount = 24;
 
-    for (let i = 0; i < bulbCount; i++) {
-      const angle = (i / bulbCount) * Math.PI * 2;
+    for (let i = 0; i < studCount; i++) {
+      const angle = (i / studCount) * Math.PI * 2;
       const bx = cx + Math.cos(angle) * radius;
       const by = cy + Math.sin(angle) * radius;
 
-      const stateIndex = (i + this.ledState) % 3;
-      let bulbColor = '#FFECB3';
-      let glowColor = 'rgba(255, 235, 59, 0.8)';
-
-      if (stateIndex === 0) {
-        bulbColor = '#FFF59D'; // Golden warm
-        glowColor = 'rgba(255, 215, 0, 0.9)';
-      } else if (stateIndex === 1) {
-        bulbColor = '#FF8A80'; // Festive red
-        glowColor = 'rgba(255, 23, 68, 0.8)';
-      } else {
-        bulbColor = '#FFFFFF'; // Pure diamond spark
-        glowColor = 'rgba(255, 255, 255, 0.9)';
-      }
-
       ctx.save();
       ctx.beginPath();
-      ctx.arc(bx, by, 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = bulbColor;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = glowColor;
+      ctx.arc(bx, by, 3.8, 0, Math.PI * 2);
+      
+      const studGrad = ctx.createLinearGradient(bx - 3, by - 3, bx + 3, by + 3);
+      studGrad.addColorStop(0, '#FEF3C7');
+      studGrad.addColorStop(0.5, '#F59E0B');
+      studGrad.addColorStop(1, '#78350F');
+      
+      ctx.fillStyle = studGrad;
+      ctx.shadowBlur = 3;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
       ctx.fill();
 
-      // Tiny shiny highlight
+      // Micro specular highlight
       ctx.beginPath();
-      ctx.arc(bx - 1.2, by - 1.2, 1.4, 0, Math.PI * 2);
+      ctx.arc(bx - 1, by - 1, 1.2, 0, Math.PI * 2);
       ctx.fillStyle = '#FFFFFF';
       ctx.fill();
       ctx.restore();
@@ -445,18 +421,17 @@ class DiwaliWheel {
 
     const scale = Math.max(0.85, Math.min(R / 220, 1.3));
 
-    // 1. BIG EYE-CATCHING ICON (38px - 44px)
+    // 1. Refined Circular Icon Badge
     const iconX = R * 0.77;
-    const iconSize = Math.round(38 * scale);
+    const iconSize = Math.round(36 * scale);
 
-    // Circular background badge behind icon to make it pop vividly
     ctx.save();
     ctx.beginPath();
-    ctx.arc(iconX, 0, 24 * scale, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    ctx.arc(iconX, 0, 23 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(11, 19, 43, 0.65)';
     ctx.fill();
-    ctx.strokeStyle = prize.isTarget ? '#FFD700' : 'rgba(255, 255, 255, 0.25)';
-    ctx.lineWidth = prize.isTarget ? 2 : 1;
+    ctx.strokeStyle = prize.isTarget ? '#FDE68A' : 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = prize.isTarget ? 1.8 : 1;
     ctx.stroke();
     ctx.restore();
 
@@ -465,7 +440,7 @@ class DiwaliWheel {
     ctx.textBaseline = 'middle';
     ctx.fillText(prize.icon, iconX, 0);
 
-    // 2. LARGE, PROMINENT, BOLD REWARD TEXT
+    // 2. High-Contrast, Crisp Typography (No thick cartoon outline)
     const textX = R * 0.46;
     const lineSpacing = 10 * scale;
     const maxTextWidth = R * 0.38;
@@ -473,41 +448,39 @@ class DiwaliWheel {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    // Helper to draw bold text with thick dark contrast outline
-    const drawStrokedText = (text, x, y, font, fillColor, strokeColor = '#000000', lineWidth = 3.8) => {
+    const drawCleanText = (text, x, y, font, fillColor) => {
       ctx.font = font;
-      ctx.lineJoin = 'round';
-      ctx.miterLimit = 2;
-      ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = lineWidth * scale;
-      ctx.strokeText(text, x, y);
+      // Soft drop shadow for legibility on dark slices
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+      ctx.shadowBlur = 4 * scale;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 1.5 * scale;
       ctx.fillStyle = fillColor;
       ctx.fillText(text, x, y);
     };
 
-    // Calculate font sizes - MUCH BIGGER
-    let font1Size = Math.round(15.5 * scale);
-    ctx.font = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    // Calculate font sizes
+    let font1Size = Math.round(15 * scale);
+    ctx.font = `800 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
     let w1 = ctx.measureText(prize.line1).width;
     if (w1 > maxTextWidth) {
       font1Size = Math.max(11, Math.round(font1Size * (maxTextWidth / w1)));
     }
-    const font1 = `900 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    const font1 = `800 ${font1Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
 
-    let font2Size = Math.round(14 * scale);
-    ctx.font = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    let font2Size = Math.round(13.5 * scale);
+    ctx.font = `800 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
     let w2 = ctx.measureText(prize.line2).width;
     if (w2 > maxTextWidth) {
       font2Size = Math.max(10, Math.round(font2Size * (maxTextWidth / w2)));
     }
-    const font2 = `900 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    const font2 = `800 ${font2Size}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
 
-    // Colors: Vibrant Gold / Bright White
-    const color1 = prize.isTarget ? '#FFEB3B' : prize.textColor;
-    const color2 = prize.isTarget ? '#FFFFFF' : (prize.accent || '#FFE082');
+    const color1 = prize.isTarget ? '#FDE68A' : (prize.textColor || '#FFFFFF');
+    const color2 = prize.isTarget ? '#FFFFFF' : (prize.accent || '#E2E8F0');
 
-    drawStrokedText(prize.line1, textX, -lineSpacing, font1, color1);
-    drawStrokedText(prize.line2, textX, lineSpacing, font2, color2);
+    drawCleanText(prize.line1, textX, -lineSpacing, font1, color1);
+    drawCleanText(prize.line2, textX, lineSpacing, font2, color2);
 
     ctx.restore();
   }
@@ -519,58 +492,61 @@ class DiwaliWheel {
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(px, py, 4.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFD54F';
+    ctx.arc(px, py, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#FDE68A';
     ctx.shadowBlur = 4;
-    ctx.shadowColor = 'rgba(0,0,0,0.6)';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(px - 1, py - 1, 1.8, 0, Math.PI * 2);
-    ctx.fillStyle = '#FFFDE7';
+    ctx.arc(px - 1, py - 1, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFFFFF';
     ctx.fill();
     ctx.restore();
   }
 
   drawCenterHub(cx, cy) {
     const ctx = this.ctx;
-    const hubRadius = this.wheelRadius * 0.165;
+    const hubRadius = this.wheelRadius * 0.17;
 
     ctx.save();
-    // Outer golden bevel
+    // Outer golden bezel ring
     ctx.beginPath();
-    ctx.arc(cx, cy, hubRadius + 4.5, 0, Math.PI * 2);
+    ctx.arc(cx, cy, hubRadius + 4, 0, Math.PI * 2);
     const grad1 = ctx.createLinearGradient(cx - hubRadius, cy - hubRadius, cx + hubRadius, cy + hubRadius);
-    grad1.addColorStop(0, '#FFE082');
-    grad1.addColorStop(0.5, '#B78103');
-    grad1.addColorStop(1, '#FFD54F');
+    grad1.addColorStop(0, '#FDE68A');
+    grad1.addColorStop(0.5, '#B45309');
+    grad1.addColorStop(1, '#D97706');
     ctx.fillStyle = grad1;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
     ctx.fill();
 
-    // Inner rich maroon disc
+    // Inner deep academic navy disc
     ctx.beginPath();
     ctx.arc(cx, cy, hubRadius, 0, Math.PI * 2);
     const innerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, hubRadius);
-    innerGrad.addColorStop(0, '#5D101D');
-    innerGrad.addColorStop(0.85, '#2D050B');
-    innerGrad.addColorStop(1, '#1A0004');
+    innerGrad.addColorStop(0, '#1E3A8A');
+    innerGrad.addColorStop(0.7, '#0F1A3A');
+    innerGrad.addColorStop(1, '#060B18');
     ctx.fillStyle = innerGrad;
     ctx.fill();
 
-    ctx.strokeStyle = '#FFD700';
-    ctx.lineWidth = 1.8;
+    ctx.strokeStyle = 'rgba(253, 230, 138, 0.6)';
+    ctx.lineWidth = 1.5;
     ctx.stroke();
 
+    // Stylized Diya / Star Emblem
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.font = '20px sans-serif';
     ctx.fillText('🪔', cx, cy - 2);
 
+    // Clean institutional caption
     ctx.font = 'bold 7.5px "Inter", sans-serif';
-    ctx.fillStyle = '#FFD54F';
-    ctx.fillText('NITT', cx, cy + 13);
+    ctx.fillStyle = '#FDE68A';
+    ctx.letterSpacing = '1px';
+    ctx.fillText('NITT CC', cx, cy + 13);
     ctx.restore();
   }
 
@@ -580,36 +556,38 @@ class DiwaliWheel {
     ctx.translate(tipX, tipY);
     ctx.rotate(this.flapperAngle);
 
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-    ctx.shadowBlur = 10;
-    ctx.shadowOffsetY = 4;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 3;
 
+    // Sleek precision titanium / gold needle
     ctx.beginPath();
-    ctx.moveTo(0, 36);
-    ctx.lineTo(-14, 0);
-    ctx.lineTo(-10, -18);
-    ctx.lineTo(10, -18);
-    ctx.lineTo(14, 0);
+    ctx.moveTo(0, 34);
+    ctx.lineTo(-13, 0);
+    ctx.lineTo(-9, -16);
+    ctx.lineTo(9, -16);
+    ctx.lineTo(13, 0);
     ctx.closePath();
 
-    const pointerGrad = ctx.createLinearGradient(-14, -18, 14, 36);
-    pointerGrad.addColorStop(0, '#FFF9C4');
-    pointerGrad.addColorStop(0.3, '#FFD54F');
-    pointerGrad.addColorStop(0.7, '#FF8F00');
-    pointerGrad.addColorStop(1, '#FF6F00');
+    const pointerGrad = ctx.createLinearGradient(-13, -16, 13, 34);
+    pointerGrad.addColorStop(0, '#FFFFFF');
+    pointerGrad.addColorStop(0.3, '#FDE68A');
+    pointerGrad.addColorStop(0.7, '#D97706');
+    pointerGrad.addColorStop(1, '#B45309');
     ctx.fillStyle = pointerGrad;
     ctx.fill();
 
     ctx.strokeStyle = '#FFFFFF';
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
+    // Pivot ruby jewel
     ctx.beginPath();
-    ctx.arc(0, -5, 6, 0, Math.PI * 2);
-    const rubyGrad = ctx.createRadialGradient(-2, -7, 1, 0, -5, 6);
-    rubyGrad.addColorStop(0, '#FF8A80');
-    rubyGrad.addColorStop(0.5, '#D50000');
-    rubyGrad.addColorStop(1, '#5F0000');
+    ctx.arc(0, -5, 5.5, 0, Math.PI * 2);
+    const rubyGrad = ctx.createRadialGradient(-2, -7, 1, 0, -5, 5.5);
+    rubyGrad.addColorStop(0, '#FCA5A5');
+    rubyGrad.addColorStop(0.5, '#DC2626');
+    rubyGrad.addColorStop(1, '#7F1D1D');
     ctx.fillStyle = rubyGrad;
     ctx.fill();
 
